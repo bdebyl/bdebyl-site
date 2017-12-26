@@ -3,9 +3,8 @@ title: "Humble Beginnings"
 date: 2017-12-21T01:42:57-05:00
 categories: ["Blog"]
 tags: ["code"]
-draft: true
-thumbnailImagePosition: left
-thumbnailImage: "https://s3-us-west-2.amazonaws.com/basdb-static-content/site-static/img/main.png"
+thumbnailImagePosition: top
+thumbnailImage: "/img/humble-beginnings/main.png"
 ---
 After much deliberation I've finally decided to go with the [**Tranquilpeak**](https://github.com/kakawait/hugo-tranquilpeak-theme) theme. However, before this I ran into a slew of issues with the badly ported [**Tracks**](https://github.com/ageekymonk/hugo-tracks-theme) theme from WordPress
 <!--more-->
@@ -18,7 +17,7 @@ If you want a general overview, feel free to check out the relevant [commit](htt
 The first thing I noticed was that the navigation bar seemed a bit off.
 
 
-{{< image classes="center" src="https://s3-us-west-2.amazonaws.com/basdb-static-content/site-static/img/header-problem.png" title="Navbar Issue" >}}
+{{< image classes="center" src="/img/humble-beginnings/header-problem.png" title="Navbar Issue" >}}
 
 The links show as numbers and attempt to link to `/0`, `/1`, and `/2` which lead to 404s. This didn't  seem like the intended functionality. It turned out to be a problem with the usage of the following variable: `.Site.Sections`
 
