@@ -6,25 +6,41 @@ tags: ["code"]
 thumbnailImagePosition: top
 thumbnailImage: "/img/humble-beginnings/main.png"
 ---
-After much deliberation I've finally decided to go with the [**Tranquilpeak**](https://github.com/kakawait/hugo-tranquilpeak-theme) theme. However, before this I ran into a slew of issues with the badly ported [**Tracks**](https://github.com/ageekymonk/hugo-tracks-theme) theme from WordPress
+After running into too many road blocks I've decided to go with the [**Tranquilpeak**](https://github.com/kakawait/hugo-tranquilpeak-theme) theme for this site. Before this, I was really looking forward to using the [**Tracks**](https://github.com/ageekymonk/hugo-tracks-theme) theme (ported from WordPress)
 <!--more-->
 
-If you want a general overview, feel free to check out the relevant [commit](https://github.com/bdebyl/hugo-tracks-theme/commit/86ca4963c4d0a67ddb1560197c91617e7d3e3754) on my GitHub fork.
-
-<!-- toc -->
+If you want a general overview, feel free to check out the relevant [commit](https://github.com/bdebyl/hugo-tracks-theme/commit/86ca4963c4d0a67ddb1560197c91617e7d3e3754) on my GitHub fork of the **Tracks** theme.
 
 # Rough Start
-The first thing I noticed was that the navigation bar seemed a bit off.
 
+----
+
+Right off the bat I noticed the navigation bar seemed a bit off, to say the least:
 
 {{< image classes="center" src="/img/humble-beginnings/header-problem.png" title="Navbar Issue" >}}
 
-The links show as numbers and attempt to link to `/0`, `/1`, and `/2` which lead to 404s. This didn't  seem like the intended functionality. It turned out to be a problem with the usage of the following variable: `.Site.Sections`
+The links showed as numbers and pointed to `/0`, `/1`, and `/2` respectively. These, of course, lead to 404s.
 
-As I'm still learning the ins and outs of Hugo, I'm not familiar with what a section *should* be, but I did know the `sidebar.html` layout file didn't seem to do anything nor exist anywhere on the site (even on mobile screen sizes). I did attempt to find out how sections work by experiment with directories along with `index.md` /  `_index.md` files within the `content/` folder. Though, I was unsuccessful in getting the structure I wanted to appear, appear, along with not really understanding why `0` and `0` pages even existed.
+
+{{< image classes="center" src="/img/humble-beginnings/404.png" title="404 Page - Should probably make this look a bit better, eventually..">}}
+
+This didn't seem like the intended behavior, so I kept digging. Eventually, I found out the problem lied in the usage of the `.Site.Sections` variable used in a loop to populare items in the page header.
+
+> **.Site.Sections**
+>
+>    top-level directories of the site.
+
+\- [Source](https://gohugo.io/variables/site/#site-variables-list)
+
+
+As I'm still learning the ins and outs of Hugo, I'm not familiar enough with what a section *should* be beyond what the documentation states. I did attempt to find out how sections work by experimenting with directories in `content/` and files such as `index.md` / `_index.md`. Regretfully, I was unsuccessful in figuring out the proper structure to utilize `.Site.Sections`. I still do not fully understanding where the `0` and `1` "sections" even originated from. In any case, I decided the only course of action was to use something other than sections for the behavior I wanted.
 
 # The Fix
-The issue lied in the following chunk of code for `layouts/partials/headers.html`:
+
+----
+
+Looking at other template files in the theme's layout, I stumbled on a chunk of code in `layouts/partials/headers.html` that defined the behavior of the aforementioned "navbar" problem:
+
 ```html
 <div class="col-md-6">
   <div class="menu">
@@ -37,10 +53,12 @@ The issue lied in the following chunk of code for `layouts/partials/headers.html
   </div>
 ```
 
-For some reason it seemed that `.Site.Sections` would populate as `0` and `1`. Now, this may be an error of my part from lack of understanding of how Hugo works, but I have yet to make sense of the documentation as far as sections go.
+The original uses the `.Site.Sections` variable, which I replaced with `.Site.Params.navlinks`. **This** seemed like intended behavior as the user-defined `config.toml` nav links weren't ever utilized or populated anywhere on the site.
 
+{{< image classes="center clear" src="/img/humble-beginnings/tracks-config.png" title="Nav Links from Tracks Theme config">}}
 
-In any case, I borrowed the code found in `layouts/partials/sidebar.html` to include the nav links I desired:
+I borrowed the code found in `layouts/partials/sidebar.html` (*which also never appears to be used*) to include the nav links and get my desired behavior:
+
 ```html
 <div class="col-md-6">
   <div class="menu">
@@ -51,14 +69,16 @@ In any case, I borrowed the code found in `layouts/partials/sidebar.html` to inc
   </div>
 ```
 
+# But Wait, There's More!
+
 ----
 
-# But Wait, There's More!
-After getting more comfortable with how themes are designed for Hugo, I found a slew of other problems with the ported **Tracks** theme:
+After getting more comfortable with how themes are written for Hugo, I found a slew of other problems with the ported **Tracks** theme:
 
 * Improper HTML for `/about/` and `/contact/` resulting in a sloppy looking, inconsistent site.
 * Redundant `portfolio.html`: duplicated HTML code already used in `category.html`
 * Completely unused:
+  * `layouts/partials/sidebar.html`
   * `layouts/_default/taxonomy.html`
   * `layouts/_default/list.html`
   * `<div class="col-md-10 category-description">` in `layouts/partials/category.html`
@@ -66,4 +86,4 @@ After getting more comfortable with how themes are designed for Hugo, I found a 
   * Pagination
   * Syntax Highlighting
 
-At the this point in time I decided it was no longer worth my time in trying to re-work something I wasn't very familiar with, as my main objective was simply to get a portfolio website with blog functionality up and running.
+At this point I decided it was no longer worth my time in trying to re-work something I wasn't very familiar with. My main objective was simply to get a portfolio website with blog functionality up and running, not to custom build or *re*-build a theme. **Tranquilpeak** offered exactly what I wanted, though not necessarily *how* I wanted them. You can't always get what you want :)
