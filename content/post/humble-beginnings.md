@@ -3,8 +3,6 @@ title: "Humble Beginnings"
 date: 2017-12-21T01:42:57-05:00
 categories: ["Blog"]
 tags: ["code"]
-thumbnailImagePosition: top
-thumbnailImage: "/img/humble-beginnings/main.png"
 ---
 After running into too many road blocks I've decided to go with the [**Tranquilpeak**](https://github.com/kakawait/hugo-tranquilpeak-theme) theme for this site. Before this, I was really looking forward to using the [**Tracks**](https://github.com/ageekymonk/hugo-tracks-theme) theme (ported from WordPress)
 <!--more-->
@@ -17,12 +15,12 @@ If you want a general overview, feel free to check out the relevant [commit](htt
 
 Right off the bat I noticed the navigation bar seemed a bit off, to say the least:
 
-{{< image classes="center" src="/img/humble-beginnings/header-problem.png" title="Navbar Issue" >}}
+<center>![Navbar Issue](/img/humble-beginnings/header-problem.png)</center>
 
 The links showed as numbers and pointed to `/0`, `/1`, and `/2` respectively. These, of course, lead to 404s.
 
 
-{{< image classes="center" src="/img/humble-beginnings/404.png" title="404 Page - Should probably make this look a bit better, eventually..">}}
+<center>![404 Page](/img/humble-beginnings/404.png)</center>
 
 This didn't seem like the intended behavior, so I kept digging. Eventually, I found out the problem lied in the usage of the `.Site.Sections` variable used in a loop to populare items in the page header.
 
@@ -55,7 +53,7 @@ Looking at other template files in the theme's layout, I stumbled on a chunk of 
 
 The original uses the `.Site.Sections` variable, which I replaced with `.Site.Params.navlinks`. **This** seemed like intended behavior as the user-defined `config.toml` nav links weren't ever utilized or populated anywhere on the site.
 
-{{< image classes="center clear" src="/img/humble-beginnings/tracks-config.png" title="Nav Links from Tracks Theme config">}}
+<center>![Nav Links from Tracks Theme config](/img/humble-beginnings/tracks-config.png)</center>
 
 I borrowed the code found in `layouts/partials/sidebar.html` (*which also never appears to be used*) to include the nav links and get my desired behavior:
 
