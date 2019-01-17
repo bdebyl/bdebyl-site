@@ -9,8 +9,6 @@ DISTRIBUTION_ID=$(shell aws cloudfront list-distributions \
 	--query 'DistributionList.Items[].{id:Id,a:Aliases.Items}[?contains(a,`$(WEBSITE)`)].id' \
 	--output text)
 
-default: run
-
 build:
 	hugo
 
@@ -29,4 +27,6 @@ cache:
 	@# Invalidate caches
 	aws cloudfront create-invalidation --distribution-id $(DISTRIBUTION_ID) --paths '/*'
 
+# Default target for make (<=3.80)
 .PHONY: build run deploy
+default: run

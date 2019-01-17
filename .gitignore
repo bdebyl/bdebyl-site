@@ -1,6 +1,6 @@
-themes/*
-test.md
-public/*
-static/*
-r53Batch.json
-distroConfig.json
+archetypes/
+flymd*
+public/
+resources/
+static/
+themes/
