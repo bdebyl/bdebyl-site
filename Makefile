@@ -4,20 +4,26 @@
 # - path to web root (in /tmp directory)
 WEBSITE=bdebyl.net
 
+DOCKER_IMAGE_NAME=bdebyl/hugo
+DOCKER_IMAGE_TAG=0.2
+DOCKER_IMAGE=$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)
+
+DOCKER_RUN=docker run --rm -v $(shell pwd):/src -p 127.0.0.1:1313:1313/tcp
+
 # Look up CloudFront distribution ID based on website alias
 DISTRIBUTION_ID=$(shell aws cloudfront list-distributions \
-	--query 'DistributionList.Items[].{id:Id,a:Aliases.Items}[?contains(a,`$(WEBSITE)`)].id' \
+	--query 'DistributionList.Items[].(id:Id,a:Aliases.Items)[?contains(a,`$(WEBSITE)`)].id' \
 	--output text)
 
 build:
-	hugo
+	$(DOCKER_RUN) $(DOCKER_IMAGE)
 
 run:
-	hugo server
+	$(DOCKER_RUN) $(DOCKER_IMAGE) server --bind=0.0.0.0
 
 clean:
 	@# Clean up existing generated site
-	rm -rf public/
+	rm -rf public/ resources/
 
 deploy: clean build
 	@# Upload files to S3
