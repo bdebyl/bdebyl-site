@@ -11,9 +11,9 @@ DOCKER_IMAGE=$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)
 # Container Variables
 RUN_USER=--user $(shell id -u $$USER):$(shell id -g $$USER)
 RUN_VOL=-v $(shell pwd):/src
-RUN_PORT=-p 1313:1313/tcp
 
-DOCKER_RUN=docker run -it --rm ${RUN_USER} ${RUN_VOL} ${RUN_PORT} ${DOCKER_IMAGE}
+DOCKER_PORT=-p 1313:1313/tcp
+DOCKER_RUN=docker run -it --rm ${RUN_USER} ${RUN_VOL}
 
 # Look up CloudFront distribution ID based on website alias
 DISTRIBUTION_ID=$(shell aws cloudfront list-distributions \
@@ -21,13 +21,13 @@ DISTRIBUTION_ID=$(shell aws cloudfront list-distributions \
 	--output text)
 
 build:
-	$(DOCKER_RUN)
+	$(DOCKER_RUN) ${DOCKER_IMAGE}
 
 run:
-	$(DOCKER_RUN) server --bind=0.0.0.0
+	$(DOCKER_RUN) ${DOCKER_PORT} ${DOCKER_IMAGE} server --bind=0.0.0.0
 
 new:
-	$(DOCKER_RUN) new post/$(shell read -p "Post Name (i.e. my_post.md): " pn; echo $$pn)
+	$(DOCKER_RUN) ${DOCKER_IMAGE} new post/$(shell read -p "Post Name (i.e. my_post.md): " pn; echo $$pn)
 
 clean:
 	@# Clean up existing generated site
