@@ -53,6 +53,7 @@ copyright = ""            # default: author.name
   since = "2017"            # Site creation time
 
   # site info (optional)
+  logoImage = "img/pubfpr.png"
   logoTitle = "bdebyl"        # default: the title value
   keywords = ["bastian", "de byl","bdebyl"]
   description = "A random assortment of my personal projects."

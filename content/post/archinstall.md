@@ -97,7 +97,7 @@ The reader may always consult manpages, the [Arch Wiki](https://wiki.archlinux.o
       ```
 
    1. Edit the loader configuration using a text editor of your choice:
-      ```
+      ```apacheconf
       # cat /boot/loader/loader.conf
       default arch
       timeout 3
@@ -105,7 +105,7 @@ The reader may always consult manpages, the [Arch Wiki](https://wiki.archlinux.o
       ```
 
    1. Create the loader entry for the default `arch` entry specified above (_You can edit this name if desired._). Use `blkid /dev/sdaN` to find the UUID of your crypt device, and recall the volume name you gave your device above (_`main` in example below_):
-      ```
+      ```apacheconf
       # cat /boot/loader/entries/arch.conf
       title Arch Linux
       linux /vmlinuz-linux.img
