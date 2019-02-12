@@ -6,6 +6,12 @@ preserveTaxonomyNames = true
 theme = "even"
 title = "A random assortment of my personal projects."
 
+# https://gohugo.io/content-management/syntax-highlighting/
+pygmentsOptions = "linenos=table"
+pygmentsCodefences = true
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
+
 paginate = 5
 googleAnalytics = ""      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name
