@@ -1,31 +1,24 @@
 baseURL = "http://bdebyl.net/"
-languageCode = "en"
 defaultContentLanguage = "en"
-title = "A random assortment of my personal projects."
-preserveTaxonomyNames = true
 enableRobotsTXT = true
-enableEmoji = false
+languageCode = "en"
+preserveTaxonomyNames = true
 theme = "even"
-# Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
-pygmentsOptions = "linenos=table"
-pygmentsCodefences = true
-pygmentsUseClasses = true
-pygmentsCodefencesGuessSyntax = true
-hasCJKLanguage = true     # has chinese/japanese/korean ?
+title = "A random assortment of my personal projects."
+
 paginate = 5
-disqusShortname = ""      # disqus_shortname
 googleAnalytics = ""      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name
 
-[author]                  # essential
+[author]
   name = "Bastian D."
 
-[sitemap]                 # essential
+[sitemap]
   changefreq = "weekly"
   priority = 0.5
   filename = "sitemap.xml"
 
-[[menu.main]]             # config your menu
+[[menu.main]]
   name = "Home"
   weight = 10
   identifier = "home"
@@ -40,29 +33,19 @@ copyright = ""            # default: author.name
   weight = 30
   identifier = "tags"
   url = "/tags/"
-[[menu.main]]
-  name = "Categories"
-  weight = 40
-  identifier = "categories"
-  url = "/categories/"
 
 [params]
-  version = "4.x"           # Used to give a friendly message when you have an incompatible update
-  debug = false             # If true, load `eruda.min.js`. See https://github.com/liriliri/eruda
-
-  since = "2017"            # Site creation time
-
-  # site info (optional)
-  logoImage = "img/pubfpr.png"
-  logoTitle = "bdebyl"        # default: the title value
-  keywords = ["bastian", "de byl","bdebyl"]
+  since = "2017"
+  logoImage = "/img/pubfpr.png"
+  logoTitle = "bdebyl"
+  keywords = ["bastian", "de byl", "bdebyl"]
   description = "A random assortment of my personal projects."
 
   # paginate of archives, tags and categories
   archivePaginate = 5
 
   # show 'xx Posts In Total' in archive page ?
-  showArchiveCount = false
+  showArchiveCount = true
 
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
   dateFormatToUse = "2006-01-02"
@@ -70,73 +53,10 @@ copyright = ""            # default: author.name
   # show word count and read time ?
   moreMeta = false
 
-  # Syntax highlighting by highlight.js
-  highlightInClient = false
-
-  # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
-  toc = true
-  autoCollapseToc = false   # Auto expand and collapse toc
-  fancybox = true           # see https://github.com/fancyapps/fancybox
-
-  # mathjax
-  mathjax = false           # see https://www.mathjax.org/
-  mathjaxEnableSingleDollar = false
-  mathjaxEnableAutoNumber = false
-  mathjaxUseLocalFiles = false  # You should install mathjax in `yout-site/static/lib/mathjax`
-
   postMetaInFooter = true   # contain author, lastMod, markdown link, license
   linkToMarkDown = false    # Only effective when hugo will output .md files.
   contentCopyright = ''     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
-
-  changyanAppid = ""        # Changyan app id
-  changyanAppkey = ""       # Changyan app key
-
-  livereUID = ""            # LiveRe UID
-
-  baiduPush = false        # baidu push
-  baiduAnalytics = ""      # Baidu Analytics
-  baiduVerification = ""   # Baidu Verification
-  googleVerification = ""  # Google Verification
-
-  # Link custom CSS and JS assets
-  #   (relative to /static/css and /static/js respectively)
-  customCSS = []
-  customJS = []
-
-  # Display a message at the beginning of an article to warn the readers that it's content may be outdated.
-  [params.outdatedInfoWarning]
-    enable = false
-    hint = 30               # Display hint if the last modified time is more than these days ago.
-    warn = 180              # Display warning if the last modified time is more than these days ago.
-
-  [params.gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
-    clientId = ""           # Your client ID
-    clientSecret = ""       # Your client secret
-
-  [params.gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
-    clientId = ""           # Your client ID
-    clientSecret = ""       # Your client secret
-
-  [params.flowchartDiagrams]# see https://blog.olowolo.com/example-site/post/js-flowchart-diagrams/
-    enable = false
-    options = ""
-
-  [params.sequenceDiagrams] # see https://blog.olowolo.com/example-site/post/js-sequence-diagrams/
-    enable = false
-    options = ""            # default: "{theme: 'simple'}"
-
-  [params.busuanzi]         # count web traffic by busuanzi
-    enable = false
-    siteUV = false
-    sitePV = false
-    pagePV = false
-
-  [params.reward]
-    enable = false
+  googleVerification = ""   # Google Verification
 
   [params.social]
     a-email = "mailto:bastiandebyl@gmail.com"
@@ -147,7 +67,7 @@ copyright = ""            # default: author.name
 # See https://gohugo.io/about/hugo-and-gdpr/
 [privacy]
   [privacy.googleAnalytics]
-    anonymizeIP = true      # 12.214.31.144 -> 12.214.31.0
+    anonymizeIP = true
   [privacy.youtube]
     privacyEnhanced = true
 

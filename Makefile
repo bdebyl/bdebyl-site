@@ -17,7 +17,7 @@ DOCKER_RUN=docker run -it --rm ${RUN_USER} ${RUN_VOL}
 
 # Look up CloudFront distribution ID based on website alias
 DISTRIBUTION_ID=$(shell aws cloudfront list-distributions \
-	--query 'DistributionList.Items[].(id:Id,a:Aliases.Items)[?contains(a,`$(WEBSITE)`)].id' \
+	--query 'DistributionList.Items[].{id:Id,a:Aliases.Items}[?contains(a,`$(WEBSITE)`)].id' \
 	--output text)
 
 build:
