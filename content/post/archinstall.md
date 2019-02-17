@@ -1,6 +1,7 @@
 ---
 title: "Installing ArchLinux with Full Disk Encryption (LUKS)"
-date: 2018-12-19T22:35:11-05:00
+date: 2018-12-19
+lastmod: 2019-01-29
 categories: ["Tutorial"]
 tags: ["linux"]
 ---
@@ -138,4 +139,3 @@ The reader may always consult manpages, the [Arch Wiki](https://wiki.archlinux.o
    # unmount -R /mnt
    # reboot
    ```
-

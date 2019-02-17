@@ -1,6 +1,7 @@
 ---
 title: "Make Your Ears Bern"
-date: 2018-01-11T04:26:57+01:00
+date: 2018-01-11
+lastmod: 2019-01-16
 categories: ["Blog"]
 tags: ["electronics"]
 ---

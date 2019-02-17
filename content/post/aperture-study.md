@@ -1,6 +1,7 @@
 ---
 title: "A Study in Aperture"
-date: 2019-01-16T22:32:33-05:00
+date: 2019-01-16
+lastmod: 2019-02-11
 categories: ["Blog"]
 tags: ["photography"]
 ---

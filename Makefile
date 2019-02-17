@@ -24,7 +24,7 @@ build:
 	$(DOCKER_RUN) ${DOCKER_IMAGE}
 
 run:
-	$(DOCKER_RUN) ${DOCKER_PORT} ${DOCKER_IMAGE} server --bind=0.0.0.0
+	$(DOCKER_RUN) ${DOCKER_PORT} ${DOCKER_IMAGE} server --bind=0.0.0.0 -D
 
 new:
 	$(DOCKER_RUN) ${DOCKER_IMAGE} new post/$(shell read -p "Post Name (i.e. my_post.md): " pn; echo $$pn)

@@ -1,6 +1,7 @@
 ---
 title: "Humble Beginnings"
-date: 2017-12-21T01:42:57-05:00
+date: 2017-12-21
+lastmod: 2019-01-16
 categories: ["Blog"]
 tags: ["code"]
 ---
