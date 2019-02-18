@@ -35,21 +35,22 @@ lost at that target distance of 1 meter.
 
 # Comparison
 ## *f/1.7*--*f/4.0*
----
 The biggest difference can be seen between the *f/1.7* and *f/4.0* shots. Note
 the increase in clarity on the pillows fabric.
 
 {{< thumb "/img/aperture-study/f17-f40-comp.jpg" >}}
 
-## *f/1.7*--*f/2.8*
 ---
+
+## *f/1.7*--*f/2.8*
 At *f/2.8* and above I started noticing less increase in perceived sharpness of
 the image, though the difference in comparison to *f/1.7* was still fairly
 noticeable
 {{< thumb "/img/aperture-study/f17-f28-comp.jpg" >}}
 
-## *f/2.8*--*f/4.0*
 ---
+
+## *f/2.8*--*f/4.0*
 Aside from the perceived exposure difference from what is most likely a
 difference in shutter speed, the overall difference does not seem as dramatic
 from *f/2.8* to *f/4.0*. Personally, I'd say that *f/2.8* is the clear winner in
@@ -57,9 +58,9 @@ finding the best middle-ground between maximum aperture and image quality.
 
 {{< thumb "/img/aperture-study/f28-f40-comp.jpg" >}}
 
+---
 
 # Individual Photos
----
 Below is the entire collection of all the photos taken of the subject at
 increasing aperture steps.
 

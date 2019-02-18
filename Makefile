@@ -29,6 +29,9 @@ run:
 new:
 	$(DOCKER_RUN) ${DOCKER_IMAGE} new post/$(shell read -p "Post Name (i.e. my_post.md): " pn; echo $$pn)
 
+thumbnails:
+	@./make-thumbs.sh
+
 clean:
 	@# Clean up existing generated site
 	rm -rf public/ resources/

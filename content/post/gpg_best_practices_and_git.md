@@ -1,18 +1,15 @@
 ---
 title: "GPG Best Practices (and Git)"
 date: 2019-02-17
-lastmod: 2019-02-17
+lastmod: 2019-02-18
 categories: ["Blog"]
 tags: ["linux"]
 ---
 I decided to start signing my Git commits for personal, and work Git
-repositories. Currently, most Git third-party services only support signing
-commits, but _do not_ support signing pushes. Regardless, it would still be
-considered good Currently, most Git third-party services only support **signing
-commits**, but _do not_ support signing pushes. Regardless, it would still be
-considered good practice to start signing commits. practice to start signing
-commits.
+repositories. Currently, most third-party Git repository hosts only support
+signing commits, but **do not** support signing pushes.
 <!--more-->
+
 That being said, I've added my public key to my
 [GitLab](https://gitlab.com/bdebyl), and set the global config to use my key,
 and sign all of my commits:
@@ -24,10 +21,10 @@ _Note: I am using git version `2.20.1` in the above example._
 
 # Getting Started with OpenPGP
 It is recommended to read through the
-[Getting Started](https://www.gnupg.org/gph/en/manual/c14.html) on the official
-GnuPG website. However, I would **strongly** recommend using the `--full-gen-key`
-option in place of the `--gen-key`. This will allow you to specify additional
-details about your key, such as using a 4096-bit RSA key.
+[Getting Started](https://www.gnupg.org/gph/en/manual/c14.html) page  on the
+official GnuPG website. However, I would **strongly** recommend using the
+`--full-gen-key` option in place of the `--gen-key`. This will allow you to
+specify additional details about your key, such as using a 4096-bit RSA key.
 
 # OpenPGP Keyserver Pool
 In addition to that, there came the addition of using the
@@ -65,31 +62,33 @@ Once the signature has been verified, the CA can be moved over to
 `/usr/share/ca-certificates` to add to your CA certificates via `sudo
 update-ca-trust` (_Arch_) or `sudo update-ca-certificates` (_Debian/Ubuntu_).
 
-### GnuPG Versions >2.1
-Two following parameters should be added to your `~/.gnupg` configs:
-
-#### `gpg.conf`:
-```apacheconf
-keyserver hkps://hkps.pool.sks-keyservers.net
-```
-
-#### `dirmngr.conf`:
-```apacheconf
-hkp-cacert /etc/ca-certificates/path/to/CA.pem
-```
-
-
-### GnuPG Versions <2.1
-#### `gpg.conf`:
-```apacheconf
-keyserver hkps://hkps.pool.sks-keyservers.net
-keyserver-options ca-cert-file=/path/to/CA/sks-keyservers.netCA.pem
-```
-
 {{% admonition tip "CA Path" %}}
 On my system the full path to the CA certs is:
 
 - `/etc/ca-certificates/extracted/cadir/sks-keyservers.net_CA.pem`
+{{% /admonition %}}
+
+Two following parameters should be added to your `~/.gnupg` configuration files:
+
+### GnuPG Versions >2.1
+{{% admonition note "gpg.conf" %}}
+```apacheconf
+keyserver hkps://hkps.pool.sks-keyservers.net
+```
+{{% /admonition %}}
+
+{{% admonition note "dirmngr.conf" %}}
+```apacheconf
+hkp-cacert /etc/ca-certificates/path/to/CA.pem
+```
+{{% /admonition %}}
+
+### GnuPG Versions <2.1
+{{% admonition note "gpg.conf" %}}
+```apacheconf
+keyserver hkps://hkps.pool.sks-keyservers.net
+keyserver-options ca-cert-file=/path/to/CA/sks-keyservers.netCA.pem
+```
 {{% /admonition %}}
 
 ## *Optional* - Ensure keys refreshed through keyserver
