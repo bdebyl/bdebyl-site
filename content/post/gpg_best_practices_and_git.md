@@ -65,15 +65,31 @@ Once the signature has been verified, the CA can be moved over to
 `/usr/share/ca-certificates` to add to your CA certificates via `sudo
 update-ca-trust` (_Arch_) or `sudo update-ca-certificates` (_Debian/Ubuntu_).
 
-Lastly, the following parameters should be added to your `~/.gnupg/gpg.conf`:
+### GnuPG Versions >2.1
+Two following parameters should be added to your `~/.gnupg` configs:
+
+#### `gpg.conf`:
+```apacheconf
+keyserver hkps://hkps.pool.sks-keyservers.net
 ```
+
+#### `dirmngr.conf`:
+```apacheconf
+hkp-cacert /etc/ca-certificates/path/to/CA.pem
+```
+
+
+### GnuPG Versions <2.1
+#### `gpg.conf`:
+```apacheconf
 keyserver hkps://hkps.pool.sks-keyservers.net
 keyserver-options ca-cert-file=/path/to/CA/sks-keyservers.netCA.pem
 ```
-{{% admonition info "CA Path" %}}
-On my setup, the full path to the CA certs is:
 
-`/etc/ca-certificates/extracted/cadir/sks-keyservers.net_CA.pem`
+{{% admonition tip "CA Path" %}}
+On my system the full path to the CA certs is:
+
+- `/etc/ca-certificates/extracted/cadir/sks-keyservers.net_CA.pem`
 {{% /admonition %}}
 
 ## *Optional* - Ensure keys refreshed through keyserver

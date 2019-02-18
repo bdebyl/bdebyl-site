@@ -5,17 +5,23 @@ lastmod: 2019-01-29
 categories: ["Tutorial"]
 tags: ["linux"]
 ---
-This is a guide written on how to install Arch Linux using LUKS for disk encryption, and Systemd-boot as the bootloader.
+This is a guide written on how to install Arch Linux using LUKS for disk
+encryption, and Systemd-boot as the bootloader.
 <!--more-->
-It is assumed that the reader has basic linux knowledge and understands that examples are given via output commands.
-The reader may always consult manpages, the [Arch Wiki](https://wiki.archlinux.org/), or other documentation to build a better understanding of the tools and methods used.
+It is assumed that the reader has basic linux knowledge and understands that
+examples are given via output commands. The reader may always consult manpages,
+the [Arch Wiki](https://wiki.archlinux.org/), or other documentation to build a
+better understanding of the tools and methods used.
 
 ---
 
 # Partitioning
-1. Create a partition scheme using partitioner of choice (e.g. `gdisk`, `fdisk`, `cgdisk`).
-   - First partition should be EFI/boot partition at around 256MB+ (type: `ef00`)
-   - Second partition should be Linux LVM partition using rest of disk space (type: `8e00`)
+1. Create a partition scheme using partitioner of choice (e.g. `gdisk`, `fdisk`,
+   `cgdisk`).
+   - First partition should be EFI/boot partition at around 256MB+ (type:
+     `ef00`)
+   - Second partition should be Linux LVM partition using rest of disk space
+     (type: `8e00`)
 1. Make the the EFI/boot partition FAT32 via `mkfs.fat -F32`
 
 # Encryption
@@ -24,13 +30,15 @@ The reader may always consult manpages, the [Arch Wiki](https://wiki.archlinux.o
    # cryptsetup luksFormat /dev/sdaN
    Enter passphrase:
    ```
-   **Note:** _Remember your passphrase! You will need this every time you boot your computer_
+   **Note:** _Remember your passphrase! You will need this every time you boot
+   your computer_
 1. Create a mapping for your Linux LVM (LUKS):
    ```
    # cryptsetup open --type luks /dev/sdaN <map_name>
    ```
    _Use whatever name you want. Ex. `lvm`, `volume`, etc._
-1. Create the physical volume, volume group, and logical volumes for `<map_name>` specified in the previous step:
+1. Create the physical volume, volume group, and logical volumes for
+   `<map_name>` specified in the previous step:
    ```
    # pvcreate /dev/mapper/<map_name>
    # vgcreate <volume_name> /dev/mapper/<map_name>
@@ -62,7 +70,8 @@ The reader may always consult manpages, the [Arch Wiki](https://wiki.archlinux.o
    # swapon /dev/mapper/<volume_name>-swap
    ```
 
-1. Install the base system (_Assuming you have internet connectivity. Use `wifi-menu`, or other, to connect to the internet at this point._):
+1. Install the base system (_Assuming you have internet connectivity. Use
+   `wifi-menu`, or other, to connect to the internet at this point._):
    ```
    # pacstrap /mnt base base-devel
    ```
@@ -79,12 +88,15 @@ The reader may always consult manpages, the [Arch Wiki](https://wiki.archlinux.o
    ```
 
 1. Configure `initramfs`:
-   1. Edit `HOOKS` in `/etc/mkinitcpio.conf` using text editor of your choice (e.g. `vi`, `nano`, etc.). Move the `keyboard` hook before `filesystems`, and add `encrypt` and `lvm2` hooks **before** `filesystems`:
+   1. Edit `HOOKS` in `/etc/mkinitcpio.conf` using text editor of your choice
+      (e.g. `vi`, `nano`, etc.). Move the `keyboard` hook before `filesystems`,
+      and add `encrypt` and `lvm2` hooks **before** `filesystems`:
       ```
       # egrep '^HOOKS' /etc/mkinitcpio.conf
       HOOKS=(base udev autodetect modconf block keyboard encrypt lvm2 filesystems fsck)
       ```
-      _Read the comment documentation on `HOOKS` in the document to find out more._
+      _Read the comment documentation on `HOOKS` in the document to find out
+      more._
 
    1. Generate `initramfs`:
       ```
@@ -105,7 +117,10 @@ The reader may always consult manpages, the [Arch Wiki](https://wiki.archlinux.o
       editor 0
       ```
 
-   1. Create the loader entry for the default `arch` entry specified above (_You can edit this name if desired._). Use `blkid /dev/sdaN` to find the UUID of your crypt device, and recall the volume name you gave your device above (_`main` in example below_):
+   1. Create the loader entry for the default `arch` entry specified above (_You
+      can edit this name if desired._). Use `blkid /dev/sdaN` to find the UUID
+      of your crypt device, and recall the volume name you gave your device
+      above (_`main` in example below_):
       ```apacheconf
       # cat /boot/loader/entries/arch.conf
       title Arch Linux

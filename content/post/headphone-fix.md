@@ -17,9 +17,7 @@ side, I figured the only way *in* was lifting the mesh cover off. So I went at
 it, carefully, with a pair of tweezers. I worked my way around the edge and
 wedged the mesh upwards.
 
-{{% admonition info %}}
-![Zoom, Zoom, Zoom!](/img/headphone-fix/IMG_7505.jpg)
-{{% /admonition %}}
+{{< thumb "/img/headphone-fix/IMG_7505.jpg" >}}
 
 
 # Okay, Maybe Turn It On
@@ -31,13 +29,10 @@ right speaker put out no sound._ I checked the known-good left speaker using my
 **Rigol 1074Z** oscilloscope. This may not have been entirely necessary, but I
 wanted to find out what to expect when troubleshooting the right channel.
 
-{{% admonition info "Left Speaker" %}}
-![Left Speaker](/img/headphone-fix/IMG_7506.jpg)
-{{% /admonition %}}
 
-{{% admonition info "Right Speaker" %}}
-![Right Speaker](/img/headphone-fix/IMG_7511.jpg)
-{{% /admonition %}}
+{{< thumb "/img/headphone-fix/IMG_7506.jpg" >}}
+
+{{< thumb "/img/headphone-fix/IMG_7511.jpg" >}}
 
 Knowing what to expect on the oscilloscope, I hooked up the probe to the right,
 problematic, speaker. The result was much different, indicating either noise or
@@ -49,9 +44,7 @@ disconnected at this point in time to ease the troubleshooting process.
 Lucky for me the PCB pads were labeled -- even better `SPKL+` (_left_) and
 `SPKR+` (_right_) were easy to find.
 
-{{% admonition info %}}
-![Under the Microscope](/img/headphone-fix/IMG_7507.jpg)
-{{% /admonition %}}
+{{< thumb "/img/headphone-fix/IMG_7507.jpg" >}}
 
 Outside of the bluetooth board hidden under the piece of tape, there's not a
 whole lot going on in the circuit. It was my guess that the visible surface
@@ -60,15 +53,13 @@ search of `AIWI TI` (_as shown in the photograph_) resulted
 in [the following datasheet](http://www.ti.com/lit/ds/symlink/tpa6132a2.pdf)
 which verified that to be the case.
 
-<center>![TPA6132A2 QFN Pinout](/img/headphone-fix/TPA6132A2.png)</center>
+<center>![Hello](/img/headphone-fix/TPA6132A2.png)</center>
 
 **Bingo!** Now knowing the pinout, I could use my trusty multimeter (_a Fluke
 115_) to test continuity of the circuit from the known-good and the now
 known-bad speaker traces back to the `OUTL` and `OUTR` outputs of the amplifier.
 
-{{% admonition info %}}
-![Tweezers](/img/headphone-fix/IMG_7514.jpg)
-{{% /admonition %}}
+{{< thumb "/img/headphone-fix/IMG_7514.jpg" >}}
 
 Removing the board from the housing required a bit of finesse. I didn't want to
 bother desoldering the left speaker connections to make removal easier. So, with
@@ -92,9 +83,7 @@ Using the 3.5mm mini-jack's solder pads, I found continuity to be true from the
 chips left and right outputs to the conveniently accessible solder pads. _A
 bodge wire was in order_..
 
-{{% admonition info %}}
-![Look closelier..](/img/headphone-fix/IMG_7515.jpg)
-{{% /admonition %}}
+{{< thumb "/img/headphone-fix/IMG_7515.jpg" >}}
 
 
 # All's Well That Ends Well
@@ -103,9 +92,7 @@ pin to `SPKR+`. Lo and behold it was now closed-circuit! I was very happy to see
 the expected waveform from the known-good left channel now also appearing on the
 right channel.
 
-{{% admonition info %}}
-![Happy Scope](/img/headphone-fix/IMG_7516.jpg)
-{{% /admonition %}}
+{{< thumb "/img/headphone-fix/IMG_7516.jpg" >}}
 
 At this point I quickly re-soldered the wires to the speaker and enjoyed music
 now coming into both ears!

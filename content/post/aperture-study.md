@@ -39,18 +39,14 @@ lost at that target distance of 1 meter.
 The biggest difference can be seen between the *f/1.7* and *f/4.0* shots. Note
 the increase in clarity on the pillows fabric.
 
-{{% admonition info %}}
-![f/1.7 vs f/4.0](/img/aperture-study/f17-f40-comp.jpg)
-{{% /admonition %}}
+{{< thumb "/img/aperture-study/f17-f40-comp.jpg" >}}
 
 ## *f/1.7*--*f/2.8*
 ---
 At *f/2.8* and above I started noticing less increase in perceived sharpness of
 the image, though the difference in comparison to *f/1.7* was still fairly
 noticeable
-{{% admonition info %}}
-![f/1.7 vs f/2.8](/img/aperture-study/f17-f28-comp.jpg)
-{{% /admonition %}}
+{{< thumb "/img/aperture-study/f17-f28-comp.jpg" >}}
 
 ## *f/2.8*--*f/4.0*
 ---
@@ -59,9 +55,7 @@ difference in shutter speed, the overall difference does not seem as dramatic
 from *f/2.8* to *f/4.0*. Personally, I'd say that *f/2.8* is the clear winner in
 finding the best middle-ground between maximum aperture and image quality.
 
-{{% admonition info %}}
-![f/2.8 vs f/4.0](/img/aperture-study/f28-f40-comp.jpg)
-{{% /admonition %}}
+{{< thumb "/img/aperture-study/f28-f40-comp.jpg" >}}
 
 
 # Individual Photos
@@ -69,24 +63,12 @@ finding the best middle-ground between maximum aperture and image quality.
 Below is the entire collection of all the photos taken of the subject at
 increasing aperture steps.
 
-{{% admonition info %}}
-![f/1.7](/img/aperture-study/f17.jpg)
-{{% /admonition %}}
-{{% admonition info %}}
-![f/2.0](/img/aperture-study/f20.jpg)
-{{% /admonition %}}
-{{% admonition info %}}
-![f/2.2](/img/aperture-study/f22.jpg)
-{{% /admonition %}}
-{{% admonition info %}}
-![f/2.5](/img/aperture-study/f25.jpg)
-{{% /admonition %}}
-{{% admonition info %}}
-![f/2.8](/img/aperture-study/f28.jpg)
-{{% /admonition %}}
-{{% admonition info %}}
-![f/3.2](/img/aperture-study/f32.jpg)
-{{% /admonition %}}
-{{% admonition info %}}
-![f/4.0](/img/aperture-study/f40.jpg)
-{{% /admonition %}}
+{{< thumbgallery >}}
+    {{< thumb "/img/aperture-study/f17.jpg" >}}
+    {{< thumb "/img/aperture-study/f20.jpg" >}}
+    {{< thumb "/img/aperture-study/f22.jpg" >}}
+    {{< thumb "/img/aperture-study/f25.jpg" >}}
+    {{< thumb "/img/aperture-study/f28.jpg" >}}
+    {{< thumb "/img/aperture-study/f32.jpg" >}}
+    {{< thumb "/img/aperture-study/f40.jpg" >}}
+{{< /thumbgallery >}}

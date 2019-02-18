@@ -30,9 +30,7 @@ my GitHub fork of the **Tracks** theme.
 # Rough Start
 Right off the bat I noticed the navigation bar seemed a bit off, to say the least:
 
-{{% admonition info %}}
-<center>![Navbar Issue](/img/humble-beginnings/header-problem.png)</center>
-{{% /admonition %}}
+<center>![Problem Navbar](/img/humble-beginnings/header-problem.png)</center>
 
 The links showed as numbers and pointed to `/0`, `/1`, and `/2`
 respectively. These, of course, lead to 404s. It didn't seem like the intended
@@ -78,9 +76,7 @@ The original uses the `.Site.Sections` variable, which I replaced with
 user-defined `config.toml` nav links weren't ever utilized or populated anywhere
 on the site.
 
-{{% admonition info %}}
 <center>![Nav Links from Tracks Theme config](/img/humble-beginnings/tracks-config.png)</center>
-{{% /admonition %}}
 
 I borrowed the code found in `layouts/partials/sidebar.html` (*which also never
 appears to be used*) to include the nav links and get my desired behavior:
