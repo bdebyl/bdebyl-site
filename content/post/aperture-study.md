@@ -38,7 +38,7 @@ lost at that target distance of 1 meter.
 The biggest difference can be seen between the *f/1.7* and *f/4.0* shots. Note
 the increase in clarity on the pillows fabric.
 
-{{< thumb "/img/aperture-study/f17-f40-comp.jpg" >}}
+{{< thumb src="/img/aperture-study/f17-f40-comp.jpg" sub="f/1.7 vs. f/4.0" >}}
 
 ---
 
@@ -46,7 +46,7 @@ the increase in clarity on the pillows fabric.
 At *f/2.8* and above I started noticing less increase in perceived sharpness of
 the image, though the difference in comparison to *f/1.7* was still fairly
 noticeable
-{{< thumb "/img/aperture-study/f17-f28-comp.jpg" >}}
+{{< thumb src="/img/aperture-study/f17-f28-comp.jpg" sub="f/1.7 vs f/2.8" >}}
 
 ---
 
@@ -56,7 +56,7 @@ difference in shutter speed, the overall difference does not seem as dramatic
 from *f/2.8* to *f/4.0*. Personally, I'd say that *f/2.8* is the clear winner in
 finding the best middle-ground between maximum aperture and image quality.
 
-{{< thumb "/img/aperture-study/f28-f40-comp.jpg" >}}
+{{< thumb src="/img/aperture-study/f28-f40-comp.jpg" sub="f/2.8 vs. f/4.0" >}}
 
 ---
 
@@ -65,11 +65,11 @@ Below is the entire collection of all the photos taken of the subject at
 increasing aperture steps.
 
 {{< thumbgallery >}}
-    {{< thumb "/img/aperture-study/f17.jpg" >}}
-    {{< thumb "/img/aperture-study/f20.jpg" >}}
-    {{< thumb "/img/aperture-study/f22.jpg" >}}
-    {{< thumb "/img/aperture-study/f25.jpg" >}}
-    {{< thumb "/img/aperture-study/f28.jpg" >}}
-    {{< thumb "/img/aperture-study/f32.jpg" >}}
-    {{< thumb "/img/aperture-study/f40.jpg" >}}
+    {{< thumb src="/img/aperture-study/f17.jpg" sub="f/1.7" >}}
+    {{< thumb src="/img/aperture-study/f20.jpg" sub="f/2.0" >}}
+    {{< thumb src="/img/aperture-study/f22.jpg" sub="f/2.2" >}}
+    {{< thumb src="/img/aperture-study/f25.jpg" sub="f/2.5" >}}
+    {{< thumb src="/img/aperture-study/f28.jpg" sub="f/2.8" >}}
+    {{< thumb src="/img/aperture-study/f32.jpg" sub="f/3.2" >}}
+    {{< thumb src="/img/aperture-study/f40.jpg" sub="f/4.0" >}}
 {{< /thumbgallery >}}
