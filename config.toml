@@ -17,7 +17,7 @@ googleAnalytics = ""      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name
 
 [author]
-  name = "Bastian D."
+  name = "Bastian de Byl"
 
 [sitemap]
   changefreq = "weekly"
@@ -49,7 +49,7 @@ copyright = ""            # default: author.name
   since = "2017"
   logoImage = "/img/pubfpr.png"
   logoTitle = "bdebyl"
-  keywords = ["bastian", "de byl", "bdebyl"]
+  keywords = ["bastian", "de byl", "bdebyl", "bastian de byl"]
   description = "A random assortment of my personal projects."
 
   # paginate of archives, tags and categories

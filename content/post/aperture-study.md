@@ -46,6 +46,7 @@ the increase in clarity on the pillows fabric.
 At *f/2.8* and above I started noticing less increase in perceived sharpness of
 the image, though the difference in comparison to *f/1.7* was still fairly
 noticeable
+
 {{< thumb src="/img/aperture-study/f17-f28-comp.jpg" sub="f/1.7 vs f/2.8" >}}
 
 ---
