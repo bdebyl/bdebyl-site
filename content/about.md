@@ -1,13 +1,17 @@
----
-title: About Me
----
-# About Me
+# About
 I created this site as a way of showcasing my projects, or other general
 ideas. It's a sort of _engineering_ portfolio, if you will.
 
-Note the icons at the bottom linking to my other sites such as social media
-pages, git repositories (_I'm most active on [GitLab](https://gitlab.com/bdebyl)_), or ways to contact me
-such as [email](mailto:bastiandebyl@gmail.com).
+This site is built using the [Hugo](https://gohugo.io) static site generator,
+with my fork of the [Even theme](https://gitlab.com/bdebyl/hugo-theme-even). The
+site is hosted on AWS, and is maintained using a modified copy of
+[Alimac's S3 Terraform](https://github.com/alimac/terraform-s3)
+configuration. Deployment steps can be found in the site's
+[source code repository](https://gitlab.com/bdebyl/bdebyl-site).
+
+The icons at the bottom linking to my other sites such as social media pages,
+Git repositories[^1], or ways to contact me such as
+[email](mailto:bastiandebyl@gmail.com).
 
 # GPG Fingerprint
 The image at the **top-left** of this site (_on desktop_) is my OpenPGP v4 key
@@ -17,7 +21,7 @@ you are on a mobile device, and my full public key:
 <center>
 ![OpenPGP v4 Fingerprint](/img/pubfpr-lrg.png)
 
-`70A4 AA02 555D BD55 9189  B4E0 F32B E05E ADAA 54FC`
+`70A4 AA02 555D BD55 9189  B4E0 F32B E05E ADAA 54FC`[^2]
 </center>
 
 {{% admonition info "Public Key" true %}}
@@ -118,3 +122,6 @@ I do not currently keep an up-to-date version of my resume. In the past, I have
 written up my resume using [LaTeX](https://www.latex-project.org/) as a PDF. I
 may explore other solutions such as simply keeping it on this website.. _we'll
 see_.
+
+[^1]: I'm most active on [GitLab](https://gitlab.com/bdebyl)
+[^2]: Read mode about OpenPGP Best Practices [here](https://www.gnupg.org/gph/en/manual/c14.html)

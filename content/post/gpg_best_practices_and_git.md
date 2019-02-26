@@ -13,6 +13,7 @@ signed commits and **do not** support signed pushes.
 That being said, I have added my public key to my
 [GitLab](https://gitlab.com/bdebyl), and set the global config to use my signing
 key, and sign all of my commits.
+
 ```bash
 git config --global user.signingKey 875953A2
 git config --global commit.gpgSign true
