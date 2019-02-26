@@ -52,7 +52,7 @@ reading further below.
 
 ## Verification
 To verify and retrieve the necessary keys to do so (automatically, if possible):
-```
+```bash
 gpg --auto-key-retrieve --verify sks-keyservers.netCA.pem.asc sks-keyservers.netCA.pem
 ```
 
