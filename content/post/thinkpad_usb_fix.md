@@ -48,9 +48,7 @@ Using generic, non-branded digital calipers I was able to get the following
 # Shopping with Purpose
 Using the value above, I was able to track down a USB receptacle[^1] on
 Digi-Key[^2] that matched my requirements very, _very_
-closely:
-
-{{< thumb src="/img/thinkpad-usb-fix/drawing.jpg" sub="Part Drawing" >}}
+closely.
 
 ## Resounding Comparison
 Keep in mind the measured values were an eyeball approximation with a low cost,
@@ -101,7 +99,7 @@ relief in connecting and disconnecting USB devices. In hindsight, I may have
 been able to bend the flat pads towards the entry of the receptacle down to
 attempt to solder them to the surface mount pads.
 
-# All the King's horses, and all the King's men
+# All the King's horses, all the King's men
 Alas, it was time to put the laptop back together. To my dismay there were
 further problems. Due to the modification and forced fitment of the replacement,
 the USB receptacle was sticking out too far off of the PCB preventing the
