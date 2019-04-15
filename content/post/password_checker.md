@@ -2,7 +2,6 @@
 title: "Password Checking Script"
 date: 2019-04-13
 lastmod: 2019-04-13
-draft: true
 tags: ["linux","code"]
 categories: ["Blog"]
 contentCopyright: false
@@ -17,6 +16,10 @@ script with the following goals:
 
 <!--more-->
 # Preface
+The full **source code** for this script can be found in my public scripts
+repository:
+[scripts/bash/pass-check.sh](https://gitlab.com/bdebyl/scripts/blob/master/bash/pass-check.sh)
+
 It's worth nothing that I use [`passwordstore`](https://www.passwordstore.org/)
 to generate, and manage my passwords. On mobile, this is done using the official
 [OpenKeychain](https://www.openkeychain.org/), and
@@ -26,8 +29,8 @@ shared across my devices using Git[^2]
 # Pump Your Brakes
 Instead of jumping right into checking all my passwords, in plain-text, against
 the `pwnedpasswords` API, it would be best to figure out how to safely transform
-them to `sha1sum`[^3]. The API supports sending the first 5 characters of a `sha1sum`,
-returning a list of all `sha1sum`s of exposed passwords (_with the exposed
+them to SHA-1[^3]. The API supports sending the first 5 characters of a SHA-1
+hash, returning a list of all SHA-1s of exposed passwords (_with the exposed
 count_) for the user to verify them on their end.
 
 # Gathering Passwords
@@ -56,7 +59,7 @@ treated in a special way (_also good practice!_)[^5]
 
 It may be worth mentioning, to folks less familiar with `awk`, that the
 `FNR==1`, in this context, simply helps to get rid of any newline oddities from
-being piped into `sha1sum`. I discovered incorrect `sha1sum` values **without**
+being piped into `sha1sum`. I discovered incorrect `sha1sum` outputs **without**
 `FNR==1` resulting in a useless password check!
 
 {{% admonition note Note %}}
@@ -98,9 +101,76 @@ getpws()
 This accomplishes our *first goal* of checking duplicate passwords --
 **hooray!**
 
-Next up: _Passwortstärke_
+# Passwortstärke
+The simplest method of password strength checking, with indications as to _why_
+it's weak (_i.e. "Exists in attack dictionary", "Too short", etc._) was to use
+[`cracklib`](https://github.com/cracklib/cracklib). Sadly, it's not the most
+well-documented or fully-fledged application to fully determine password
+strength though for my purposes it will be good enough (_I don't care to write
+my own version of this, yet.._).
+{{% admonition note Note %}}
+I made this part of the script **optional**, as not every user would want to
+install `cracklib` on their system.
+{{% /admonition %}}
 
-# TODO
+This addition was made in the following order:
+
+1. First, we need to find the executable **and** create _yet another_ useful
+   associative array for us to store the outputs (_a.k.a. messages_):
+   ```bash
+   CRACKLIB=$(command -v cracklib-check)
+   declare -A pwscracklib
+   ```
+
+1. Then a convenient function to iterate over all found passwords, safely
+   "expose" them, and run the check storing all **relevant** "outputs":
+   ```bash
+   # Run through the global pws associative array and check for suggestions
+   checkcracklib()
+   {
+       for i in "${!pws[@]}"; do
+           msg=$(pass "$i" | awk 'FNR==1 {printf "%s", $0}' | $CRACKLIB | sed s/^.*:[\ \\t]*//)
+           if [[ ! "$msg" =~ "OK" ]]; then
+               pwscracklib["$i"]="$msg"
+           fi
+       done
+    }
+   ```
+
+Done! It's _that_ easy.
+
+# Have you been Pwned
+The last, but **most important**, step was to add the actual check against the
+`pwnedpass` API check! This gets a bit fun as we use
+[Shell Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
+to trim the first five, and everything _after_ the first five, characters of the
+full SHA-1 string.
+
+We need to get the full SHA-1 hash of each password, to then query the API using
+**only the first 5 characters** of the SHA-1 hash! We will get a list of each
+exposed (_"pwned"_) password's SHA-1 hash, and the amount of times they have
+been leaked as a response. The prefix of the first 5 characters is dropped in
+this list, thus we check for a match of our password using everything after the
+first 5 characters of the SHA-1 hash and we're done!
+```bash
+# Check passwords against the HIBP password API (requires internet)
+checkpwnapi()
+{
+    for i in "${!pws[@]}"; do
+        # Check the pwnedpasswords API via hashing
+        pwsha="${pws[$i]}"
+        url="https://api.pwnedpasswords.com/range/${pwsha:0:5}"
+        res=$(curl -s "$url" | grep "${pwsha:5}")
+        if [ "$res" ]; then
+            pwunsafe["$i"]=$(printf "%s" "$res" | awk -F ':' '{printf "%d", $2}')
+        fi
+    done
+}
+```
+
+That's it! The left was to add some fun, colorful `printf`s as part of the final
+output report. Feel free to look at the source code mentioned in the **Preface**
+to see more details on this as it wasn't worth including in the write-up.
 
 [^1]: [Have I Been Pwned](https://haveibeenpwned.com/Passwords)
 [^2]: [`pass` Extended Git Example](https://git.zx2c4.com/password-store/about/#EXTENDED%20GIT%20EXAMPLE)
