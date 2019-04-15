@@ -68,7 +68,7 @@ other the two receptacles matched up just as I had hoped.. **Fantastic!**
 
 {{< thumb src="/img/thinkpad-usb-fix/DSC04773.jpg" >}}
 
-# It's not Over yet
+# It's not over yet
 Initial attempts at desoldering the existing (_broken_) receptacle proved
 futile. Even with liberal application of flux, high soldering iron temperatures
 well beyond typical soldering temperatures[^3], the solder would not flow and
