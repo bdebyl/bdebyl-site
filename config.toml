@@ -70,7 +70,7 @@ copyright = ""            # default: author.name
   googleVerification = ""   # Google Verification
 
   [params.social]
-    a-email = "mailto:bastiandebyl@gmail.com"
+    a-email = "mailto:bastian@bdebyl.net"
     g-github = "https://github.com/bdebyl"
     m-instagram = "https://instagram.com/bastian.remi"
     n-gitlab = "https://gitlab.com/bdebyl"
