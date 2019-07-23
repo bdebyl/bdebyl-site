@@ -1,0 +1,97 @@
+baseURL: "http://bdebyl.net/"
+title: "A random assortment of my personal projects."
+theme: "even"
+defaultContentLanguage: "en"
+languageCode: "en"
+paginate: 5
+copyright: ""            # default: author.name
+googleAnalytics: ""      # UA-XXXXXXXX-X
+preserveTaxonomyNames: true
+enableRobotsTXT: true
+
+# https://gohugo.io/content-management/syntax-highlighting/
+pygmentsOptions: ""
+pygmentsCodefences: true
+pygmentsUseClasses: true
+pygmentsCodefencesGuessSyntax: true
+
+author:
+  name: "Bastian de Byl"
+
+sitemap:
+  changefreq: "weekly"
+  priority: 0.5
+  filename: "sitemap.xml"
+
+menu:
+  main:
+    - name: "Home"
+      weight: 10
+      identifier: "home"
+      url: "/"
+    - name: "About"
+      weight: 20
+      identifier: "about"
+      url: "/about"
+    - name: "Archives"
+      weight: 30
+      identifier: "archives"
+      url: "/post/"
+    - name: "Tags"
+      weight: 40
+      identifier: "tags"
+      url: "/tags/"
+
+params:
+  since: "2017"
+  logoImage: "/img/pubfpr.png"
+  logoTitle: "bdebyl"
+  keywords: ["bastian", "de byl", "bdebyl", "bastian de byl"]
+  description: "A random assortment of my personal projects."
+
+  # paginate of archives, tags and categories
+  archivePaginate: 5
+
+  # show 'xx Posts In Total' in archive page ?
+  showArchiveCount: true
+
+  # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
+  dateFormatToUse: "2006-01-02"
+
+  # show word count and read time ?
+  moreMeta: false
+
+  postMetaInFooter: true   # contain author, lastMod, markdown link, license
+  linkToMarkDown: false    # Only effective when hugo will output .md files.
+  contentCopyright: ''     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
+  googleVerification: ""   # Google Verification
+
+  social:
+    a-email: "mailto:bastian@bdebyl.net"
+    g-github: "https://github.com/bdebyl"
+    m-instagram: "https://instagram.com/bastian.remi"
+    n-gitlab: "https://gitlab.com/bdebyl"
+
+# See https://gohugo.io/about/hugo-and-gdpr/
+privacy:
+  googleAnalytics:
+    anonymizeIP: true
+  youtube:
+    privacyEnhanced: true
+
+# Uncomment these options to make hugo output .md files.
+#[mediaTypes]
+#  [mediaTypes."text/plain"]
+#    suffixes: ["md"]
+#
+#[outputFormats.MarkDown]
+#  mediaType: "text/plain"
+#  isPlainText: true
+#  isHTML: false
+#
+#[outputs]
+#  home: ["HTML", "RSS"]
+#  page: ["HTML", "MarkDown"]
+#  section: ["HTML", "RSS"]
+#  taxonomy: ["HTML", "RSS"]
+#  taxonomyTerm: ["HTML"]
