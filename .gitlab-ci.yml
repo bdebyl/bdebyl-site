@@ -7,7 +7,7 @@ variables:
   AWS_IMAGE_TAG: "0.2"
 
 before_script:
-  - git submodule update --recursive --remote
+  - git submodule update --init --recursive --remote
 
 build:
   stage: build
