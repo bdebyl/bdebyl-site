@@ -6,6 +6,9 @@ variables:
   HUGO_IMAGE_TAG: "arm"
   AWS_IMAGE_TAG: "0.2"
 
+before_script:
+  - git submodule update --recursive --remote
+
 build:
   stage: build
   script:
