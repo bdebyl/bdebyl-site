@@ -1,0 +1,15 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - make -e build
+
+deploy:
+  stage: deploy
+  script:
+    - make -e deploy
+  only:
+    - master
