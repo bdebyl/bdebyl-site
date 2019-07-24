@@ -20,15 +20,12 @@ AWS_ENV=-e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -e "AWS_SECRET_ACCESS_KEY=${
 S3_CMD=s3 sync --acl "public-read" --sse "AES256" public/ s3://${WEBSITE}
 
 DOCKER_PORT=-p 1313:1313/tcp
-DOCKER_RUN=docker run -it --rm ${RUN_USER} ${RUN_VOL}
+DOCKER_RUN=docker run --rm ${RUN_USER} ${RUN_VOL}
 
 # Look up CloudFront distribution ID based on website alias
 DISTRIBUTION_ID=$(shell docker run --rm ${AWS_ENV} ${AWS_IMAGE} cloudfront list-distributions \
 	--query 'DistributionList.Items[].{id:Id,a:Aliases.Items}[?contains(a,`${WEBSITE}`)].id' \
 	--output text)
-
-dist:
-	@echo ${DISTRIBUTION_ID}
 
 static:
 	s3fs -o use_path_request_style bdebyl.static ${STATIC_DIR}
