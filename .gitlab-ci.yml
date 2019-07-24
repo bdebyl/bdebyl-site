@@ -3,8 +3,8 @@ stages:
   - deploy
 
 variables:
-  - HUGO_IMAGE_TAG=arm
-  - AWS_IMAGE_TAG=0.2
+  - HUGO_IMAGE_TAG: arm
+  - AWS_IMAGE_TAG: 0.2
 
 build:
   stage: build
