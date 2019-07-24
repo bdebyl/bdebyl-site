@@ -11,7 +11,7 @@ missing, along with 3 out of 4 pins having been completely broken off. Needless
 to say this required fixing.
 
 <!--more-->
-{{< thumb src="/img/thinkpad-usb-fix/DSC04781.jpg" sub="Final result" >}}
+{{< thumb src="/static/img/thinkpad-usb-fix/DSC04781.jpg" sub="Final result" >}}
 
 
 # Damage Assessment
@@ -19,7 +19,7 @@ The first step was to look at the PCB to assess how this could be, if at all,
 replaced. From the outside you could see the damage done. Note the single
 pin left and lack of the inner pad (_bolster?_).
 
-{{< thumb src="/img/thinkpad-usb-fix/DSC04722.jpg" sub="One pin remains" >}}
+{{< thumb src="/static/img/thinkpad-usb-fix/DSC04722.jpg" sub="One pin remains" >}}
 
 
 # Measure Twice
@@ -28,8 +28,8 @@ needed to have the relevant dimensions in comparing to receptacle part drawings
 of those available for sale.
 
 {{< thumbgallery >}}
-    {{< thumb src="/img/thinkpad-usb-fix/DSC04714.jpg" >}}
-    {{< thumb src="/img/thinkpad-usb-fix/DSC04718.jpg" >}}
+    {{< thumb src="/static/img/thinkpad-usb-fix/DSC04714.jpg" >}}
+    {{< thumb src="/static/img/thinkpad-usb-fix/DSC04718.jpg" >}}
 {{< /thumbgallery >}}
 
 Using generic, non-branded digital calipers I was able to get the following
@@ -66,7 +66,7 @@ unbranded digital caliper. Those values are nearly spot-on.
 The part was ordered, and arrived quickly at my doorstep. Stacked on top of each
 other the two receptacles matched up just as I had hoped.. **Fantastic!**
 
-{{< thumb src="/img/thinkpad-usb-fix/DSC04773.jpg" >}}
+{{< thumb src="/static/img/thinkpad-usb-fix/DSC04773.jpg" >}}
 
 # It's not over yet
 Initial attempts at desoldering the existing (_broken_) receptacle proved
@@ -91,7 +91,7 @@ the modification "process"_. Cutting and bending the pins, I was able to get it
 soldered on (poorly). There wasn't much wiggle room for cleaning up the
 bodged-in replacement; this will have to do.
 
-{{< thumb src="/img/thinkpad-usb-fix/DSC04774.jpg" >}}
+{{< thumb src="/static/img/thinkpad-usb-fix/DSC04774.jpg" >}}
 
 The part was essentially soldered as a wholly surface mount part, which it is
 not. This could have future issues due to a lack of solder-terminated strain
@@ -107,7 +107,7 @@ motherboard from correctly fitting. This was quickly solved by using a Dremel
 with a low-grit sanding drum and removing material off of the receptacle. The
 result was acceptable, and provided a tight fitment into the laptop case.
 
-{{< thumb src="/img/thinkpad-usb-fix/DSC04775.jpg" sub="End of the journey" >}}
+{{< thumb src="/static/img/thinkpad-usb-fix/DSC04775.jpg" sub="End of the journey" >}}
 
 [^1]: [Molex Part No. 482580002](https://www.molex.com/molex/products/datasheet.jsp?part=active/0482580002_IO_CONNECTORS.xml&channel=Products)
 [^2]: [Digi-Key Part No. WM7087CT-ND](https://www.digikey.com/products/en?keywords=WM7087CT-ND)

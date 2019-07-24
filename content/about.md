@@ -19,7 +19,7 @@ fingerprint QR-code. Feel free to scan it using the
 [OpenKeychain](https://www.openkeychain.org/) app! I'll provide it here in-case
 you are on a mobile device, and my full public key:
 <center>
-![OpenPGP v4 Fingerprint](/img/pubfpr-lrg.png)
+![OpenPGP v4 Fingerprint](/static/img/pubfpr-lrg.png)
 
 `70A4 AA02 555D BD55 9189  B4E0 F32B E05E ADAA 54FC`[^2]
 </center>
