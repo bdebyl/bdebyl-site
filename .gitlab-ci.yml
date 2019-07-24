@@ -6,11 +6,11 @@ variables:
   HUGO_IMAGE_TAG: "arm"
   AWS_IMAGE_TAG: "0.2"
 
-before_script:
-  - git clone https://gitlab.com/bdebyl/hugo-theme-even.git themes/even
-
 build:
   stage: build
+  before_script:
+    - rm -rf themes/even
+    - git clone https://gitlab.com/bdebyl/hugo-theme-even.git themes/even
   script:
     - make -e build
 
