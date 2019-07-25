@@ -37,7 +37,7 @@ build:
 	$(DOCKER_RUN) ${HUGO_IMAGE}
 
 _run: static
-	-$(DOCKER_RUN) ${DOCKER_PORT} ${HUGO_IMAGE} server --bind=0.0.0.0
+	-$(DOCKER_RUN) -it ${DOCKER_PORT} ${HUGO_IMAGE} server --bind=0.0.0.0
 run: _run unmount
 
 version:
