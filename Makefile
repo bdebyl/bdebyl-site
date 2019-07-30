@@ -19,6 +19,8 @@ RUN_VOL=-v $(shell pwd):/src
 AWS_ENV=-e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -e "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" -e "AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}"
 S3_CMD=s3 sync --acl "public-read" --sse "AES256" public/ s3://${WEBSITE}
 
+MOUNT_BUCKET?=1
+
 DOCKER_PORT=-p 1313:1313/tcp
 DOCKER_RUN=docker run --rm ${RUN_USER} ${RUN_VOL}
 
@@ -27,18 +29,13 @@ DISTRIBUTION_ID=$(shell docker run --rm ${AWS_ENV} ${AWS_IMAGE} cloudfront list-
 	--query 'DistributionList.Items[].{id:Id,a:Aliases.Items}[?contains(a,`${WEBSITE}`)].id' \
 	--output text)
 
-static:
-	s3fs -o use_path_request_style bdebyl.static ${STATIC_DIR}
-
-unmount:
-	fusermount -u ${STATIC_DIR}
-
 build:
 	$(DOCKER_RUN) ${HUGO_IMAGE}
 
-_run: static
-	-$(DOCKER_RUN) ${DOCKER_PORT} ${HUGO_IMAGE} server --bind=0.0.0.0
-run: _run unmount
+run:
+	if [ ${MOUNT_BUCKET} ]; then s3fs -o use_path_request_style bdebyl.static ${STATIC_DIR}; fi
+	-$(DOCKER_RUN) -it ${DOCKER_PORT} ${HUGO_IMAGE} server --bind=0.0.0.0
+	if [ -d "${STATIC_DIR}/static" ]; then fusermount -r ${STATIC_DIR}; fi
 
 version:
 	$(DOCKER_RUN) ${HUGO_IMAGE} version
