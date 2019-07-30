@@ -18,13 +18,6 @@ build:
 deploy:
   stage: deploy
   script:
-    - make -e deploy
-  only:
-    - master
-
-cache:
-  stage: deploy
-  script:
-    - make -e cache
+    - make -e deploy cache
   only:
     - master
