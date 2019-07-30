@@ -1,5 +1,5 @@
 ---
-title: "Installing ArchLinux with Full Disk Encryption (LUKS)"
+title: "Installing Arch Linux with Full Disk Encryption (LUKS)"
 date: 2018-12-19
 lastmod: 2019-01-29
 categories: ["Tutorial"]
