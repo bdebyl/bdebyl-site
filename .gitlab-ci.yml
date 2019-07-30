@@ -21,3 +21,10 @@ deploy:
     - make -e deploy
   only:
     - master
+
+cache:
+  stage: deploy
+  script:
+    - make -e cache
+  only:
+    - master
