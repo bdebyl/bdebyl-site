@@ -17,7 +17,6 @@ AWS_IMAGE=$(AWS_IMAGE_NAME):$(AWS_IMAGE_TAG)
 RUN_USER=--user $(shell id -u $$USER):$(shell id -g $$USER)
 RUN_VOL=-v $(shell pwd):/src
 AWS_ENV=-e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -e "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" -e "AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}"
-S3_CMD=s3 sync --acl "public-read" --sse "AES256" public/ s3://${WEBSITE}
 
 MOUNT_BUCKET?=1
 
@@ -28,6 +27,8 @@ DOCKER_RUN=docker run --rm ${RUN_USER} ${RUN_VOL}
 DISTRIBUTION_ID=$(shell docker run --rm ${AWS_ENV} ${AWS_IMAGE} cloudfront list-distributions \
 	--query 'DistributionList.Items[].{id:Id,a:Aliases.Items}[?contains(a,`${WEBSITE}`)].id' \
 	--output text)
+S3_CMD=s3 sync --acl "public-read" --sse "AES256" public/ s3://${WEBSITE}
+CLOUDFRONT_CMD=cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*'
 
 build:
 	$(DOCKER_RUN) ${HUGO_IMAGE}
@@ -35,7 +36,7 @@ build:
 run:
 	if [ ${MOUNT_BUCKET} ]; then s3fs -o use_path_request_style bdebyl.static ${STATIC_DIR}; fi
 	-$(DOCKER_RUN) -it ${DOCKER_PORT} ${HUGO_IMAGE} server --bind=0.0.0.0
-	if [ -d "${STATIC_DIR}/static" ]; then fusermount -r ${STATIC_DIR}; fi
+	if [ -d "${STATIC_DIR}/static" ]; then fusermount -u ${STATIC_DIR}; fi
 
 version:
 	$(DOCKER_RUN) ${HUGO_IMAGE} version
@@ -56,7 +57,7 @@ deploy: clean build
 
 cache:
 	@# Invalidate caches
-	@cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*'
+	@$(DOCKER_RUN) ${AWS_ENV} ${AWS_IMAGE} ${CLOUDFRONT_CMD}
 
 # Default target for make (<=3.80)
 .PHONY: static unmount build _run run version new thumbnails clean deploy cache
