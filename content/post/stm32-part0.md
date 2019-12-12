@@ -52,7 +52,7 @@ information on the basics of getting started (typically done via `git
 submodule`).
 
 Additionally, there is a
-[libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
+[libopencm3-template](https://github.com/libopencm3/libopencm3-template)
 repository to help in getting started.
 
 
@@ -89,11 +89,14 @@ my GitLab[^3].
 To flash, it's as simple as `make flash` (_will also build the binary for your
 convenience_).
 
-## Loader
+## Linker Script
 The loader (`.ld`) file is specific to the _flavor_ of ARM Cortex-M
-microcontroller being used. Luckily, the authors of `libopencm3` provide example
-loader files that can be used without any modification for your project
-(_e.g. located in `libopencm3/lib/stm32/f0/` of the repo_).
+microcontroller being used. The authors of `libopencm3` provide example
+loader files that can be used for most projects (_e.g. located in
+`libopencm3/lib/stm32/f0/` of the repo_). However, these may not always be
+available and may need to be modified or created from scratch, by the developer,
+for proper use. There are several articles online that go into detail about
+linker scripts
 
 ## Project Structure
 The Makefile, as of writing this, assumes your project directory structure has
@@ -158,7 +161,7 @@ to be along with the internal pull-up or pull-down resistor mode:
 
 <center><sub><i>Note: The documentation for these functions, provided by `libopencm3`
 authors, along with the function definition can be found
-[**here**](https://libopencm3.org/docs/latest/stm32f0/html/group__rcc__defines.html#ga90aa2b7801b2b42debc0536d38c5b07c)</i></sub></center>
+[**here**](https://libopencm3.org/docs/latest/html/)</i></sub></center>
 
 
 Having clarified that, as we want to **drive** the LEDs, we will need to
