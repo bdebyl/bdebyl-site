@@ -10,9 +10,8 @@ port nearest to the SD card reader had been broken. The pad (_or bolster_) was
 missing, along with 3 out of 4 pins having been completely broken off. Needless
 to say this required fixing.
 
-<!--more-->
 {{< thumb src="/static/img/thinkpad-usb-fix/DSC04781.jpg" sub="Final result" >}}
-
+<!--more-->
 
 # Damage Assessment
 The first step was to look at the PCB to assess how this could be, if at all,

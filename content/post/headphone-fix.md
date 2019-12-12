@@ -8,6 +8,7 @@ tags: ["electronics"]
 A colleague offered a pair of Bern Bluetooth drop-in headphones to me fore free,
 with the catch being: _I had to fix them_
 
+{{< thumb src="/static/img/headphone-fix/IMG_7505.jpg" >}}
 <!--more-->
 
 # Don't Turn It On, Take It Apart!
@@ -16,9 +17,6 @@ things apart. This was no exception either. After looking over the unit on each
 side, I figured the only way *in* was lifting the mesh cover off. So I went at
 it, carefully, with a pair of tweezers. I worked my way around the edge and
 wedged the mesh upwards.
-
-{{< thumb src="/static/img/headphone-fix/IMG_7505.jpg" >}}
-
 
 # Okay, Maybe Turn It On
 Now that the problematic speaker side was successfully opened without any

@@ -10,6 +10,9 @@ hideHeaderAndFooter: false
 With some minor dependencies, it's fairly straightforward in setting up your
 Emacs workflow to include IntelliSense-like auto-completion!
 
+{{< img src="/static/img/emacs-clang-libopencm3/header-completion.png"
+    sub="Header Completion" >}}
+
 <!--more-->
 
 # Dependencies
@@ -93,12 +96,7 @@ For an STM32F0 project, the context of the `.clang_complete` file would be:
 directory</sub>
 
 
-## Examples
-
-{{< img src="/static/img/emacs-clang-libopencm3/header-completion.png"
-    sub="Header Completion" >}}
-
----
+## Example
 
 {{% admonition warning Note %}}
 There is a strange issue that is encountered with non-working completion for new
