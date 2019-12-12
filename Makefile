@@ -44,9 +44,6 @@ version:
 new:
 	$(DOCKER_RUN) ${HUGO_IMAGE} new post/$(shell read -p "Post Name (i.e. my_post.md): " pn; echo $$pn)
 
-thumbnails:
-	@./make-thumbs.sh
-
 clean:
 	@# Clean up existing generated site
 	rm -rf public/ resources/
@@ -60,5 +57,5 @@ cache:
 	@$(DOCKER_RUN) ${AWS_ENV} ${AWS_IMAGE} ${CLOUDFRONT_CMD}
 
 # Default target for make (<=3.80)
-.PHONY: static unmount build _run run version new thumbnails clean deploy cache
+.PHONY: static unmount build _run run version new clean deploy cache
 default: build
