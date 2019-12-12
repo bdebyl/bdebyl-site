@@ -14,11 +14,11 @@ series: turn on the lights!
 
 <!--more-->
 
-{{% admonition info "Note to Windows Users" %}}
+{{% admonition warning "Windows Users" %}}
 This series of write-ups assumes the reader is on a Linux operating
-system. Windows users <i>can</i> utilize the <a
-href="https://docs.microsoft.com/en-us/windows/wsl/install-win10"><b>Windows
-Subsystems for Linux</b></a> though your mileage may vary!
+system. Windows users _can_ utilize the [**Windows Subsystems for
+Linux**](https://docs.microsoft.com/en-us/windows/wsl/install-win10) though your
+mileage may vary!
 {{% /admonition %}}
 
 # Straight to the Chase
@@ -113,7 +113,7 @@ Makefile's variables of things you may want to change:
 
 {{% admonition info "Naming Convention" %}}
 As a note to the reader: below I will not refer to the GPIO port or pins using
-the <code>#define</code> friendly names from above. This is purely for the sake
+the `#define` friendly names from above. This is purely for the sake
 of clarity in hopes of avoiding confusion.
 {{% /admonition %}}
 
