@@ -1,8 +1,8 @@
 ---
-title: "STM32F0 with libopencm3 Part 0: Simple GPIO"
+title: "STM32F0 with libopencm3 - Part 0: Simple GPIO"
 date: 2019-12-11
 lastmod: 2019-12-11
-tags: ["libopencm3", "stm32", "stm32f0", "tutorial"]
+tags: ["libopencm3", "stm32", "tutorial"]
 categories: ["Tutorial"]
 contentCopyright: false
 hideHeaderAndFooter: false
@@ -46,14 +46,14 @@ int main(void) {
 
 # Getting Started with libopencm3
 [libopencm3](https://github.com/libopencm3/libopencm3) is a very powerful,
-useful, and open-source firmware library for the use in writing programs for
-various different ARM Cortex-M microcontrollers. It's read me contains plenty of
+useful, open-source firmware library for use in writing programs for various
+different ARM Cortex-M microcontrollers. It's read me contains plenty of
 information on the basics of getting started (typically done via `git
 submodule`).
 
 Additionally, there is a
 [libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
-repository to help get you started.
+repository to help in getting started.
 
 
 ## Dependencies
@@ -89,6 +89,26 @@ my GitLab[^3].
 To flash, it's as simple as `make flash` (_will also build the binary for your
 convenience_).
 
+## Loader
+The loader (`.ld`) file is specific to the _flavor_ of ARM Cortex-M
+microcontroller being used. Luckily, the authors of `libopencm3` provide example
+loader files that can be used without any modification for your project
+(_e.g. located in `libopencm3/lib/stm32/f0/` of the repo_).
+
+## Project Structure
+The Makefile, as of writing this, assumes your project directory structure has
+`libopencm3` either cloned, copied, or initialized as a git submodule within the
+same directory of your `main.c`. It is advised that you look through the
+Makefile's variables of things you may want to change:
+
+```
+.
+├── libopencm3
+├── main.c
+├── Makefile
+└── stm32f0.ld
+```
+
 # Explanation
 
 {{% admonition info "Naming Convention" %}}
@@ -110,7 +130,7 @@ The Discovery board comes with two LEDs for use by the user, tied to Port C pins
 8 (blue LED), and 9 (green LED).
 
 ## Reset and Clock Control (RCC)
-The **RCC**, and it's registers, are an important part _using_ the STM32
+The **RCC**, and it's registers, are an important part in _using_ the STM32
 microcontroller's peripherals. Luckily, utilizing `libopencm3` we can forego
 bit-banging our way through each register's bits found in the reference
 manual[^5] and simply utilize the GPIO port that we need -- in this case
@@ -141,8 +161,8 @@ authors, along with the function definition can be found
 [**here**](https://libopencm3.org/docs/latest/stm32f0/html/group__rcc__defines.html#ga90aa2b7801b2b42debc0536d38c5b07c)</i></sub></center>
 
 
-Having clarified that, wanting to drive the LEDs we will want to configure the
-pins as outputs with no internal pull-up or pull-down resistor:
+Having clarified that, as we want to **drive** the LEDs, we will need to
+configure the pins as outputs with no internal pull-up or pull-down resistor:
 ```C
 gpio_mode_setup(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO8);
 gpio_mode_setup(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO9);
@@ -154,31 +174,32 @@ gpio_mode_setup(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO8 | GPIO9);
 ```
 
 ## GPIO Output Options Setup
-Now that the GPIO mode has been set up, the output options need to be defined as
-well. This will encompass the output type, and output speed:
+Now that the GPIO mode has been set up, the GPIO output options need to be
+defined as well. This will encompass the output type, and output speed:
 
 | Output Type      | Description                                 |
 |------------------|---------------------------------------------|
 | `GPIO_OTYPER_PP` | (**default**) Push-pull "totem pole" output |
 | `GPIO_OTYPER_OD` | Open-drain output                           |
 
-| Output Speed         | Description                    |
-|----------------------|--------------------------------|
-| `GPIO_OSPEED_HIGH`   | High output speed              |
-| `GPIO_OSPEED_MED`    | Medium output speed            |
-| `GPIO_OSPEED_LOW`    | (**default**) Low output speed |
-| `GPIO_OSPEED_100MHZ` | Up to 100MHz output speed      |
-| `GPIO_OSPEED_50MHZ`  | Up to 50MHz output speed       |
-| `GPIO_OSPEED_25MHZ`  | Up to 25MHz output speed       |
-| `GPIO_OSPEED_2MHZ`   | Up to 2MHz output speed        |
+| Output Speed         | Description                                       |
+|----------------------|---------------------------------------------------|
+| `GPIO_OSPEED_HIGH`   | High output speed                                 |
+| `GPIO_OSPEED_MED`    | Medium output speed                               |
+| `GPIO_OSPEED_LOW`    | (**default**) Low output speed                    |
+| `GPIO_OSPEED_100MHZ` | Up to 100MHz output speed (_equivalent to high_)  |
+| `GPIO_OSPEED_50MHZ`  | Up to 50MHz output speed                          |
+| `GPIO_OSPEED_25MHZ`  | Up to 25MHz output speed (_equivalent to medium_) |
+| `GPIO_OSPEED_2MHZ`   | Up to 2MHz output speed (_equivalent to low_)     |
+
 <center><sub><i>Refer to the device datasheet for the frequency specifications
 and the power supply and load conditions for each speed</i></sub></center>
 
-As we'll be driving an output LED as opposed to sinking it (_typical
-open-drain/open-collector sink configuration_), `GPIO_OTYPE_PP` will be
+We'll be driving an output LED, as opposed to sinking it (_typical
+open-drain/open-collector sink configuration_), push-pull output mode will be
 required. Since there isn't any switching to be done aside from the initial
-"on", we don't require _any_ speed -- though not being an option
-`GPIO_OSPEED_LOW` should suffice:
+"on", we don't require _any_ "speed" -- "no speed" not being an option
+`GPIO_OSPEED_LOW` will suffice:
 
 ```C
 gpio_set_output_options(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, GPIO8);
@@ -192,7 +213,7 @@ gpio_set_output_options(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, GPIO8 | GPIO9);
 
 ## Turn it on!
 There are no additional options required for the user to be able to now set, or
-clear, the desired GPIO pins so we simple set it _and forget it_:
+clear, the desired GPIO pins. Thus, we set it _and forget it_:
 
 ```C
 gpio_set(GPIOC, GPIO8);
@@ -203,8 +224,6 @@ _Simplified[^6]:_
 ```C
 gpio_set(GPIOC, GPIO8 | GPIO9);
 ```
-
-**Voila!**
 
 Lastly, we need to make sure our program never **exits** and does something
 _undesirable_ by keeping it inside a loop:
@@ -223,6 +242,8 @@ while(1) {
 <center><sub><i>The details of why this is important can be found in the [While(1) in Embedded
 C -
 Explained](http://www.learningaboutelectronics.com/Articles/While-(1)-embedded-C.php) article</i></sub></center>
+
+**Voila!**
 
 [^1]: [GNU Arm Embedded Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
 [^2]: [Makefile](https://gitlab.com/bdebyl/stm32f0-example-project/blob/b858d5e38026bcce3b8aad4085ffb665ddf63eef/Makefile) as of writing this post
