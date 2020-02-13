@@ -62,10 +62,10 @@ It may be worth mentioning, to folks less familiar with `awk`, that the
 being piped into `sha1sum`. I discovered incorrect `sha1sum` outputs **without**
 `FNR==1` resulting in a useless password check!
 
-{{% admonition note Note %}}
+{{< admonition note Note >}}
 `IFS=` would not have fixed the above newline issue, as the problem stems
 from the output of `pass "$p"` and **not** the filenames.
-{{% /admonition %}}
+{{< /admonition >}}
 
 That takes care of gathering our passwords, but we'll revisit this again in the
 next part.
@@ -108,10 +108,10 @@ it's weak (_i.e. "Exists in attack dictionary", "Too short", etc._) was to use
 well-documented or fully-fledged application to fully determine password
 strength though for my purposes it will be good enough (_I don't care to write
 my own version of this, yet.._).
-{{% admonition note Note %}}
+{{< admonition note Note >}}
 I made this part of the script **optional**, as not every user would want to
 install `cracklib` on their system.
-{{% /admonition %}}
+{{< /admonition >}}
 
 This addition was made in the following order:
 

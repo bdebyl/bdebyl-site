@@ -95,13 +95,13 @@ For an STM32F0 project, the context of the `.clang_complete` file would be:
 <sub>The above assumes that `libopencm3` is also places within the project
 directory</sub>
 
-{{% admonition warning Note %}}
+{{< admonition warning Note >}}
 There is a strange issue that is encountered with non-working completion for new
 header include statements. The workaround for this includes running `M-x irony-server-kill`after new header
 additions to your current working file. Irony's server is clever enough to
 restart itself after a completion request is triggered via `TAB` so this is a
 fairly uninvolved workaround.
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## Example
 {{< img src="/static/img/emacs-clang-libopencm3/completion.png"

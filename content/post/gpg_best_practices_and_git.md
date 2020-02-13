@@ -84,37 +84,37 @@ this via:
 + **Debian/Ubuntu, RHEL:** `sudo update-ca-certificates`
 
 
-{{% admonition tip "CA Path" %}}
+{{< admonition tip "CA Path" >}}
 On my system the full path to the CA certs is:
 
 - `/etc/ca-certificates/extracted/cadir/sks-keyservers.net_CA.pem`
-{{% /admonition %}}
+{{< /admonition >}}
 
 Two following parameters should be added to your `~/.gnupg` configuration files:
 
 ### GnuPG Versions >2.1
 
 
-{{% admonition note "gpg.conf" %}}
+{{< admonition note "gpg.conf" >}}
 ```
 keyserver hkps://hkps.pool.sks-keyservers.net
 ```
-{{% /admonition %}}
+{{< /admonition >}}
 
 
-{{% admonition note "dirmngr.conf" %}}
+{{< admonition note "dirmngr.conf" >}}
 ```
 hkp-cacert /etc/ca-certificates/path/to/CA.pem
 ```
-{{% /admonition %}}
+{{< /admonition >}}
 
 ### GnuPG Versions <2.1
-{{% admonition note "gpg.conf" %}}
+{{< admonition note "gpg.conf" >}}
 ```
 keyserver hkps://hkps.pool.sks-keyservers.net
 keyserver-options ca-cert-file=/path/to/CA/sks-keyservers.netCA.pem
 ```
-{{% /admonition %}}
+{{< /admonition >}}
 
 ## *Optional* - Ensure keys refreshed through keyserver
 To ensure no keys are pulled from insecure sources, or that an attacked would
