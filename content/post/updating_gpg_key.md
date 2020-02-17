@@ -7,7 +7,7 @@ categories: ["Blog"]
 contentCopyright: false
 hideHeaderAndFooter: false
 ---
-It's a good idea to update your GPG key(s) before they expires. Mine is set to
+It's a good idea to update your GPG key(s) before they expire. Mine is set to
 expire year, from whence I last updated the expiration. Let's explore how this
 is done!
 
@@ -89,7 +89,7 @@ sec  rsa4096 2017-11-21 [SC] [expires: 2021-02-16]
 ```
 
 ### Update
-Updating the primary secret key and all it's subkeys is done via `gpg` in the
+Updating the primary secret key and all it's sub keys is done via `gpg` in the
 following manner:
 ```
 gpg --edit-key your@email.address
@@ -113,7 +113,7 @@ Is this correct? (y/N) y
 gpg> save
 ```
 
-At this point, it's a good idea to send the key to the keyserver:
+At this point, it's a good idea to send the key to the key server:
 ```bash
 gpg --send-keys your@email.address
 # or
@@ -139,7 +139,7 @@ gpg --import /mnt/media/some/dir/secretsubkey.gpg
 
 ### Verification
 Once **only** the secret sub-key has been imported from the previous step, it
-should be verified that the primary secret key is **not** in your keychain
+should be verified that the primary secret key is **not** in your keyring
 (partial stripped key designated via `sec#` in the following):
 ```
 gpg --list-secret-keys
@@ -159,11 +159,11 @@ attempt this again should you have to, but do so carefully.
 Lastly, remember to remove any local back-ups of the keyring or keys you stored
 on the host! These should _only_ exist on the encrypted external device.
 
-To unmount the LUKS[^1] encrypted device, it's just one additional step to the
+To un-mount the LUKS[^1] encrypted device, it's just one additional step to the
 usual `umount`:
 ```bash
 umount /mnt/media
-cryptestup --type luks close encryptedusb
+cryptsetup --type luks close encryptedusb
 ```
 
 That being done, it is safe to remove the external device!
