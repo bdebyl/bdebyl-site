@@ -14,17 +14,20 @@ series: turn on the lights!
 
 <!--more-->
 
-{{% admonition warning "Windows Users" %}}
+{{< admonition warning "Windows Users" >}}
 This series of write-ups assumes the reader is on a Linux operating
 system. Windows users _can_ utilize the [**Windows Subsystems for
 Linux**](https://docs.microsoft.com/en-us/windows/wsl/install-win10) though your
 mileage may vary!
-{{% /admonition %}}
+
+{{< /admonition >}}
 
 # Straight to the Chase
 
 For those that want to cut to the chase and save time, here is the full source
 code with friendly names to get you started:
+
+{{< admonition note "Source Code" true >}}
 ```C
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/rcc.h>
@@ -41,8 +44,8 @@ int main(void) {
 
     while (1);
 }
-
 ```
+{{< /admonition >}}
 
 # Getting Started with libopencm3
 [libopencm3](https://github.com/libopencm3/libopencm3) is a very powerful,
@@ -114,11 +117,11 @@ Makefile's variables of things you may want to change:
 
 # Explanation
 
-{{% admonition info "Naming Convention" %}}
+{{< admonition info "Naming Convention" >}}
 As a note to the reader: below I will not refer to the GPIO port or pins using
 the `#define` friendly names from above. This is purely for the sake
 of clarity in hopes of avoiding confusion.
-{{% /admonition %}}
+{{< /admonition >}}
 
 Although the source code is fairly simple, lets dive into it at least
 _somewhat_.

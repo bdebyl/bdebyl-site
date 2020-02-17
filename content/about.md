@@ -24,10 +24,9 @@ you are on a mobile device, and my full public key:
 `70A4 AA02 555D BD55 9189  B4E0 F32B E05E ADAA 54FC`[^2]
 </center>
 
-{{% admonition info "Public Key" true %}}
+{{< admonition info "Public Key" true >}}
 ```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-
 mQINBFoTpoMBEADDIjRewOTvJBQF4ZxK/LS7yBL0TuU7VbZzEH3s5YKj63P/Rmvx
 8/jMm0iop+uiPNo+0imIGYsdfW77bt95I9+kBm27eVf8mDMldMiS/LBCCmnuQ19u
 uCq1Fd1O9JQyqxOegianl73NqtvG1UHXmnjdskDJ0N1hP0I7//g61TQkj+Qih8oI
@@ -146,7 +145,7 @@ KpNnEkXDMtMCsNkEMzM+3/BkuxLO52zYpDe5tV7Igx0=
 -----END PGP PUBLIC KEY BLOCK-----
 
 ```
-{{% /admonition %}}
+{{< /admonition >}}
 
 # Resume
 I do not currently keep an up-to-date version of my resume. In the past, I have
