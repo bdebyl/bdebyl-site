@@ -1,5 +1,5 @@
 ---
-title: "OpenPGP Best Practices (and Git)"
+title: "OpenPGP: Best Practices (and Git)"
 date: 2019-02-17
 lastmod: 2019-02-22
 categories: ["Blog"]
