@@ -33,10 +33,14 @@ CLOUDFRONT_CMD=cloudfront create-invalidation --distribution-id ${DISTRIBUTION_I
 build:
 	$(DOCKER_RUN) ${HUGO_IMAGE}
 
+mount:
+	if [ ! -d "${STATIC_DIR}/static" ]; then aws s3 sync s3://bdebyl.static static/; fi
+
+unmount:
+	if [ -d "${STATIC_DIR}/static" ]; then rm -rfv static/
+
 run:
-	if [ ${MOUNT_BUCKET} ]; then s3fs -o use_path_request_style bdebyl.static ${STATIC_DIR}; fi
-	-$(DOCKER_RUN) -it ${DOCKER_PORT} ${HUGO_IMAGE} server --bind=0.0.0.0
-	if [ -d "${STATIC_DIR}/static" ]; then fusermount -u ${STATIC_DIR}; fi
+	-$(DOCKER_RUN) -it ${DOCKER_PORT} ${HUGO_IMAGE} -D server --bind=0.0.0.0
 
 version:
 	$(DOCKER_RUN) ${HUGO_IMAGE} version
@@ -57,5 +61,5 @@ cache:
 	@$(DOCKER_RUN) ${AWS_ENV} ${AWS_IMAGE} ${CLOUDFRONT_CMD}
 
 # Default target for make (<=3.80)
-.PHONY: static unmount build _run run version new clean deploy cache
+.PHONY: static mount unmount build _run run version new clean deploy cache
 default: build

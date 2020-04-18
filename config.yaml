@@ -8,7 +8,9 @@ copyright: ""            # default: author.name
 googleAnalytics: ""      # UA-XXXXXXXX-X
 preserveTaxonomyNames: true
 enableRobotsTXT: true
-buildDrafts: true
+canonifyURLs: true
+buildDrafts: false
+
 
 # https://gohugo.io/content-management/syntax-highlighting/
 pygmentsOptions: ""
@@ -44,8 +46,9 @@ menu:
       url: "/tags/"
 
 params:
+  favicon: "static/img/favicon.svg"
   since: "2017"
-  logoImage: "/static/img/pubfpr.png"
+  logoImage: "/static/img/favicon.svg"
   logoTitle: "bdebyl"
   keywords: ["bastian", "de byl", "bdebyl", "bastian de byl"]
   description: "A random assortment of my personal projects."

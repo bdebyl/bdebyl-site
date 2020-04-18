@@ -1,3 +1,6 @@
+---
+title: "About"
+---
 # About
 I created this site as a way of showcasing my projects, or other general
 ideas. It's a sort of _engineering_ portfolio, if you will.
