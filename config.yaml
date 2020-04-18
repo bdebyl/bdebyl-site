@@ -8,7 +8,6 @@ copyright: ""            # default: author.name
 googleAnalytics: ""      # UA-XXXXXXXX-X
 preserveTaxonomyNames: true
 enableRobotsTXT: true
-canonifyURLs: true
 buildDrafts: false
 
 
@@ -46,7 +45,7 @@ menu:
       url: "/tags/"
 
 params:
-  favicon: "static/img/favicon.svg"
+  favicon: "/static/img/favicon.svg"
   since: "2017"
   logoImage: "/static/img/favicon.svg"
   logoTitle: "bdebyl"
