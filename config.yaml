@@ -4,8 +4,7 @@ theme: "even"
 defaultContentLanguage: "en"
 languageCode: "en"
 paginate: 5
-copyright: ""            # default: author.name
-googleAnalytics: ""      # UA-XXXXXXXX-X
+copyright: "Bastian de Byl"            # default: author.name
 preserveTaxonomyNames: true
 enableRobotsTXT: true
 buildDrafts: false
@@ -68,6 +67,7 @@ params:
   linkToMarkDown: false    # Only effective when hugo will output .md files.
   contentCopyright: ''     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
   googleVerification: ""   # Google Verification
+  googleAnalytics: "UA-163975086-1"      # UA-XXXXXXXX-X
 
   social:
     a-email: "mailto:bastian@bdebyl.net"
