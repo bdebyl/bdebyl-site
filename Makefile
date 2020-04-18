@@ -42,7 +42,7 @@ static-pull:
 .PHONY: static-pull
 
 static-push:
-	aws s3 sync --acl "public-read" --sse "AES256" s3://${STATIC_BUCKET} ${STATIC_DIR}/
+	aws s3 sync --acl "public-read" --sse "AES256" ${STATIC_DIR}/ s3://${STATIC_BUCKET}
 .PHONY: static-push
 
 run: static-pull
