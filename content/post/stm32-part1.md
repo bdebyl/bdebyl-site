@@ -4,7 +4,7 @@ date: 2020-02-12
 lastmod: 2020-02-17
 tags: ["libopencm3", "stm32", "tutorial"]
 categories: ["Tutorial"]
-contentCopyright: false
+contentCopyright: true
 hideHeaderAndFooter: false
 ---
 After having reviewed [**Part 0**](/post/stm32-part0) of this series, we can now

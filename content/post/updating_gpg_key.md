@@ -4,7 +4,7 @@ date: 2020-02-17
 lastmod: 2020-02-17
 tags: ["linux"]
 categories: ["Blog"]
-contentCopyright: false
+contentCopyright: true
 hideHeaderAndFooter: false
 ---
 It's a good idea to update your GPG key(s) before they expire. Mine is set to

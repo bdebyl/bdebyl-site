@@ -4,7 +4,7 @@ date: 2019-04-13
 lastmod: 2019-04-13
 tags: ["linux","code"]
 categories: ["Blog"]
-contentCopyright: false
+contentCopyright: true
 hideHeaderAndFooter: false
 ---
 Having been inspired by the HIBP[^1] password checker, I set out to write a

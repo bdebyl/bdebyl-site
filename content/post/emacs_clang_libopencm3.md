@@ -4,7 +4,7 @@ date: 2019-10-18
 lastmod: 2019-10-18
 tags: ["emacs", "linux"]
 categories: ["Tutorials"]
-contentCopyright: false
+contentCopyright: true
 hideHeaderAndFooter: false
 ---
 With some minor dependencies, it's fairly straightforward in setting up your

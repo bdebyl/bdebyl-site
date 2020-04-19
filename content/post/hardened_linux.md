@@ -4,7 +4,7 @@ date: 2019-07-30
 lastmod: 2019-07-30
 tags: ["linux","security"]
 categories: ["Blog"]
-contentCopyright: false
+contentCopyright: true
 hideHeaderAndFooter: false
 ---
 It's generally good security practice to ensure that you're running a secure

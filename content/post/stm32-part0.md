@@ -4,7 +4,7 @@ date: 2019-12-11
 lastmod: 2019-12-11
 tags: ["libopencm3", "stm32", "tutorial"]
 categories: ["Tutorial"]
-contentCopyright: false
+contentCopyright: true
 hideHeaderAndFooter: false
 ---
 One of the simplest projects to get started with the STM32 microcontroller
