@@ -44,9 +44,9 @@ menu:
       url: "/tags/"
 
 params:
-  favicon: "/static/img/favicon.svg"
+  favicon: "/static/img/favicon.ico"
   since: "2017"
-  logoImage: "/static/img/favicon.svg"
+  logoImage: "/static/img/logo.png"
   logoTitle: "bdebyl"
   keywords: ["bastian", "de byl", "bdebyl", "bastian de byl"]
   description: "A random assortment of my personal projects."
