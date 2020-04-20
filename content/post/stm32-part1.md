@@ -43,7 +43,8 @@ int main(void) {
     rcc_periph_clock_enable(RCC_TIM3);
 
     gpio_mode_setup(LED_PORT, GPIO_MODE_AF, GPIO_PUPD_NONE, LED_PIN_BLU | LED_PIN_GRN);
-    gpio_set_output_options(LED_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, LED_PIN_BLU | LED_PIN_GRN);
+    gpio_set_output_options(LED_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH,
+                            LED_PIN_BLU | LED_PIN_GRN);
     gpio_set_af(LED_PORT, GPIO_AF0, LED_PIN_BLU | LED_PIN_GRN);
 
     timer_set_mode(TIM3, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);

@@ -45,6 +45,10 @@ static-push:
 	aws s3 sync --acl "public-read" --sse "AES256" ${STATIC_DIR}/ s3://${STATIC_BUCKET}
 .PHONY: static-push
 
+css-push:
+	aws s3 cp --acl "public-read" --sse "AES256" public/dist/style.css s3://${WEB_BUCKET}/dist/style.css
+.PHONY: css-push
+
 run: static-pull
 	-$(DOCKER_RUN) -it ${DOCKER_PORT} ${HUGO_IMAGE} -D server --bind=0.0.0.0
 .PHONY: run
