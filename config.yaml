@@ -10,6 +10,9 @@ enableRobotsTXT: true
 buildDrafts: false
 canonifyURLs: true
 
+googleVerification: ""   # Google Verification
+googleAnalytics: "UA-163975086-1"      # UA-XXXXXXXX-X
+
 # https://gohugo.io/content-management/syntax-highlighting/
 pygmentsOptions: ""
 pygmentsCodefences: true
@@ -66,8 +69,6 @@ params:
   postMetaInFooter: true   # contain author, lastMod, markdown link, license
   linkToMarkDown: true    # Only effective when hugo will output .md files.
   contentCopyright: '<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>'
-  googleVerification: ""   # Google Verification
-  googleAnalytics: "UA-163975086-1"      # UA-XXXXXXXX-X
 
   social:
     a-email: "mailto:bastian@bdebyl.net"
