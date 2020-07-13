@@ -68,7 +68,8 @@ found in the bottom-most row.
 - https://developers.google.com/android/images
 
 Additionally, Google provides a helper script `flash-all` that I highly
-recommend running as-is to flash your Pixel 3a to stock. This will take some
+recommend running as-is to flash your Pixel 3a to stock. This can take a few
+minutes to complete.
 
 ## Flash Custom Recovery
 Using InvisibleK's build page, you'll find the required custom recovery image
