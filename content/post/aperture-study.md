@@ -67,11 +67,18 @@ Below is the entire collection of all the photos taken of the subject at
 increasing aperture steps.
 
 {{< thumbgallery >}}
-    {{< thumb src="/static/img/aperture-study/f17.jpg" sub="f/1.7" >}}
-    {{< thumb src="/static/img/aperture-study/f20.jpg" sub="f/2.0" >}}
-    {{< thumb src="/static/img/aperture-study/f22.jpg" sub="f/2.2" >}}
-    {{< thumb src="/static/img/aperture-study/f25.jpg" sub="f/2.5" >}}
-    {{< thumb src="/static/img/aperture-study/f28.jpg" sub="f/2.8" >}}
-    {{< thumb src="/static/img/aperture-study/f32.jpg" sub="f/3.2" >}}
-    {{< thumb src="/static/img/aperture-study/f40.jpg" sub="f/4.0" >}}
+    {{< thumb src="/static/img/aperture-study/f17.jpg" sub="f/1.7"
+        alt="Photograph showing photo at aperture f/1.7" >}}
+    {{< thumb src="/static/img/aperture-study/f20.jpg" sub="f/2.0"
+        alt="Photograph showing photo at aperture f/2.0" >}}
+    {{< thumb src="/static/img/aperture-study/f22.jpg" sub="f/2.2"
+        alt="Photograph showing photo at aperture f/2.2" >}}
+    {{< thumb src="/static/img/aperture-study/f25.jpg" sub="f/2.5"
+        alt="Photograph showing photo at aperture f/2.5" >}}
+    {{< thumb src="/static/img/aperture-study/f28.jpg" sub="f/2.8"
+        alt="Photograph showing photo at aperture f/2.8" >}}
+    {{< thumb src="/static/img/aperture-study/f32.jpg" sub="f/3.2"
+        alt="Photograph showing photo at aperture f/3.2" >}}
+    {{< thumb src="/static/img/aperture-study/f40.jpg" sub="f/4.0"
+        alt="Photograph showing photo at aperture f/4.0" >}}
 {{< /thumbgallery >}}

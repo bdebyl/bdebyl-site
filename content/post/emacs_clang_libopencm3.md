@@ -3,7 +3,7 @@ title: "Auto-complete for libopencm3 in Emacs"
 date: 2019-10-18
 lastmod: 2019-10-18
 tags: ["emacs", "linux"]
-categories: ["Tutorials"]
+categories: ["Tutorial"]
 contentCopyright: true
 hideHeaderAndFooter: false
 ---
