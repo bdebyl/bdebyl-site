@@ -6,6 +6,7 @@ tags: ["libopencm3", "stm32", "tutorial"]
 categories: ["Tutorial"]
 contentCopyright: true
 hideHeaderAndFooter: false
+preview: "/static/img/stm32-examples/part1/blinky.gif"
 ---
 After having reviewed [**Part 0**](/post/stm32-part0) of this series, we can now
 explore controlling GPIO with the hardware timers! Other tutorials have used the
