@@ -35,13 +35,13 @@ There are plenty of guides out there on how to install and set up ADB and
 Fastboot on your host machine. For me, on Arch Linux, this was as simple as
 running `pacman -S android-tools`. However, should you be on MacOS or Windows
 you may have to find resources on how to go about this. I do not intend to go
-over this here -- __sorry_.
+over this here -- _sorry_
 
 Additionally, this _guide_ also assumes the reader has some familiarity with ADB
 and/or Fastboot.
 
 # Source Files
-If you, the reader, knows what you're doing and simply just require the files
+If you, the reader, know what you're doing and simply just require the files
 for your Pixel 3a they can be found here:
 - https://updater.invisiblek.org/sargo
 
@@ -55,10 +55,12 @@ proceeding.
 
 ## Note about TWRP
 As of writing this, TWRP[^1] (_a custom recovery commonly used in custom OS
-installation_) does not support Pixel 3a. However, if it does
+installation_) does not support Android 10. This would have been the preferred
+for a custom recovery, though not strictly required. Since we will be installing
+LineageOS 17.1 for Android 10 we cannot use TWRP.
 
 ## Flash to Stock
-Google is kind enough to provide a plethora of versions of the stock images for
+Google is kind enough to provide a variety of versions of the stock images for
 the Pixel devices. In my process of installing LineageOS, as it will be on
 Android 10, I made sure to flash to the latest stock version of Pixel 3a Android
 10. Do note that the versions are listed in reverse order, with the latest being
@@ -73,7 +75,12 @@ Using InvisibleK's build page, you'll find the required custom recovery image
 for flashing found at the bottom of the list of zip files marked with a lone
 "download" link.
 
-Download, then flash it via the following:
+{{< admonition info "Info" >}}
+The `$` prepended in the code blocks below imply a terminal session (_or
+command prompt_)
+{{< /admonition >}}
+
+Download, then flash it via the following steps:
 1. Reboot to recovery
    ```bash
    $ adb reboot bootloader
@@ -91,9 +98,9 @@ Download, then flash it via the following:
 
 ## Install LineageOS
 Now that the custom recovery is set up and booted into, we're ready to install LineageOS!
-1. **Important!** Once in recovery, ensure to 'Wipe data/factory reset' prior to
+1. **Important!** Once in recovery, ensure to `Wipe data/factory reset` prior to
    proceeding.
-1. Select 'Apply update from ADB'
+1. Select `Apply update from ADB`
 1. ADB Sideload the version, if not latest, of LineageOS you want for your Pixel
    3a
    ```bash
@@ -101,11 +108,15 @@ Now that the custom recovery is set up and booted into, we're ready to install L
    ```
 1. Wait for installation to complete then select 'Reboot system now' from the
    recovery menu
-1. Enjoy LineageOS!
+1. **Enjoy LineageOS!**
 
 ## Verification
 Once in LineageOS, you can browse the settings to verify the installation and
 set up Trust the preferred way. Personally, I chose to leave the defaults.
 
+# Bugs / Issues
+I plan to keep this list of bugs and issues I discover up to date, but this is
+what I have encountered so far:
+- WiFi calling does not seem to work
 
 [^1]: [Team Win Recovery Project](https://twrp.me/)
