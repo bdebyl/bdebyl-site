@@ -10,6 +10,10 @@ HUGO_IMAGE_NAME=bdebyl/hugo
 HUGO_IMAGE_TAG?=latest
 HUGO_IMAGE=$(HUGO_IMAGE_NAME):$(HUGO_IMAGE_TAG)
 
+THUMBR_IMAGE_NAME=bdebyl/awscli
+THUMBR_IMAGE_TAG?=latest
+THUMBR_IMAGE?=$(THUMBR_IMAGE_NAME):$(THUMBR_IMAGE_TAG)
+
 AWS_IMAGE_NAME=bdebyl/awscli
 AWS_IMAGE_TAG?=latest
 AWS_IMAGE=$(AWS_IMAGE_NAME):$(AWS_IMAGE_TAG)
@@ -44,6 +48,10 @@ static-pull:
 static-push:
 	aws s3 sync --acl "public-read" --sse "AES256" ${STATIC_DIR}/ s3://${STATIC_BUCKET}
 .PHONY: static-push
+
+static-images:
+	@${DOCKER_RUN} ${THUMBR_IMAGE} ${STATIC_DIR}/static/img
+.PHONY: static-images
 
 css-push:
 	aws s3 cp --acl "public-read" --sse "AES256" public/dist/style.css s3://${WEB_BUCKET}/dist/style.css
