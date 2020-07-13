@@ -11,7 +11,8 @@ With some minor dependencies, it's fairly straightforward in setting up your
 Emacs workflow to include IntelliSense-like auto-completion!
 
 {{< img src="/static/img/emacs-clang-libopencm3/header-completion.png"
-    sub="Header Completion" >}}
+    sub="Header Completion"
+    alt="Screenshot showing auto-completion for C header files in emacs" >}}
 
 <!--more-->
 
@@ -105,7 +106,8 @@ fairly uninvolved workaround.
 
 ## Example
 {{< img src="/static/img/emacs-clang-libopencm3/completion.png"
-    sub="Completion" >}}
+    sub="Completion"
+    alt= "Screenshot showing auto completion for C functions in emacs">}}
 
 [^1]: [Emacs Initialization File]
     (https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html)
