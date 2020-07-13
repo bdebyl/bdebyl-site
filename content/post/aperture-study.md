@@ -4,6 +4,7 @@ date: 2019-01-16
 lastmod: 2019-02-11
 categories: ["Blog"]
 tags: ["photography"]
+preview: "/static/img/aperture-study/f17-f40-comp.jpg"
 ---
 I found out recently that using the maximum aperture for a lens can have
 deminishing returns. Simply put: it makes the image look "soft", or otherwise

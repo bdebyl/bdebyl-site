@@ -6,6 +6,7 @@ tags: ["emacs", "linux"]
 categories: ["Tutorial"]
 contentCopyright: true
 hideHeaderAndFooter: false
+preview: "/static/img/emacs-clang-libopencm3/header-completion.png"
 ---
 With some minor dependencies, it's fairly straightforward in setting up your
 Emacs workflow to include IntelliSense-like auto-completion!
