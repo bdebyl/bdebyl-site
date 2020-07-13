@@ -10,7 +10,8 @@ hideHeaderAndFooter: false
 One of the simplest projects to get started with the STM32 microcontroller
 series: turn on the lights!
 
-{{< thumb src="/static/img/stm32-examples/part0/stm32-basic-gpio-leds.jpeg" >}}
+{{< thumb src="/static/img/stm32-examples/part0/stm32-basic-gpio-leds.jpeg"
+    alt="Photo of STM32 discovery board with illuminated green and blue LEDs" >}}
 
 <!--more-->
 
@@ -130,7 +131,8 @@ For starters, why were pins `GPIO8` and `GPIO9` on the `GPIOC` port being used?
 The answer can be found after a quick review of the STM32F0 Discovery User Manual[^4]:
 
 {{< img src="/static/img/stm32-examples/part0/stm32f0-discover-led-diagram.png"
-    sub="LEDs shown on circuit diagram connected to PC8 and PC9">}}
+    sub="LEDs shown on circuit diagram connected to PC8 and PC9"
+    alt="Screenshot of circuit diagram showing green and blue LED connections" >}}
 
 The Discovery board comes with two LEDs for use by the user, tied to Port C pins
 8 (blue LED), and 9 (green LED).

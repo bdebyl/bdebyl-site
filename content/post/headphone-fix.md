@@ -8,7 +8,8 @@ tags: ["electronics"]
 A colleague offered a pair of Bern Bluetooth drop-in headphones to me fore free,
 with the catch being: _I had to fix them_
 
-{{< thumb src="/static/img/headphone-fix/IMG_7505.jpg" >}}
+{{< thumb src="/static/img/headphone-fix/IMG_7505.jpg"
+    alt="Photo of Bern brand headphones under magnifying glass" >}}
 <!--more-->
 
 # Don't Turn It On, Take It Apart!
@@ -28,8 +29,10 @@ right speaker put out no sound._ I checked the known-good left speaker using my
 wanted to find out what to expect when troubleshooting the right channel.
 
 {{< thumbgallery >}}
-    {{< thumb src="/static/img/headphone-fix/IMG_7506.jpg" sub="Left Speaker" >}}
-    {{< thumb src="/static/img/headphone-fix/IMG_7511.jpg" sub="Right Speaker" >}}
+    {{< thumb src="/static/img/headphone-fix/IMG_7506.jpg" sub="Left Speaker"
+        alt="Photo of oscilloscope showing working left-speaker analog signal" >}}
+    {{< thumb src="/static/img/headphone-fix/IMG_7511.jpg" sub="Right Speaker"
+        alt="Photo of oscilloscope showing broken right-speaker analog signal" >}}
 {{< /thumbgallery >}}
 
 Knowing what to expect on the oscilloscope, I hooked up the probe to the right,
@@ -42,7 +45,8 @@ disconnected at this point in time to ease the troubleshooting process.
 Lucky for me the PCB pads were labeled -- even better `SPKL+` (_left_) and
 `SPKR+` (_right_) were easy to find.
 
-{{< thumb src="/static/img/headphone-fix/IMG_7507.jpg" >}}
+{{< thumb src="/static/img/headphone-fix/IMG_7507.jpg"
+    alt="Photo of close-up magnified view of broken right speaker PCB" >}}
 
 Outside of the bluetooth board hidden under the piece of tape, there's not a
 whole lot going on in the circuit. It was my guess that the visible surface
@@ -57,7 +61,8 @@ which verified that to be the case.
 115_) to test continuity of the circuit from the known-good and the now
 known-bad speaker traces back to the `OUTL` and `OUTR` outputs of the amplifier.
 
-{{< thumb src="/static/img/headphone-fix/IMG_7514.jpg" >}}
+{{< thumb src="/static/img/headphone-fix/IMG_7514.jpg"
+    alt="Photo of right speaker PCB hanging out of casing" >}}
 
 Removing the board from the housing required a bit of finesse. I didn't want to
 bother desoldering the left speaker connections to make removal easier. So, with
@@ -81,7 +86,8 @@ Using the 3.5mm mini-jack's solder pads, I found continuity to be true from the
 chips left and right outputs to the conveniently accessible solder pads. _A
 bodge wire was in order_..
 
-{{< thumb src="/static/img/headphone-fix/IMG_7515.jpg" sub="Note the bodge wire" >}}
+{{< thumb src="/static/img/headphone-fix/IMG_7515.jpg" sub="Note the bodge wire"
+    alt="Photo of close-up magnified view with soldered fix wire in right speaker PCB" >}}
 
 
 # All's Well That Ends Well
@@ -90,7 +96,8 @@ pin to `SPKR+`. Lo and behold it was now closed-circuit! I was very happy to see
 the expected waveform from the known-good left channel now also appearing on the
 right channel.
 
-{{< thumb src="/static/img/headphone-fix/IMG_7516.jpg" >}}
+{{< thumb src="/static/img/headphone-fix/IMG_7516.jpg"
+    alt="Photo of oscilloscope showing fixed right-speaker analog signal">}}
 
 At this point I quickly re-soldered the wires to the speaker and enjoyed music
 now coming into both ears!

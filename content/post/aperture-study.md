@@ -10,7 +10,9 @@ deminishing returns. Simply put: it makes the image look "soft", or otherwise
 out-of-focus. In this post I aim to find out find the best *acceptable* aperture
 setting for a specific lens.
 
-{{< thumb src="/static/img/aperture-study/f17-f40-comp.jpg" sub="f/1.7 vs. f/4.0" >}}
+{{< thumb src="/static/img/aperture-study/f17-f40-comp.jpg"
+    sub="f/1.7 vs. f/4.0"
+    alt="Photo comparing aperture depth-of-field of f/1.7 versus f/4.0 (sharper)" >}}
 <!--more-->
 
 # The Setup
@@ -39,7 +41,9 @@ lost at that target distance of 1 meter.
 The biggest difference can be seen between the *f/1.7* and *f/4.0* shots. Note
 the increase in clarity on the pillows fabric.
 
-{{< thumb src="/static/img/aperture-study/f17-f40-comp.jpg" sub="f/1.7 vs. f/4.0" >}}
+{{< thumb src="/static/img/aperture-study/f17-f40-comp.jpg"
+    sub="f/1.7 vs. f/4.0"
+    alt="Photo comparing aperture depth-of-field of f/1.7 versus f/4.0 (sharper)" >}}
 
 ---
 
@@ -48,7 +52,9 @@ At *f/2.8* and above I started noticing less increase in perceived sharpness of
 the image, though the difference in comparison to *f/1.7* was still fairly
 noticeable
 
-{{< thumb src="/static/img/aperture-study/f17-f28-comp.jpg" sub="f/1.7 vs f/2.8" >}}
+{{< thumb src="/static/img/aperture-study/f17-f28-comp.jpg"
+    sub="f/1.7 vs f/2.8"
+    alt="Photo comparing aperture depth-of-field of f/1.7 versus f/2.8 (sharper)" >}}
 
 ---
 
@@ -58,7 +64,9 @@ difference in shutter speed, the overall difference does not seem as dramatic
 from *f/2.8* to *f/4.0*. Personally, I'd say that *f/2.8* is the clear winner in
 finding the best middle-ground between maximum aperture and image quality.
 
-{{< thumb src="/static/img/aperture-study/f28-f40-comp.jpg" sub="f/2.8 vs. f/4.0" >}}
+{{< thumb src="/static/img/aperture-study/f28-f40-comp.jpg"
+    sub="f/2.8 vs. f/4.0"
+    alt="Photo comparing aperture depth-of-field of f/2.8 versus f/4.0 (sharper)" >}}
 
 ---
 

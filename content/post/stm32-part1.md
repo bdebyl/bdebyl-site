@@ -14,7 +14,8 @@ LED. However, it is my belief that this leads to confusion for beginners and
 only opens the door to misunderstandings. That being said, we will be using
 timers and their associated GPIO ports with Alternate Function modes.
 
-{{< img src="/static/img/stm32-examples/part1/blinky.gif" >}}
+{{< img src="/static/img/stm32-examples/part1/blinky.gif"
+    alt="Animated picture showing alternating blinking green and blue LEDs" >}}
 
 <!--more-->
 
@@ -92,7 +93,8 @@ The STM32 microcontroller's GPIO has a hardware feature allowing you to tie
 certain port's pins to a different register as part of the output or input
 control:
 {{< img src="/static/img/stm32-examples/part1/stm32-af-diagram.png"
-    sub="GPIO Alternate Function Diagram" >}}
+    sub="GPIO Alternate Function Diagram"
+    alt="Screenshots of alternate function circuit diagram for the STM32F0" >}}
 
 For accomplishing this, a few things need to happen:
 
@@ -110,7 +112,8 @@ For the STM32F0 we are using in this series, the Alternate Function selection
 number desired is `GPIO_AF0` for use with `TIM3_CH3` (_timer 3, channel 3_) and
 `TIM3_CH4` (_timer 3, channel 4_):
 {{< img src="/static/img/stm32-examples/part1/stm32-af-gpiomap.png"
-    sub="STM32F051 Alternate Function Mapping" >}}
+    sub="STM32F051 Alternate Function Mapping"
+    alt="Screenshot of alternate function pin definition table for STM32F0" >}}
 
 
 Ultimately, the code with `libopencm3` becomes the following for our use case:

@@ -55,7 +55,7 @@ params:
   description: "A random assortment of my personal projects."
 
   # paginate of archives, tags and categories
-  archivePaginate: 5
+  archivePaginate: 20
 
   # show 'xx Posts In Total' in archive page ?
   showArchiveCount: true
