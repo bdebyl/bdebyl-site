@@ -30,6 +30,8 @@ to InvisibleK (Dan Pasanen). Having to set up the entire custom build for Pixel
 3a of LineageOS myself would add far more overhead in the overall simple task in
 trying to get LineageOS to work on a Pixel 3a!
 
+[**tl;dr**](#flash-custom-recovery)
+
 # Preface
 There are plenty of guides out there on how to install and set up ADB and
 Fastboot on your host machine. For me, on Arch Linux, this was as simple as
@@ -76,15 +78,14 @@ Using InvisibleK's build page, you'll find the required custom recovery image
 for flashing found at the bottom of the list of zip files marked with a lone
 "download" link.
 
-{{< admonition info "Info" >}}
-The `$` prepended in the code blocks below imply a terminal session (_or
-command prompt_)
-{{< /admonition >}}
-
-Download, then flash it via the following steps:
+Flash it via the following steps:
 1. Reboot to recovery
    ```bash
    $ adb reboot bootloader
+   ```
+1. Unlock the bootloader if the 'Status' is locked:
+   ```
+   $ adb flashing unlock
    ```
 1. Flash the custom recovery (_make sure to replace `N` with the version you
    downloaded, mine was '4'_)
