@@ -85,7 +85,7 @@ Flash it via the following steps:
    ```
 1. Unlock the bootloader if the 'Status' is locked:
    ```
-   $ adb flashing unlock
+   $ fastboot flashing unlock
    ```
 1. Flash the custom recovery (_make sure to replace `N` with the version you
    downloaded, mine was '4'_)
