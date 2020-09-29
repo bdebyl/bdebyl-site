@@ -24,8 +24,8 @@ On Arch Linux, it's as simple as:
 ```
 # pacman -S linux-hardened linux-hardened-headers
 ```
-<sub>_Optionally (additionally) run `mkinitcpio -p linux-hardened` as root if
-this wasn't already done automatically as part of the installation_</sub>
+_Optionally (additionally) run `mkinitcpio -p linux-hardened` as root if
+this wasn't already done automatically as part of the installation_
 
 The steps to boot to the hardened kernel will change based on your boot
 loader. Personally, I am using
@@ -36,7 +36,7 @@ therefore start with that.
 ## Boot Loader Configuration
 ### **`systemd-boot`**
 Create a new loader config will need to be created on top of your existing one
-in `/boot/loader/entries/**
+in `/boot/loader/entries/`
 
 **Example**
 ```apacheconf
@@ -45,9 +45,9 @@ linux /vmlinuz-linux-hardened
 initrd /initramfs-linux-hardened.img
 options ...
 ```
-<sub>_The `options` line above will be specific to your system. This can be copied
+_The `options` line above will be specific to your system. This can be copied
 from existing, working loader configurations or such as the one described in
-[Installing Arch Linux](/post/archinstall/#set-up-linux-installation)_</sub>
+[Installing Arch Linux](/post/archinstall/#set-up-linux-installation)_
 
 Change the default **or** enable `auto-entries` to selectively boot from it in
 `/boot/loader/loader.conf`
@@ -73,8 +73,8 @@ LABEL archhardened
 
 ...
 ```
-<sub>_Note that the `APPEND` may differ from the example, same with `options`
-for `systemd-boot`_</sub>
+<sub>Note that the `APPEND` may differ from the example, same with `options`
+for `systemd-boot`</sub>
 
 # Finish Line
 It's that simple! There are additional system hardening steps one may opt to
