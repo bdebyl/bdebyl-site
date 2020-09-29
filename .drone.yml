@@ -11,5 +11,5 @@ steps:
     image: bdebyl/hugo
     commands:
       - git clone https://gitlab.com/bdebyl/hugo-theme-even.git themes/even
-      - hugo build
+      - hugo
 
