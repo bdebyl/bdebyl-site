@@ -7,12 +7,26 @@ platform:
   arch: arm
 
 steps:
-  - name: gate
+  - name: gate-master
     image: bdebyl/alpine-git
     commands:
       - git fetch origin +refs/heads/master
       - git show-ref
-      - git diff --name-only HEAD~1..HEAD | grep 'content\|themes\|config.yaml' || exit 78
+      - git diff --name-only HEAD~1..HEAD | grep Dockerfile || exit 78
+    when:
+      branch:
+        - master
+
+  - name: gate-pr
+    image: bdebyl/alpine-git
+    commands:
+      - git fetch origin +refs/heads/master
+      - git show-ref
+      - git diff --name-only $(git merge-base refs/remotes/origin/master HEAD)..HEAD | grep Dockerfile || exit 78
+    when:
+      branch:
+        exclude:
+          - master
 
   - name: build
     image: bdebyl/hugo
