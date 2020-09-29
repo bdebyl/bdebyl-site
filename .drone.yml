@@ -13,3 +13,19 @@ steps:
       - git clone https://gitlab.com/bdebyl/hugo-theme-even.git themes/even
       - hugo
 
+  - name: deploy
+    image: bdebyl/awscli
+    environment:
+      DISTRIBUTION_ID:
+        from_secret: aws_distribution_id
+      AWS_ACCESS_KEY_ID:
+        from_secret: aws_access_key_id
+      AWS_SECRET_ACCESS_KEY:
+        from_secret: aws_secret_key
+      AWS_DEFAULT_REGION: us-east-1
+    commands:
+      - aws s3 sync --acl "public-read" --sse "AES256" public/ s3://bdebyl.net
+      - cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --pats '/*'
+    when:
+      branch:
+      - master
