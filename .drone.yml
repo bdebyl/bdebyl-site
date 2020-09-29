@@ -17,7 +17,7 @@ steps:
   - name: build
     image: bdebyl/hugo
     commands:
-      - git clone https://gitlab.com/bdebyl/hugo-theme-even.git themes/even
+      - git clone https://github.com/bdebyl/hugo-theme-even.git themes/even
       - hugo
 
   - name: deploy
