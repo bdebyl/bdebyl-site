@@ -25,7 +25,7 @@ steps:
       AWS_DEFAULT_REGION: us-east-1
     commands:
       - aws s3 sync --acl "public-read" --sse "AES256" public/ s3://bdebyl.net
-      - aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --pats '/*'
+      - aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths '/*'
     when:
       branch:
         - master
