@@ -7,6 +7,13 @@ platform:
   arch: arm
 
 steps:
+  - name: gate
+    image: bdebyl/alpine-git
+    commands:
+      - git fetch origin +refs/heads/master
+      - git show-ref
+      - git diff --name-only HEAD~1..HEAD | grep -v '.drone.yml\|LICENSE\|README.md\|.gitignore\|Makefile' || exit 78
+
   - name: build
     image: bdebyl/hugo
     commands:
