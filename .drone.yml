@@ -44,10 +44,12 @@ steps:
       - aws s3 sync --acl "public-read" --sse "AES256" public/ s3://bdebyl.net
       - aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths '/*'
     when:
-      branch:
-        - master
+      event:
+        - promote
+      target:
+        - production
 ---
 kind: signature
-hmac: 0edbfaae0b821372a0bf9b0b49b43b2f322daf73c97d1e128c1ec0ed54136c60
+hmac: 770c218bf5ffc36df6ef5d100e46109b5ea1704707aa7bc15bbccc806fe511d3
 
 ...
