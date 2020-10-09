@@ -3,27 +3,6 @@ kind: pipeline
 name: default
 
 steps:
-  - name: gate-master
-    image: bdebyl/alpine-git
-    commands:
-      - git fetch origin +refs/heads/master
-      - git show-ref
-      - git diff --name-only HEAD~1..HEAD | grep Dockerfile || exit 78
-    when:
-      branch:
-        - master
-
-  - name: gate-pr
-    image: bdebyl/alpine-git
-    commands:
-      - git fetch origin +refs/heads/master
-      - git show-ref
-      - git diff --name-only $(git merge-base refs/remotes/origin/master HEAD)..HEAD | grep Dockerfile || exit 78
-    when:
-      branch:
-        exclude:
-          - master
-
   - name: build
     image: bdebyl/hugo
     commands:
@@ -50,6 +29,6 @@ steps:
         - production
 ---
 kind: signature
-hmac: 770c218bf5ffc36df6ef5d100e46109b5ea1704707aa7bc15bbccc806fe511d3
+hmac: 3109d79e76507ab2e9a820522c68b429007ca6f25e0ca16b1b46ed0aba66d23e
 
 ...
