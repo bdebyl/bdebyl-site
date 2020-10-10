@@ -21,16 +21,18 @@ git config --global commit.gpgSign true
 
 For reference, I am directly referencing the subkey ID I use for **signing only**
 denoted by `[S]`:
-```
+
+```text
 pub   rsa4096/ADAA54FC 2017-11-21 [SC] [expires: 2020-02-23]
 uid                    Bastian de Byl <bastiandebyl@gmail.com>
 sub   rsa4096/A72FC2F1 2017-11-21 [E] [expires: 2020-02-23]
 sub   rsa4096/875953A2 2019-02-23 [S] [expires: 2020-02-23]
 ```
+
 <sub>Note: _I am using git version `2.20.1` in the above example._</sub>
 
-
 # Getting Started with OpenPGP
+
 It is recommended to read through the
 [Getting Started](https://www.gnupg.org/gph/en/manual/c14.html) page  on the
 official GnuPG website. It is also **strongly** recommend to use the
@@ -40,6 +42,7 @@ create a separate subkey for **signing only** -- read more about that
 [here](https://wiki.debian.org/Subkeys).
 
 # OpenPGP Keyserver Pool
+
 As of GnuPG version
 [2.1.11](https://github.com/riseupnet/riseup_help/issues/294#issuecomment-192913705),
 the `hpks.pool.sks-keyservers.net` CA certificate is installed and made use by
@@ -51,13 +54,16 @@ signature. Instructions can be found on the
 reading further below.
 
 ## Verification
+
 To verify and retrieve the necessary keys to do so (automatically, if possible):
+
 ```bash
 gpg --auto-key-retrieve --verify sks-keyservers.netCA.pem.asc sks-keyservers.netCA.pem
 ```
 
 The expected output:
-```
+
+```text
 gpg: Signature made Wed 30 Mar 2016 11:06:29 AM EDT
 gpg:                using RSA key 250B7AFED6379D85
 gpg: key 0B7F8B60E3EDFAE3: 1214 signatures not checked due to missing keys
@@ -76,57 +82,66 @@ Primary key fingerprint: 94CB AFDD 3034 5109 5618  35AA 0B7F 8B60 E3ED FAE3
 ```
 
 ## Adding the HKPS Pool CA
+
 Once the signature has been verified, the CA can be moved over to
 `/usr/share/ca-certificates` to update the list of trusted CA certificates. Do
 this via:
 
-+ **ArchLinux:** `sudo update-ca-trust`
-+ **Debian/Ubuntu, RHEL:** `sudo update-ca-certificates`
-
+- **ArchLinux:** `sudo update-ca-trust`
+- **Debian/Ubuntu, RHEL:** `sudo update-ca-certificates`
 
 {{< admonition tip "CA Path" >}}
 On my system the full path to the CA certs is:
 
 - `/etc/ca-certificates/extracted/cadir/sks-keyservers.net_CA.pem`
+
 {{< /admonition >}}
 
 Two following parameters should be added to your `~/.gnupg` configuration files:
 
 ### GnuPG Versions >2.1
 
-
 {{< admonition note "gpg.conf" >}}
-```
+
+```text
 keyserver hkps://hkps.pool.sks-keyservers.net
 ```
+
 {{< /admonition >}}
 
-
 {{< admonition note "dirmngr.conf" >}}
-```
+
+```text
 hkp-cacert /etc/ca-certificates/path/to/CA.pem
 ```
+
 {{< /admonition >}}
 
 ### GnuPG Versions <2.1
+
 {{< admonition note "gpg.conf" >}}
-```
+
+```text
 keyserver hkps://hkps.pool.sks-keyservers.net
 keyserver-options ca-cert-file=/path/to/CA/sks-keyservers.netCA.pem
 ```
+
 {{< /admonition >}}
 
 ## *Optional* - Ensure keys refreshed through keyserver
+
 To ensure no keys are pulled from insecure sources, or that an attacked would
 not be able to designate a keyserver they control, it is recommended to add the
 following additional parameter to the above `gpg.conf` file:
-```
+
+```text
 keyserver-options no-honor-keyserver-url
 ```
 
 ---
 
 # More Information
+
 The
 [OpenPGP Best Practices](https://riseup.net/en/security/message-security/openpgp/best-practices)
 page is a good resource for finding out more on best practices. A few points

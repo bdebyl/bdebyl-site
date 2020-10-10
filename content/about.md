@@ -2,6 +2,7 @@
 title: "About"
 ---
 # About
+
 I created this site as a way of showcasing my projects, or other general
 ideas. It's a sort of _engineering_ portfolio, if you will.
 
@@ -17,10 +18,12 @@ Git repositories[^1], or ways to contact me such as
 [email](mailto:bastian@bdebyl.net).
 
 # GPG Fingerprint
+
 The image at the **top-left** of this site (_on desktop_) is my OpenPGP v4 key
 fingerprint QR-code. Feel free to scan it using the
 [OpenKeychain](https://www.openkeychain.org/) app! I'll provide it here in-case
 you are on a mobile device, and my full public key:
+
 <center>
 ![OpenPGP v4 Fingerprint](/static/img/pubfpr-lrg.png)
 
@@ -28,7 +31,8 @@ you are on a mobile device, and my full public key:
 </center>
 
 {{< admonition info "Public Key" true >}}
-```
+
+```text
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 mQINBFoTpoMBEADDIjRewOTvJBQF4ZxK/LS7yBL0TuU7VbZzEH3s5YKj63P/Rmvx
 8/jMm0iop+uiPNo+0imIGYsdfW77bt95I9+kBm27eVf8mDMldMiS/LBCCmnuQ19u
@@ -146,11 +150,12 @@ teulWQZ/WMzUvU9IR6q3RcYbHm3yzbXVGzHXeLGUDWjvbKsDezUmn2desfexh+U7
 KpNnEkXDMtMCsNkEMzM+3/BkuxLO52zYpDe5tV7Igx0=
 =N6h6
 -----END PGP PUBLIC KEY BLOCK-----
-
 ```
+
 {{< /admonition >}}
 
 # Resume
+
 I do not currently keep an up-to-date version of my resume. In the past, I have
 written up my resume using [LaTeX](https://www.latex-project.org/) as a PDF. I
 may explore other solutions such as simply keeping it on this website.. _we'll

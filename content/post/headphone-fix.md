@@ -13,7 +13,8 @@ with the catch being: _I had to fix them_
     alt="Photo of Bern brand headphones under magnifying glass" >}}
 <!--more-->
 
-# Don't Turn It On, Take It Apart!
+# Don't Turn It On, Take It Apart
+
 Past mistakes have taught me to be gentle and patient when it comes to taking
 things apart. This was no exception either. After looking over the unit on each
 side, I figured the only way *in* was lifting the mesh cover off. So I went at
@@ -21,6 +22,7 @@ it, carefully, with a pair of tweezers. I worked my way around the edge and
 wedged the mesh upwards.
 
 # Okay, Maybe Turn It On
+
 Now that the problematic speaker side was successfully opened without any
 damage, it was time to investigate what was wrong.
 
@@ -41,8 +43,8 @@ problematic, speaker. The result was much different, indicating either noise or
 an open circuit. It may be worth mentioning that the right speaker was
 disconnected at this point in time to ease the troubleshooting process.
 
+# Where Did It All Go Wrong
 
-# Where Did It All Go Wrong?
 Lucky for me the PCB pads were labeled -- even better `SPKL+` (_left_) and
 `SPKR+` (_right_) were easy to find.
 
@@ -70,8 +72,8 @@ bother desoldering the left speaker connections to make removal easier. So, with
 a bit of gentle back and forth I was able to get it the PCB out and inspect
 traces on the bottom side.
 
+# Something's Not Quite Right
 
-# Something's Not Quite Right...
 Continuity from `SPKL+` to the QFN pin was good, yet `SPKR+` to the op-amp
 showed open circuit. Visibly, everything on the PCB looked fine. There were no
 apparent signs of damaged or lifted traces, nor bad soldered wires or
@@ -90,8 +92,8 @@ bodge wire was in order_..
 {{< thumb src="/static/img/headphone-fix/IMG_7515.jpg" sub="Note the bodge wire"
     alt="Photo of close-up magnified view with soldered fix wire in right speaker PCB" >}}
 
-
 # All's Well That Ends Well
+
 Again, using my trusty Fluke 115, I verified continuity from the chip's `OUTR`
 pin to `SPKR+`. Lo and behold it was now closed-circuit! I was very happy to see
 the expected waveform from the known-good left channel now also appearing on the

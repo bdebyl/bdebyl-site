@@ -13,6 +13,7 @@ from WordPress)
 
 <!--more-->
 # Disclaimer
+
 {{< admonition warning "Out of Date" >}}
 The information in this article is **out-of-date**. I am, and have been, using my
 own fork of the [hugo-even-theme](https://gitlab.com/bdebyl/hugo-theme-even) on
@@ -26,8 +27,8 @@ relevant
 [commit](https://github.com/bdebyl/hugo-tracks-theme/commit/86ca4963c4d0a67ddb1560197c91617e7d3e3754) on
 my GitHub fork of the **Tracks** theme.
 
-
 # Rough Start
+
 Right off the bat I noticed the navigation bar seemed a bit off, to say the least:
 
 <center>![Problem Navbar](/static/img/humble-beginnings/header-problem.png)</center>
@@ -40,7 +41,7 @@ page header.
 
 > **.Site.Sections**
 >
->    top-level directories of the site.
+> top-level directories of the site.
 
 \- [Source](https://gohugo.io/variables/site/#site-variables-list)
 
@@ -53,8 +54,8 @@ fully understanding where the `0` and `1` "sections" even originated from. In
 any case, I decided the only course of action was to use something other than
 sections for the behavior I wanted.
 
-
 # The Fix
+
 Looking at other template files in the theme's layout, I stumbled on a chunk of
 code in `layouts/partials/headers.html` that defined the behavior of the
 aforementioned "navbar" problem:
@@ -91,8 +92,8 @@ appears to be used*) to include the nav links and get my desired behavior:
 </div>
 ```
 
+# But Wait, There's More
 
-# But Wait, There's More!
 After getting more comfortable with how themes are written for Hugo, I found a
 slew of other problems with the ported **Tracks** theme:
 
