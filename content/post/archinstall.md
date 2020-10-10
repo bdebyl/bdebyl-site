@@ -98,6 +98,12 @@ References specific to partitions will be stated as such (e.g. `/dev/sdN1`,
    /dev/sdN2  1050624 15155166 14104543  6.7G Linux LVM
    ```
 
+   {{< sub >}}
+   The above example `fdisk` run was done on an 8G USB drive and is provided
+   for reference purposes. Ignore the sizes listed above when comparing to your
+   installation.
+   {{< /sub >}}
+
 # Encryption
 
 1. Format the Linux LVM partition:
