@@ -49,7 +49,9 @@ Using generic, non-branded digital calipers I was able to get the following
 | Pad Spacing (_along length_) |  _9.1mm_ |
 | Pad Spacing (_along width_)  | _15.4mm_ |
 | Pad Width                    |  _1.9mm_ |
-<center><sub>Fig. 1</sub></center>
+{{< sub >}}
+Fig. 1
+{{< /sub >}}
 
 # Shopping with Purpose
 
@@ -69,7 +71,9 @@ unbranded digital caliper. Those values are nearly spot-on.
 | Pad Spacing (_along length_) |  _9.1mm_ |   _9.1mm_ | **---**     |
 | Pad Spacing (_along width_)  | _15.4mm_ |  _15.7mm_ | _**-.3mm**_ |
 | Pad Width                    |  _1.9mm_ |  _2.30mm_ | _**-.4mm**_ |
-<center><sub>Fig. 2</sub></center>
+{{< sub >}}
+Fig. 2
+{{< /sub >}}
 
 The part was ordered, and arrived quickly at my doorstep. Stacked on top of each
 other the two receptacles matched up just as I had hoped.. **Fantastic!**

@@ -175,9 +175,11 @@ to be along with the internal pull-up or pull-down resistor mode:
 | `GPIO_PUPD_PULLUP`   | Internal pull-up resistor                               |
 | `GPIO_PUPD_PULLDOWN` | Internal pull-down resistor                             |
 
-<center><sub><i>Note: The documentation for these functions, provided by `libopencm3`
+{{< sub >}}
+Note: The documentation for these functions, provided by `libopencm3`
 authors, along with the function definition can be found
-[**here**](https://libopencm3.org/docs/latest/html/)</i></sub></center>
+[**here**](https://libopencm3.org/docs/latest/html/)
+{{< /sub >}}
 
 Having clarified that, as we want to **drive** the LEDs, we will need to
 configure the pins as outputs with no internal pull-up or pull-down resistor:
@@ -213,8 +215,10 @@ defined as well. This will encompass the output type, and output speed:
 | `GPIO_OSPEED_25MHZ`  | Up to 25MHz output speed (_equivalent to medium_) |
 | `GPIO_OSPEED_2MHZ`   | Up to 2MHz output speed (_equivalent to low_)     |
 
-<center><sub><i>Refer to the device datasheet for the frequency specifications
-and the power supply and load conditions for each speed</i></sub></center>
+{{< sub >}}
+Refer to the device datasheet for the frequency specifications
+and the power supply and load conditions for each speed
+{{< /sub >}}
 
 We'll be driving an output LED, as opposed to sinking it (_typical
 open-drain/open-collector sink configuration_), push-pull output mode will be
@@ -264,9 +268,11 @@ while(1) {
 }
 ```
 
-<center><sub><i>The details of why this is important can be found in the [While(1) in Embedded
-C -
-Explained](http://www.learningaboutelectronics.com/Articles/While-(1)-embedded-C.php) article</i></sub></center>
+{{< sub >}}
+The details of why this is important can be found in the
+[While(1) in Embedded C - Explained](http://www.learningaboutelectronics.com/Articles/While-(1)-embedded-C.php)
+article
+{{< /sub >}}
 
 **Voila!**
 

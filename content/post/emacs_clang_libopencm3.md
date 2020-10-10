@@ -44,8 +44,10 @@ simply add the following to your `init.el`/`.emacs`[^1] file:
 (package-initialize)
 ```
 
-<sub>Emacs will need to be restarted or reloaded to load the package
-repository.</sub>
+{{< sub >}}
+Emacs will need to be restarted or reloaded to load the package
+repository.
+{{< /sub >}}
 
 ### Packages
 
@@ -54,7 +56,7 @@ Install the following packages in Emacs (`M-x package-install`):
 - `irony`
 - `company`
 - `company-irony`
-- `company-irony-c-headers` <sub>(_Required if you want header auto-completion_)</sub>
+- `company-irony-c-headers` _Required if you want header auto-completion_
 
 # Configuration
 
@@ -106,8 +108,10 @@ For an STM32F0 project, the context of the `.clang_complete` file would be:
 -DSTM32F0
 ```
 
-<sub>The above assumes that `libopencm3` is also places within the project
-directory</sub>
+{{< sub >}}
+The above assumes that `libopencm3` is also places within the project
+directory
+{{< /sub >}}
 
 {{< admonition warning Note >}}
 There is a strange issue that is encountered with non-working completion for new

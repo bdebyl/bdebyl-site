@@ -29,7 +29,9 @@ sub   rsa4096/A72FC2F1 2017-11-21 [E] [expires: 2020-02-23]
 sub   rsa4096/875953A2 2019-02-23 [S] [expires: 2020-02-23]
 ```
 
-<sub>Note: _I am using git version `2.20.1` in the above example._</sub>
+{{< sub >}}
+Note: I am using git version `2.20.1` in the above example.
+{{< /sub >}}
 
 # Getting Started with OpenPGP
 
