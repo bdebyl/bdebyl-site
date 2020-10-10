@@ -30,6 +30,7 @@ For those that want to cut to the chase and save time, here is the full source
 code with friendly names to get you started:
 
 {{< admonition note "Source Code" true >}}
+
 ```C
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/rcc.h>
@@ -47,9 +48,11 @@ int main(void) {
     while (1);
 }
 ```
+
 {{< /admonition >}}
 
 # Getting Started with libopencm3
+
 [libopencm3](https://github.com/libopencm3/libopencm3) is a very powerful,
 useful, open-source firmware library for use in writing programs for various
 different ARM Cortex-M microcontrollers. It's read me contains plenty of
@@ -60,8 +63,8 @@ Additionally, there is a
 [libopencm3-template](https://github.com/libopencm3/libopencm3-template)
 repository to help in getting started.
 
-
 ## Dependencies
+
 Prior to doing any ARM Cortex-M development, the necessary dependencies need to
 be installed in order to successfully build/compile source code into a binary
 capable of being flashed (written) onto the microcontroller:
@@ -74,6 +77,7 @@ capable of being flashed (written) onto the microcontroller:
 - **Text Editor or IDE**: Anything, _really_.
 
 ## Flashing the STM32F0 Discovery Board
+
 The discovery series boards provided by ST come with an on-board
 [ST-LINK/V2](https://www.st.com/en/development-tools/st-link-v2.html)
 programmer. There are several ways to flash your build programs using this,
@@ -86,6 +90,7 @@ not be overlooked for too long! For the sake of brevity, this guide will omit
 diving into that until later.
 
 ## Makefile
+
 The aforementioned `libopencm3-examples` repository provides a useful, yet
 overly complex, Makefile. For the reader, this has been boiled down (_assuming
 they are also using `stlink` mentioned above_) the following, simple Makefile[^2] on
@@ -95,6 +100,7 @@ To flash, it's as simple as `make flash` (_will also build the binary for your
 convenience_).
 
 ## Linker Script
+
 The loader (`.ld`) file is specific to the _flavor_ of ARM Cortex-M
 microcontroller being used. The authors of `libopencm3` provide example
 loader files that can be used for most projects (_e.g. located in
@@ -104,12 +110,13 @@ for proper use. There are several articles online that go into detail about
 linker scripts
 
 ## Project Structure
+
 The Makefile, as of writing this, assumes your project directory structure has
 `libopencm3` either cloned, copied, or initialized as a git submodule within the
 same directory of your `main.c`. It is advised that you look through the
 Makefile's variables of things you may want to change:
 
-```
+```text
 .
 ├── libopencm3
 ├── main.c
@@ -139,16 +146,19 @@ The Discovery board comes with two LEDs for use by the user, tied to Port C pins
 8 (blue LED), and 9 (green LED).
 
 ## Reset and Clock Control (RCC)
+
 The **RCC**, and it's registers, are an important part in _using_ the STM32
 microcontroller's peripherals. Luckily, utilizing `libopencm3` we can forego
 bit-banging our way through each register's bits found in the reference
 manual[^5] and simply utilize the GPIO port that we need -- in this case
 `GPIOC`:
+
 ```C
 rcc_periph_clock_enable(RCC_GPIOC);
 ```
 
 ## GPIO Setup
+
 Next, we need to define what mode we want the GPIO pins on their respective port
 to be along with the internal pull-up or pull-down resistor mode:
 
@@ -169,20 +179,22 @@ to be along with the internal pull-up or pull-down resistor mode:
 authors, along with the function definition can be found
 [**here**](https://libopencm3.org/docs/latest/html/)</i></sub></center>
 
-
 Having clarified that, as we want to **drive** the LEDs, we will need to
 configure the pins as outputs with no internal pull-up or pull-down resistor:
+
 ```C
 gpio_mode_setup(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO8);
 gpio_mode_setup(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO9);
 ```
 
 _Simplified using bitwise[^6] OR:_
+
 ```C
 gpio_mode_setup(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO8 | GPIO9);
 ```
 
 ## GPIO Output Options Setup
+
 Now that the GPIO mode has been set up, the GPIO output options need to be
 defined as well. This will encompass the output type, and output speed:
 
@@ -216,11 +228,13 @@ gpio_set_output_options(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, GPIO9);
 ```
 
 _Simplified[^6]:_
+
 ```C
 gpio_set_output_options(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, GPIO8 | GPIO9);
 ```
 
-## Turn it on!
+## Turn it On
+
 There are no additional options required for the user to be able to now set, or
 clear, the desired GPIO pins. Thus, we set it _and forget it_:
 
@@ -230,12 +244,14 @@ gpio_set(GPIOC, GPIO9);
 ```
 
 _Simplified[^6]:_
+
 ```C
 gpio_set(GPIOC, GPIO8 | GPIO9);
 ```
 
 Lastly, we need to make sure our program never **exits** and does something
 _undesirable_ by keeping it inside a loop:
+
 ```C
 while(1);
 ```
@@ -256,7 +272,7 @@ Explained](http://www.learningaboutelectronics.com/Articles/While-(1)-embedded-C
 
 [^1]: [GNU Arm Embedded Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
 [^2]: [Makefile](https://gitlab.com/bdebyl/stm32f0-example-project/blob/b858d5e38026bcce3b8aad4085ffb665ddf63eef/Makefile) as of writing this post
-[^3]: https://gitlab.com/bdebyl
+[^3]: <https://gitlab.com/bdebyl>
 [^4]: [STM32F0 Discovery User Manual](https://www.st.com/content/ccc/resource/technical/document/user_manual/30/ae/6e/54/d3/b6/46/17/DM00050135.pdf/files/DM00050135.pdf/jcr:content/translations/en.DM00050135.pdf)
 [^5]: [STM32F0 Reference Manual](https://www.st.com/content/ccc/resource/technical/document/reference_manual/c2/f8/8a/f2/18/e6/43/96/DM00031936.pdf/files/DM00031936.pdf/jcr:content/translations/en.DM00031936.pdf)
 [^6]: [Bitwise Operators in C](https://en.wikipedia.org/wiki/Bitwise_operations_in_C)

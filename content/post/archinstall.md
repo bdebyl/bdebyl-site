@@ -16,6 +16,7 @@ better understanding of the tools and methods used.
 ---
 
 # Partitioning
+
 1. Create a partition scheme using partitioner of choice (e.g. `gdisk`, `fdisk`,
    `cgdisk`).
    - First partition should be EFI/boot partition at around 256MB+ (type:
@@ -25,93 +26,116 @@ better understanding of the tools and methods used.
 1. Make the the EFI/boot partition FAT32 via `mkfs.fat -F32`
 
 # Encryption
+
 1. Format the Linux LVM partition:
-   ```
-   # cryptsetup luksFormat /dev/sdaN
+
+   ```bash
+   cryptsetup luksFormat /dev/sdaN
    Enter passphrase:
    ```
+
    **Note:** _Remember your passphrase! You will need this every time you boot
    your computer_
 1. Create a mapping for your Linux LVM (LUKS):
+
+   ```bash
+   cryptsetup open --type luks /dev/sdaN <map_name>
    ```
-   # cryptsetup open --type luks /dev/sdaN <map_name>
-   ```
+
    _Use whatever name you want. Ex. `lvm`, `volume`, etc._
 1. Create the physical volume, volume group, and logical volumes for
    `<map_name>` specified in the previous step:
+
+   ```bash
+   pvcreate /dev/mapper/<map_name>
+   vgcreate <volume_name> /dev/mapper/<map_name>
    ```
-   # pvcreate /dev/mapper/<map_name>
-   # vgcreate <volume_name> /dev/mapper/<map_name>
-   ```
+
    _Use whatever volume name you want. Ex. `volume`, `main`, `linux`, etc._
+
+   ```bash
+   lvcreate -L2G <volume_name> -n swap
    ```
-   # lvcreate -L2G <volume_name> -n swap
-   ```
+
    _Select size for swap, if desired. Here we use `2G` for 2Gb._
+
+   ```bash
+   lvcreate -L16G <volume_name> -n root
+   lvcreate -l 100%FREE <volume_name> -n home
    ```
-   # lvcreate -L16G <volume_name> -n root
-   # lvcreate -l 100%FREE <volume_name> -n home
-   ```
+
 1. Specify and write the desired filesystems:
-   ```
-   # mkfs.ext4 /dev/mapper/<volume_name>-root
-   # mkfs.ext4 /dev/mapper/<volume_name>-home
-   # mkswap /dev/mapper/<volume_name>-swap
+
+   ```bash
+   mkfs.ext4 /dev/mapper/<volume_name>-root
+   mkfs.ext4 /dev/mapper/<volume_name>-home
+   mkswap /dev/mapper/<volume_name>-swap
    ```
 
 # Install Linux
+
 1. Mount the boot partition and logical volumes for installation:
-   ```
-   # mount /dev/mapper/<volume_name>-root /mnt
-   # mkdir /mnt/home
-   # mkdir /mnt/boot
-   # mount /dev/mapper/<volume_name>-home /mnt/home
-   # mount /dev/sdaN /mnt/boot
-   # swapon /dev/mapper/<volume_name>-swap
+
+   ```bash
+   mount /dev/mapper/<volume_name>-root /mnt
+   mkdir /mnt/home
+   mkdir /mnt/boot
+   mount /dev/mapper/<volume_name>-home /mnt/home
+   mount /dev/sdaN /mnt/boot
+   swapon /dev/mapper/<volume_name>-swap
    ```
 
 1. Install the base system (_Assuming you have internet connectivity. Use
    `wifi-menu`, or other, to connect to the internet at this point._):
-   ```
-   # pacstrap /mnt base base-devel
+
+   ```bash
+   pacstrap /mnt base base-devel
    ```
 
 # Set-up Linux Installation
+
 1. Generate the `fstab`:
-   ```
-   # genfstab -p /mnt >> /mnt/etc/fstab
+
+   ```bash
+   genfstab -p /mnt >> /mnt/etc/fstab
    ```
 
 1. Move into the installation:
-   ```
-   # arch-chroot /mnt
+
+   ```bash
+   arch-chroot /mnt
    ```
 
 1. Configure `initramfs`:
    1. Edit `HOOKS` in `/etc/mkinitcpio.conf` using text editor of your choice
       (e.g. `vi`, `nano`, etc.). Move the `keyboard` hook before `filesystems`,
       and add `encrypt` and `lvm2` hooks **before** `filesystems`:
-      ```
-      # egrep '^HOOKS' /etc/mkinitcpio.conf
+
+      ```bash
+      $ egrep '^HOOKS' /etc/mkinitcpio.conf
       HOOKS=(base udev autodetect modconf block keyboard encrypt lvm2 filesystems fsck)
       ```
+
       _Read the comment documentation on `HOOKS` in the document to find out
       more._
 
    1. Generate `initramfs`:
-      ```
-      # mkinitcpio -p linux
+
+      ```bash
+      mkinitcpio -p linux
       ```
 
 1. Install a bootloader (e.g. `systemd-boot`, `grub`, `syslinux`, etc.):
    1. I will be using `systemd-boot`
-      ```
-      # bootctl --path=/boot/ install
+
+      ```bash
+      bootctl --path=/boot/ install
       ```
 
    1. Edit the loader configuration using a text editor of your choice:
-      ```apacheconf
-      # cat /boot/loader/loader.conf
+
+      ```bash
+      $ cat /boot/loader/loader.conf
       default arch
       timeout 3
       editor 0
@@ -121,8 +145,9 @@ better understanding of the tools and methods used.
       can edit this name if desired._). Use `blkid /dev/sdaN` to find the UUID
       of your crypt device, and recall the volume name you gave your device
       above (_`main` in example below_):
-      ```apacheconf
-      # cat /boot/loader/entries/arch.conf
+
+      ```bash
+      $ cat /boot/loader/entries/arch.conf
       title Arch Linux
       linux /vmlinuz-linux.img
       initrd /initramfs-linux.img
@@ -131,26 +156,30 @@ better understanding of the tools and methods used.
 
 1. Create a root password using `passwd`.
 1. Set a hostname:
-   ```
-   # echo "<your_hostname>" > /etc/hostname
+
+   ```bash
+   echo "<your_hostname>" > /etc/hostname
    ```
 
 1. Set up the time:
-   ```
-   # ln -fs /usr/share/zoneinfo/<continent>/<city/place> /etc/localtime
-   # hwclock --systohc --utc
+
+   ```bash
+   ln -fs /usr/share/zoneinfo/<continent>/<city/place> /etc/localtime
+   hwclock --systohc --utc
    ```
 
 1. Set the locale to `en_US`:
-   ```
-   # sed -i 's/^\#en_US/en_US/' /etc/locale.gen
-   # locale-gen
-   # locale > /etc/locale.conf
+
+   ```bash
+   sed -i 's/^\#en_US/en_US/' /etc/locale.gen
+   locale-gen
+   locale > /etc/locale.conf
    ```
 
 1. Done!
-   ```
-   # exit
-   # unmount -R /mnt
-   # reboot
+
+   ```bash
+   exit
+   unmount -R /mnt
+   reboot
    ```

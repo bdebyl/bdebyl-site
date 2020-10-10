@@ -16,6 +16,7 @@ script with the following goals:
 
 <!--more-->
 # Preface
+
 The full **source code** for this script can be found in my public scripts
 repository:
 [scripts/bash/pass-check.sh](https://gitlab.com/bdebyl/scripts/blob/master/bash/pass-check.sh)
@@ -27,6 +28,7 @@ to generate, and manage my passwords. On mobile, this is done using the official
 shared across my devices using Git[^2]
 
 # Pump Your Brakes
+
 Instead of jumping right into checking all my passwords, in plain-text, against
 the `pwnedpasswords` API, it would be best to figure out how to safely transform
 them to SHA-1[^3]. The API supports sending the first 5 characters of a SHA-1
@@ -34,9 +36,11 @@ hash, returning a list of all SHA-1s of exposed passwords (_with the exposed
 count_) for the user to verify them on their end.
 
 # Gathering Passwords
+
 The easiest way to get a comprehensive list (_associative array_[^4]) of
 passwords and their `pass` path was to use `find` to look for `*.gpg` files in
 my `.password-store` directory:
+
 ```bash
 # Fetches all passwords in $PASSDIR and checks for duplicates (base check)
 getpws()
@@ -52,6 +56,7 @@ getpws()
     done < <(find "$PASSDIR" -name "*.gpg" -type f -print0)
 }
 ```
+
 To note, `find` with `-print0` is used to avoid printing newline characters
 (_unlikely, but good practice_), so that we can utilize the null terminator `''`
 within `read -d ''`. Also, `read -r` simply prevents backslashes from being
@@ -71,10 +76,12 @@ That takes care of gathering our passwords, but we'll revisit this again in the
 next part.
 
 # Sharing is not Caring
+
 The most efficient way of checking for duplicates was simply to iterate over the
 array of passwords gathered, and check against the current one found in the
 `getpws()` function's loop. The names of the duplicate passwords are stored in
 _another_ associative array for printing later as part of the "report".
+
 ```bash
 # Checks for duplicate sha1sums of passwords in the associative array
 checkdupes()
@@ -88,6 +95,7 @@ checkdupes()
 ```
 
 That being done, we just incorporate it into the above `getpws()` loop!
+
 ```bash
 getpws()
 {
@@ -102,6 +110,7 @@ This accomplishes our *first goal* of checking duplicate passwords --
 **hooray!**
 
 # Passwortstärke
+
 The simplest method of password strength checking, with indications as to _why_
 it's weak (_i.e. "Exists in attack dictionary", "Too short", etc._) was to use
 [`cracklib`](https://github.com/cracklib/cracklib). Sadly, it's not the most
@@ -117,6 +126,7 @@ This addition was made in the following order:
 
 1. First, we need to find the executable **and** create _yet another_ useful
    associative array for us to store the outputs (_a.k.a. messages_):
+
    ```bash
    CRACKLIB=$(command -v cracklib-check)
    declare -A pwscracklib
@@ -124,6 +134,7 @@ This addition was made in the following order:
 
 1. Then a convenient function to iterate over all found passwords, safely
    "expose" them, and run the check storing all **relevant** "outputs":
+
    ```bash
    # Run through the global pws associative array and check for suggestions
    checkcracklib()
@@ -140,6 +151,7 @@ This addition was made in the following order:
 Done! It's _that_ easy.
 
 # Have you been Pwned
+
 The last, but **most important**, step was to add the actual check against the
 `pwnedpass` API check! This gets a bit fun as we use
 [Shell Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
@@ -152,6 +164,7 @@ exposed (_"pwned"_) password's SHA-1 hash, and the amount of times they have
 been leaked as a response. The prefix of the first 5 characters is dropped in
 this list, thus we check for a match of our password using everything after the
 first 5 characters of the SHA-1 hash and we're done!
+
 ```bash
 # Check passwords against the HIBP password API (requires internet)
 checkpwnapi()

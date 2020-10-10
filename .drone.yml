@@ -3,11 +3,25 @@ kind: pipeline
 name: default
 
 steps:
+  - name: lint
+    image: peterdavehello/markdownlint
+    commands:
+      - markdownlint content/
+    trigger:
+      event:
+        exclude:
+          - promote
+
   - name: build
     image: bdebyl/hugo
     commands:
       - git clone https://github.com/bdebyl/hugo-theme-even.git themes/even
       - hugo
+    when:
+      event:
+        - promote
+      target:
+        - production
 
   - name: deploy
     image: bdebyl/awscli
@@ -29,6 +43,6 @@ steps:
         - production
 ---
 kind: signature
-hmac: 3109d79e76507ab2e9a820522c68b429007ca6f25e0ca16b1b46ed0aba66d23e
+hmac: 7f15ec618d95cce36ecf999e018b38c056d52538fd6b5c81bdf5c6ce46e0fd21
 
 ...

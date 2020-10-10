@@ -17,6 +17,7 @@ to say this required fixing.
 <!--more-->
 
 # Damage Assessment
+
 The first step was to look at the PCB to assess how this could be, if at all,
 replaced. From the outside you could see the damage done. Note the single
 pin left and lack of the inner pad (_bolster?_).
@@ -25,8 +26,8 @@ pin left and lack of the inner pad (_bolster?_).
     sub="One pin remains"
     alt="Photo showing one pin remaining on a damaged USB receptacle ">}}
 
-
 # Measure Twice
+
 Next on the list: measurements. To find a suitable replacement receptacle, I
 needed to have the relevant dimensions in comparing to receptacle part drawings
 of those available for sale.
@@ -50,13 +51,14 @@ Using generic, non-branded digital calipers I was able to get the following
 | Pad Width                    |  _1.9mm_ |
 <center><sub>Fig. 1</sub></center>
 
-
 # Shopping with Purpose
+
 Using the value above, I was able to track down a USB receptacle[^1] on
 Digi-Key[^2] that matched my requirements very, _very_
 closely.
 
 ## Resounding Comparison
+
 Keep in mind the measured values were an eyeball approximation with a low cost,
 unbranded digital caliper. Those values are nearly spot-on.
 
@@ -76,6 +78,7 @@ other the two receptacles matched up just as I had hoped.. **Fantastic!**
     alt="Photo showing new USB receptacle on top of damaged one for comparison" >}}
 
 # It's not over yet
+
 Initial attempts at desoldering the existing (_broken_) receptacle proved
 futile. Even with liberal application of flux, high soldering iron temperatures
 well beyond typical soldering temperatures[^3], the solder would not flow and
@@ -92,6 +95,7 @@ having spent about half an hour on it with tweezers, solder wick, a solder
 sucker (_desoldering pump_), and flush cutters, I gave up.
 
 # Throwing in the Towel
+
 It turned out the only way to attach the replacement was to modify the new part
 to fit -- _luckily I had ordered two replacements as I broke the first one in
 the modification "process"_. Cutting and bending the pins, I was able to get it
@@ -108,6 +112,7 @@ been able to bend the flat pads towards the entry of the receptacle down to
 attempt to solder them to the surface mount pads.
 
 # All the King's horses, all the King's men
+
 Alas, it was time to put the laptop back together. To my dismay there were
 further problems. Due to the modification and forced fitment of the replacement,
 the USB receptacle was sticking out too far off of the PCB preventing the

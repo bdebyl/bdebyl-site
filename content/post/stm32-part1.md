@@ -26,6 +26,7 @@ For those that want to cut to the chase and save time, here is the full source
 code with friendly names to get you started:
 
 {{< admonition note "Source Code" true >}}
+
 ```C
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/rcc.h>
@@ -76,20 +77,23 @@ int main(void) {
     return 0;
 }
 ```
+
 {{< /admonition >}}
 
-
 # Set up the GPIO
+
 Assuming the reader is either familiar with GPIO setup for the STM32F0, or has
 reviewed [**Part 0**](/post/stm32-part0) of this series we will set up the GPIO
 pins tied to the LEDs (_port C, pins 8 and 9_) in the Alternate Function mode.
 
 Knowing that we'll be using `GPIOC`, we should enable this peripheral:
+
 ```C
 rcc_periph_clock_enable(RCC_GPIOC);
 ```
 
 ## Alternate Functions
+
 The STM32 microcontroller's GPIO has a hardware feature allowing you to tie
 certain port's pins to a different register as part of the output or input
 control:
@@ -107,8 +111,8 @@ Review the datasheet for the specific **STM32Fx** microcontroller being
 programmed, as the Alternate Function mappings may be *significantly* different!
 {{< /admonition >}}
 
-
 ## GPIO Alternate Function Setup
+
 For the STM32F0 we are using in this series, the Alternate Function selection
 number desired is `GPIO_AF0` for use with `TIM3_CH3` (_timer 3, channel 3_) and
 `TIM3_CH4` (_timer 3, channel 4_):
@@ -116,8 +120,8 @@ number desired is `GPIO_AF0` for use with `TIM3_CH3` (_timer 3, channel 3_) and
     sub="STM32F051 Alternate Function Mapping"
     alt="Screenshot of alternate function pin definition table for STM32F0" >}}
 
-
 Ultimately, the code with `libopencm3` becomes the following for our use case:
+
 ```C
 gpio_mode_setup(GPIOC, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO8 | GPIO9);
 gpio_set_output_options(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, GPIO8 | GPIO9);
@@ -125,16 +129,19 @@ gpio_set_af(GPIOC, GPIO_AF0, GPIO8 | GPIO9);
 ```
 
 # Set up the General Purpose Timer
+
 From the previous section we chose the two on-board LEDs on the STM32F0
 Discovery board tied to `PC8` and `PC9`. From the Alternate Function GPIO
 mapping, we know these will be Timer 3 (_channels 3, and 4_).
 
 Knowing that we'll be using `TIM3`, we should enable this peripheral:
+
 ```C
 rcc_periph_clock_enable(RCC_TIM3);
 ```
 
 ## Timer Mode
+
 The first step in setting up the timer, similar to GPIO, is setting the timer
 mode. The encompass the divider amount (_dividing the peripheral clock_),
 alignment for capture/compare, and up or down counting:
@@ -165,6 +172,7 @@ timer_set_mode(TIM3, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
 ```
 
 ## Timer Prescaler
+
 In addition to the timer clock, set by the peripheral clock (internal), each
 timer has a perscaler value. This determines the counter clock frequency and is
 equal to `Frequency/(Prescaler + 1)`. This is the value the timer will count to prior
@@ -175,6 +183,7 @@ integer value_).
 For the sake of simplicity in dividing the clock into easy decimal values, we
 will utilize setting up the High Speed Internal clock to 48MHz and dividing by
 48,000:
+
 ```C
 rcc_clock_setup_in_hsi_out_48mhz(); // Place at the beginning of your int 'main(void)'
 ...
@@ -184,18 +193,20 @@ timer_set_prescaler(TIM3, (rcc_apb1_frequency/48000)/2*SECONDS));
 ```
 
 ## Timer Period
+
 Having set the prescaler to determine the maximum count of the timer, there is
 an additional period we need to set. For our purposes, this will simply be the
 same value of the prescaler:
+
 ```C
 timer_set_period(TIM3, 48000);
 ```
 
 ## Timer Additional Configuration
-There are two minor settings we want to configure for the timer:
-<div style="display: none;">[^1]</div>
 
-1. Disable preloading the ARR<sup id="fnref:1" class="footnote-ref"><a href="#fn:1">1</a></sup> (auto-reload register) when the timer is reset
+There are two minor settings we want to configure for the timer:
+
+1. Disable preloading the ARR[^1] (auto-reload register) when the timer is reset
 1. Run the timer in continuous mode (never stop counting, clear the status
    register automatically)
 
@@ -205,6 +216,7 @@ timer_continuous_mode(TIM3);
 ```
 
 ## Timer Channel Output Compare Mode
+
 Since we are utilizing Timer 3's channel 3 (`GPIOC8`), and channel 4 (`GPIOC9`)
 we need to determine the output compare mode we want to use for each channel. By
 default the mode for each channel is frozen (unaffected by the comparison of the
@@ -232,6 +244,7 @@ timer_set_oc_mode(TIM3, TIM_OC4, TIM_OCM_PWM2);
 In layman's terms: _only one LED will be on at a time, alternating._
 
 ## Timer Channel Output Compare Value
+
 Lastly, we need to set the values that the output compare looks to for it's
 comparison. For this example, we want a 50%-on/50%-off time for ease of timing
 the duration of LEDs on-time determined by the frequency and period of the
@@ -244,6 +257,7 @@ timer_set_oc_value(TIM3, TIM_OC4, 24000);
 ```
 
 ### Exercise for the Reader
+
 A fun exercise in C to reduce repetition would be by creating an array of timer
 output compare address values and looping through them to set them to the same
 value.
@@ -254,6 +268,7 @@ microcontroller. That being said, there is still some fun to have.
 
 The following snippet will be provided as a note and exercise for the reader in
 exploring memory allocation and garbage collection:
+
 ```C
 int tim_oc_ids[2] = { TIM_OC3, TIM_OC4 };
 
@@ -261,10 +276,12 @@ for (i = 0; i < (sizeof(tim_oc_ids)/sizeof(tim_oc_ids[0])); ++i) {
     timer_set_oc_value(TIM3, tim_oc_ids[i], 24000);
 }
 ```
+
 <center><sub>_Determining the 'length' of an array in C is different than in
 other languages.[^2]_</sub></center>
 
 ## Enable the Timer
+
 Lastly, to kick everything off we need to enable both the timer and the relevant
 output-compare outputs.
 
@@ -277,6 +294,7 @@ timer_enable_counter(TIM3);
 ```
 
 ### Another Exercise for the Reader
+
 The same for loop for `timer_set_oc_value()` can be appended to
 for `timer_enable_oc_output()` as discussed previously:
 
@@ -290,8 +308,10 @@ for (i = 0; i < (sizeof(tim_oc_ids)/sizeof(tim_oc_ids[0])); ++i) {
 ```
 
 # Fin
+
 Lastly, as always, we should not forget to place the microcontroller in an
 infinite loop:
+
 ```C
 while (1);
 ```
