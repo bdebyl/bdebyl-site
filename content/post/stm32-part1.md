@@ -277,8 +277,10 @@ for (i = 0; i < (sizeof(tim_oc_ids)/sizeof(tim_oc_ids[0])); ++i) {
 }
 ```
 
-<center><sub>_Determining the 'length' of an array in C is different than in
-other languages.[^2]_</sub></center>
+{{< sub >}}
+Determining the 'length' of an array in C is different than in
+other languages.[^2]
+{{< /sub >}}
 
 ## Enable the Timer
 

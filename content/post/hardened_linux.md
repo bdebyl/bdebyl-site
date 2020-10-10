@@ -27,8 +27,10 @@ On Arch Linux, it's as simple as:
 # pacman -S linux-hardened linux-hardened-headers
 ```
 
-<sub><i>Optionally (additionally) run `mkinitcpio -p linux-hardened` as root if
-this wasn't already done automatically as part of the installation</i></sub>
+{{< sub >}}
+Optionally (additionally) run `mkinitcpio -p linux-hardened` as root if
+this wasn't already done automatically as part of the installation
+{{< /sub >}}
 
 The steps to boot to the hardened kernel will change based on your boot
 loader. Personally, I am using
@@ -83,8 +85,10 @@ LABEL archhardened
 ...
 ```
 
-<sub>Note that the `APPEND` may differ from the example, same with `options`
-for `systemd-boot`</sub>
+{{< sub >}}
+Note that the `APPEND` may differ from the example, same with `options`
+for `systemd-boot`
+{{< /sub >}}
 
 # Finish Line
 

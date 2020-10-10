@@ -2,7 +2,8 @@
   "default": true,
   "MD025": false,
   "MD013": false,
-  "MD033": {
-    "allowed_elements": ["center", "sub", "i"]
-  }
+   "MD033": {
+     "allowed_elements": ["center"]
+   }
+
 }
