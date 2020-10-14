@@ -27,6 +27,7 @@ with a custom recovery to utilize for this purpose!
 This guide is now out of date since LineageOS officially supports the Pixel 3a,
 see more here: <https://wiki.lineageos.org/devices/sargo/install>
 {{< /admonition >}}
+
 # Thank You
 
 Before going on any further, I'd like to take a moment to give my sincere thanks
