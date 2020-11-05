@@ -40,7 +40,7 @@ link to a text file containing my full public key is attached.
 
 `70A4 AA02 5((55D BD55 9189  B4E0 F32B E05E ADAA 54FC`[^2]
 
-<sub>[**Public Key**](/static/pubkey.txt)</sub>
+{{< sub >}}[**Public Key**](/static/pubkey.txt){{< /sub >}}
 </center>
 
 ## Resume
