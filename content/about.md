@@ -7,159 +7,47 @@ I created this site as a way of showcasing my projects, or other general
 ideas. It's a sort of _engineering_ portfolio, if you will.
 
 This site is built using the [Hugo](https://gohugo.io) static site generator,
-with my fork of the [Even theme](https://gitlab.com/bdebyl/hugo-theme-even). The
-site is hosted on AWS, and is maintained using a modified copy of
-[Alimac's S3 Terraform](https://github.com/alimac/terraform-s3)
-configuration. Deployment steps can be found in the site's
-[source code repository](https://gitlab.com/bdebyl/bdebyl-site).
+with my fork of the [Even theme](https://github.com/bdebyl/hugo-theme-even). It
+is hosted on AWS. Deployment steps can be found in the site's [source code
+repository](https://github.com/bdebyl/bdebyl-site).
 
-The icons at the bottom linking to my other sites such as social media pages,
-Git repositories[^1], or ways to contact me such as
-[email](mailto:bastian@bdebyl.net).
+# Contact
 
-# GPG Fingerprint
+The icons at the bottom of each page on this site linking to my other sites
+such as social media pages, Git repositories[^1], and email provide methods of
+how to contact me.
 
-The image at the **top-left** of this site (_on desktop_) is my OpenPGP v4 key
-fingerprint QR-code. Feel free to scan it using the
-[OpenKeychain](https://www.openkeychain.org/) app! I'll provide it here in-case
-you are on a mobile device, and my full public key:
+## Donations
+
+If you wish to support me, the best way to do so is using Crypto:
+
+| Wallet |                                                Code                                               |
+|:------:|:-------------------------------------------------------------------------------------------------:|
+|   ETH  |                            `0x240Bb50Dd93F48597Fd2adF59577210D9AfcD2B2`                           |
+|   BTC  |                            `bc1qhn007kthn868nwnf6c2k7x7zx0n9ejty4p2ff2`                           |
+|   XMR  | `43rLamghQ4PEQjd79dU67C9hbzkgy4Rbd6YQgBgYY6tLHRuuuoXv9RsTNR4SqBnkaWCSj6N8LPwCMDHKeLRXiRgaRGD49rQ` |
+|   LTC  |                           `ltc1qj6rscekh7gpagk52psmews5xrylr0625e4zktl`                           |
+
+## GPG
+
+The image below is my OpenPGP v4 key fingerprint QR-code. Feel free to scan it
+using the [OpenKeychain](https://www.openkeychain.org/) app! Additionally, a
+link to a text file containing my full public key is attached.
 
 <center>
+
 ![OpenPGP v4 Fingerprint](/static/img/pubfpr-lrg.png)
 
-`70A4 AA02 555D BD55 9189  B4E0 F32B E05E ADAA 54FC`[^2]
+`70A4 AA02 5((55D BD55 9189  B4E0 F32B E05E ADAA 54FC`[^2]
+
+<sub>[**Public Key**](/static/pubkey.txt)</sub>
 </center>
 
-{{< admonition info "Public Key" true >}}
+## Resume
 
-```text
------BEGIN PGP PUBLIC KEY BLOCK-----
-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
-=N6h6
------END PGP PUBLIC KEY BLOCK-----
-```
+I do not currently keep an up-to-date version of my resume. If you wish to
+contact me about positions, please do so via email or LinkedIn (_see
+[Contact](#contact) above_)
 
-{{< /admonition >}}
-
-# Resume
-
-I do not currently keep an up-to-date version of my resume. In the past, I have
-written up my resume using [LaTeX](https://www.latex-project.org/) as a PDF. I
-may explore other solutions such as simply keeping it on this website.. _we'll
-see_.
-
-[^1]: I'm most active on [GitLab](https://gitlab.com/bdebyl)
+[^1]: I'm most active on [GitHub](https://github.com/bdebyl)
 [^2]: Read mode about OpenPGP Best Practices [here](https://www.gnupg.org/gph/en/manual/c14.html)
