@@ -21,6 +21,7 @@ AWS_IMAGE=$(AWS_IMAGE_NAME):$(AWS_IMAGE_TAG)
 MDLINT_IMAGE_NAME=peterdavehello/markdownlint
 MDLINT_IMAGE_TAG?=latest
 MDLINT_IMAGE?=$(MDLINT_IMAGE_NAME):$(MDLINT_IMAGE_TAG)
+MDLINT_PATH?=content/
 
 # Container Variables
 RUN_USER=--user $(shell id -u $$USER):$(shell id -g $$USER)
@@ -46,7 +47,7 @@ build:
 .PHONY: build
 
 lint:
-	$(DOCKER_RUN) -v $$PWD:/md:ro ${MDLINT_IMAGE} markdownlint content/
+	$(DOCKER_RUN) -v $$PWD:/md:ro ${MDLINT_IMAGE} markdownlint ${MDLINT_PATH}
 .PHONY: lint
 
 static-pull:

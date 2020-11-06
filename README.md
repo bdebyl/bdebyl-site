@@ -1,52 +1,27 @@
 # Description
 
+[![Build
+Status](https://ci.bdebyl.net/api/badges/bdebyl/bdebyl-site/status.svg)](https://ci.bdebyl.net/bdebyl/bdebyl-site)
+
 This repository houses the posts for my site [bdebyl.net](https://bdebyl.net).
+It utilizes the [Hugo](gohugo.io) static-site generator to convert Markdown
+files to a static, HTML site. This is then served via AWS S3 behind AWS
+Cloudfront (cache).
 
 I make occasional updates to add blog posts, tutorials, projects write-ups,
 etc. The binary static content is all hosted on S3 (i.e. `.jpeg`, `.png`, etc.).
 
-It was setup using **Terraform**, or more
-specifically
-[alimac/terraform-s3 (from commit 4b32c8d)](https://github.com/alimac/terraform-s3/tree/4b32c8d336ffacc4318c065f8d135973210f535c) --
-big thank you to [**@alimac**](https://github.com/alimac/) on GitHub for that!
+## Theme
 
-# Usage
-
-The Makefile is a simple wrapper for the `bdebyl/hugo` Docker image and `aws
-s3`, but provides useful short commands to test the hugo site locally and deploy
-it to AWS.
-
-## Dependencies
-
-[Docker](https://docs.docker.com/install/) is required to run the make targets
-for hosting and generating the static Hugo site.
-
-## Development
-
-To build the static content _without_ running the Hugo server:
-
-```bash
-make build
-```
-
-To start the Hugo server on `http://localhost:1313`:
-
-```bash
-make run
-```
+The theme that this site utilizes is my minimal fork of the
+[Hugo Even Theme](https://github.com/bdebyl/hugo-theme-even). The fork strips
+out **all** JavaScript which, personally, I've found completely unnecessary for
+the purposes of my personal site. Additionally, some custom shortcodes and CSS
+changes were added (along with a Makefile for utilizing SCSS).
 
 ## Deployment
 
-To deploy to AWS:
-
-```bash
-make deploy
-```
-
-## Cache Busting
-
-Bust the Cloudfront cache:
-
-```bash
-make cache
-```
+Deployments are done using my personal [Drone CI
+Server](https://ci.bdebyl.net). Each commit has an attached build run to it,
+and can be viewed publicly, though the rest is locked down to allow only me
+(_sorry_).
