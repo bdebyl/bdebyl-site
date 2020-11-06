@@ -6,7 +6,8 @@ tags: ["libopencm3", "stm32", "tutorial"]
 categories: ["Tutorial"]
 contentCopyright: true
 hideHeaderAndFooter: false
-preview: "/static/img/stm32-examples/part0/stm32-basic-gpio-leds.jpeg"
+images:
+  - "/static/img/stm32-examples/part0/stm32-basic-gpio-leds.jpeg"
 ---
 One of the simplest projects to get started with the STM32 microcontroller
 series: turn on the lights!

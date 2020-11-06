@@ -4,7 +4,8 @@ date: 2018-01-11
 lastmod: 2019-01-16
 categories: ["Blog"]
 tags: ["electronics"]
-preview: "/static/img/headphone-fix/IMG_7505.jpg"
+images:
+  - "/static/img/headphone-fix/IMG_7505.jpg"
 ---
 A colleague offered a pair of Bern Bluetooth drop-in headphones to me fore free,
 with the catch being: _I had to fix them_

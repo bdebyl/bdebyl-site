@@ -7,7 +7,8 @@ tags: ["android", "security", "hacking"]
 categories: ["Tutorial"]
 contentCopyright: true
 hideHeaderAndFooter: false
-preview: "/static/img/lineageos-pixel3a/lineage-settings.png"
+images:
+  - "/static/img/lineageos-pixel3a/lineage-settings.png"
 ---
 In this post I aim to highlight my findings in deciding to go through  the
 process of installing LineageOS on my Pixel 3a. Currently, LineageOS does not
