@@ -48,7 +48,8 @@ S3_CACHE_CONTROL?=86400
 S3_CMD=s3 sync ${S3_DRYRUN} ${S3_DELETE} --cache-control max-age=${S3_CACHE_CONTROL} --acl "public-read" --sse "AES256"
 S3_CMD_WEB=${S3_CMD} public/ s3://${WEB_BUCKET}
 S3_CMD_STATIC=${S3_CMD} static/ s3://${STATIC_BUCKET}
-CLOUDFRONT_CMD=cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*'
+CLOUDFRONT_PATHS?='/*'
+CLOUDFRONT_CMD=cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths ${CLOUDFRONT_PATHS}
 
 all: build
 
