@@ -18,6 +18,10 @@ AWS_IMAGE_NAME=bdebyl/awscli
 AWS_IMAGE_TAG?=latest
 AWS_IMAGE=$(AWS_IMAGE_NAME):$(AWS_IMAGE_TAG)
 
+MDLINT_IMAGE_NAME=peterdavehello/markdownlint
+MDLINT_IMAGE_TAG?=latest
+MDLINT_IMAGE?=$(MDLINT_IMAGE_NAME):$(MDLINT_IMAGE_TAG)
+
 # Container Variables
 RUN_USER=--user $(shell id -u $$USER):$(shell id -g $$USER)
 RUN_VOL=-v $(shell pwd):/src
@@ -40,6 +44,10 @@ all: build
 build:
 	$(DOCKER_RUN) ${HUGO_IMAGE}
 .PHONY: build
+
+lint:
+	$(DOCKER_RUN) -v $$PWD:/md:ro ${MDLINT_IMAGE} markdownlint content/
+.PHONY: lint
 
 static-pull:
 	if [ ! -d "${STATIC_DIR}/static" ]; then aws s3 sync s3://${STATIC_BUCKET} ${STATIC_DIR}/; fi
@@ -66,7 +74,7 @@ version:
 .PHONY: version
 
 new:
-	$(DOCKER_RUN) ${HUGO_IMAGE} new post/$(shell read -p "Post Name (i.e. my_post.md): " pn; echo $$pn)
+	$(DOCKER_RUN) ${HUGO_IMAGE} new post/"$(shell read -p 'Post Name (i.e. my_post.md): ' pn; echo $$pn)"
 .PHONY: new
 
 clean:
@@ -87,6 +95,3 @@ cache:
 	@# Invalidate caches
 	@$(DOCKER_RUN) ${AWS_ENV} ${AWS_IMAGE} ${CLOUDFRONT_CMD}
 .PHONY: cache
-
-# Default target for make (<=3.80)
-default: build
