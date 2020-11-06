@@ -37,7 +37,17 @@ DOCKER_RUN=docker run --rm ${RUN_USER} ${RUN_VOL}
 DISTRIBUTION_ID=$(shell docker run --rm ${AWS_ENV} ${AWS_IMAGE} cloudfront list-distributions \
 	--query 'DistributionList.Items[].{id:Id,a:Aliases.Items}[?contains(a,`${WEB_BUCKET}`)].id' \
 	--output text)
-S3_CMD=s3 sync --acl "public-read" --sse "AES256" public/ s3://${WEB_BUCKET}
+
+ifdef DRYRUN
+	S3_DRYRUN=--dryrun
+endif
+ifdef DELETE
+	S3_DELETE=--delete
+endif
+S3_CACHE_CONTROL?=86400
+S3_CMD=s3 sync ${S3_DRYRUN} ${S3_DELETE} --cache-control max-age=${S3_CACHE_CONTROL} --acl "public-read" --sse "AES256"
+S3_CMD_WEB=${S3_CMD} public/ s3://${WEB_BUCKET}
+S3_CMD_STATIC=${S3_CMD} static/ s3://${STATIC_BUCKET}
 CLOUDFRONT_CMD=cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*'
 
 all: build
@@ -55,7 +65,7 @@ static-pull:
 .PHONY: static-pull
 
 static-push:
-	aws s3 sync --cache-control max-age=86400 --acl "public-read" --sse "AES256" ${STATIC_DIR}/ s3://${STATIC_BUCKET}
+	aws ${S3_CMD_STATIC}
 .PHONY: static-push
 
 static-images:
@@ -89,7 +99,7 @@ static-clean:
 
 deploy: clean build
 	@# Upload files to S3
-	@$(DOCKER_RUN) ${AWS_ENV} ${AWS_IMAGE} ${S3_CMD}
+	@$(DOCKER_RUN) ${AWS_ENV} ${AWS_IMAGE} ${S3_CMD_WEB}
 .PHONY: deploy
 
 cache:

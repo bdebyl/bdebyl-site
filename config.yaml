@@ -65,7 +65,7 @@ params:
   since: "2017"
   logoImage: "/static/img/logo.png"
   images:
-    - "/static/img/dblogo-prev.png"
+    - "/static/img/logo-prev.png"
   logoTitle: "bdebyl"
   keywords: ["bastian", "de byl", "bdebyl", "bastian de byl"]
   description: "A random assortment of my personal projects."
