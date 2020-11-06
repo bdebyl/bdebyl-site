@@ -55,7 +55,7 @@ static-pull:
 .PHONY: static-pull
 
 static-push:
-	aws s3 sync --acl "public-read" --sse "AES256" ${STATIC_DIR}/ s3://${STATIC_BUCKET}
+	aws s3 sync --cache-control max-age=86400 --acl "public-read" --sse "AES256" ${STATIC_DIR}/ s3://${STATIC_BUCKET}
 .PHONY: static-push
 
 static-images:

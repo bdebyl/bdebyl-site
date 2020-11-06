@@ -64,6 +64,7 @@ params:
   favicon: "/static/img/favicon.ico"
   since: "2017"
   logoImage: "/static/img/logo.png"
+  sitePreview: "/static/img/dblogo-prev.png"
   logoTitle: "bdebyl"
   keywords: ["bastian", "de byl", "bdebyl", "bastian de byl"]
   description: "A random assortment of my personal projects."
