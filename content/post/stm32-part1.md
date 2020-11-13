@@ -16,10 +16,10 @@ LED. However, it is my belief that this leads to confusion for beginners and
 only opens the door to misunderstandings. That being said, we will be using
 timers and their associated GPIO ports with Alternate Function modes.
 
+<!--more-->
+
 {{< img src="/static/img/stm32-examples/part1/blinky.gif"
     alt="Animated picture showing alternating blinking green and blue LEDs" >}}
-
-<!--more-->
 
 # Straight to the Chase
 

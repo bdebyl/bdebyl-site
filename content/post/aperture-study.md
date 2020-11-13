@@ -12,10 +12,11 @@ deminishing returns. Simply put: it makes the image look "soft", or otherwise
 out-of-focus. In this post I aim to find out find the best *acceptable* aperture
 setting for a specific lens.
 
+<!--more-->
+
 {{< thumb src="/static/img/aperture-study/f17-f40-comp.jpg"
     sub="f/1.7 vs. f/4.0"
     alt="Photo comparing aperture depth-of-field of f/1.7 versus f/4.0 (sharper)" >}}
-<!--more-->
 
 # The Setup
 

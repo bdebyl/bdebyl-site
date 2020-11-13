@@ -10,11 +10,18 @@ hideHeaderAndFooter: false
 images:
   - "/static/img/lineageos-pixel3a/lineage-settings.png"
 ---
+{{< admonition warning "Out of Date" >}}
+This guide is now out of date since LineageOS officially supports the Pixel 3a,
+see more here: <https://wiki.lineageos.org/devices/sargo/install>
+{{< /admonition >}}
+
 In this post I aim to highlight my findings in deciding to go through  the
 process of installing LineageOS on my Pixel 3a. Currently, LineageOS does not
 officially support the Pixel 3a. However, InvisibleK (Dan Pasanen) does host
 updated versions of his unofficial LineageOS build for the Pixel 3a complete
 with a custom recovery to utilize for this purpose!
+
+<!--more-->
 
 {{< thumbgallery >}}
     {{< thumb src="/static/img/lineageos-pixel3a/lineage-settings.png"
@@ -22,12 +29,6 @@ with a custom recovery to utilize for this purpose!
     {{< thumb src="/static/img/lineageos-pixel3a/lineage-trust.png"
         alt="Screenshot showing the LineageOS Trust feature" >}}
 {{< /thumbgallery >}}
-
-<!--more-->
-{{< admonition warning "Out of Date" >}}
-This guide is now out of date since LineageOS officially supports the Pixel 3a,
-see more here: <https://wiki.lineageos.org/devices/sargo/install>
-{{< /admonition >}}
 
 # Thank You
 

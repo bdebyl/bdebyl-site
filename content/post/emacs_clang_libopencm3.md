@@ -12,11 +12,11 @@ images:
 With some minor dependencies, it's fairly straightforward in setting up your
 Emacs workflow to include IntelliSense-like auto-completion!
 
+<!--more-->
+
 {{< img src="/static/img/emacs-clang-libopencm3/header-completion.png"
     sub="Header Completion"
     alt="Screenshot showing auto-completion for C header files in emacs" >}}
-
-<!--more-->
 
 # Dependencies
 

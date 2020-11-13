@@ -10,9 +10,10 @@ images:
 A colleague offered a pair of Bern Bluetooth drop-in headphones to me fore free,
 with the catch being: _I had to fix them_
 
+<!--more-->
+
 {{< thumb src="/static/img/headphone-fix/IMG_7505.jpg"
     alt="Photo of Bern brand headphones under magnifying glass" >}}
-<!--more-->
 
 # Don't Turn It On, Take It Apart
 

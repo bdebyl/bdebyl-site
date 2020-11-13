@@ -12,10 +12,10 @@ images:
 One of the simplest projects to get started with the STM32 microcontroller
 series: turn on the lights!
 
+<!--more-->
+
 {{< thumb src="/static/img/stm32-examples/part0/stm32-basic-gpio-leds.jpeg"
     alt="Photo of STM32 discovery board with illuminated green and blue LEDs" >}}
-
-<!--more-->
 
 {{< admonition warning "Windows Users" >}}
 This series of write-ups assumes the reader is on a Linux operating
