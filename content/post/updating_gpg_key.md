@@ -229,4 +229,4 @@ gpg --armor --export-secret-keys YOUREMAILADDRESS | gpg --armor --symmetric --ou
 Import it in OpenKeychain (_may require deletion in OpenKeychain first -- make
 sure **not to revoke and delete!**_) and we're done!
 
-[^1]: https://guardianproject.info/archive/luks/
+[^1]: [guardianproject.info/archive/luks/](https://guardianproject.info/archive/luks/)

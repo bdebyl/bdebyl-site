@@ -19,7 +19,7 @@ with the catch being: _I had to fix them_
 
 Past mistakes have taught me to be gentle and patient when it comes to taking
 things apart. This was no exception either. After looking over the unit on each
-side, I figured the only way *in* was lifting the mesh cover off. So I went at
+side, I figured the only way _in_ was lifting the mesh cover off. So I went at
 it, carefully, with a pair of tweezers. I worked my way around the edge and
 wedged the mesh upwards.
 

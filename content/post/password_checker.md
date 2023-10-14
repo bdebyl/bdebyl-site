@@ -106,7 +106,7 @@ getpws()
 }
 ```
 
-This accomplishes our *first goal* of checking duplicate passwords --
+This accomplishes our _first goal_ of checking duplicate passwords --
 **hooray!**
 
 # Passwortstärke

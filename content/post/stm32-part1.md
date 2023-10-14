@@ -109,7 +109,7 @@ For accomplishing this, a few things need to happen:
 
 {{< admonition warning "Note for Different STM32Fx Microcontrollers" >}}
 Review the datasheet for the specific **STM32Fx** microcontroller being
-programmed, as the Alternate Function mappings may be *significantly* different!
+programmed, as the Alternate Function mappings may be _significantly_ different!
 {{< /admonition >}}
 
 ## GPIO Alternate Function Setup
