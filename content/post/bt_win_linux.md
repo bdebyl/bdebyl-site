@@ -18,6 +18,8 @@ This is a guide written on how to share the same Bluetooth device(s) across Wind
    ```
    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Keys
    ```
+   
+   If you **do not see any Keys under the tree** then you need to open `regedit` as a system-account user. One way to do this is using the PsExec by [downloading it from Microsoft Sysinternals](https://learn.microsoft.com/en-us/sysinternals/downloads/psexec). Once it is downloaded, you will need to run a command-prompt **as Administrator** and navigate to the location `PsExec` is unzipped and run `PsExec.exe -s -i regedit`. The Bluetooth keys should now be visible.
 
 5. Right-click on `Keys` in the left-hand pane and select `Export`. During the dialog change `Save as type` to `Text files` and that the `Export range` is set to `Selected branch`. Store this somewhere **accessible by both Windows and Linux** -- if a shared drive is unavailable, use a USB drive or cloud-storage.
 6. Reboot to Linux
@@ -31,5 +33,5 @@ This is a guide written on how to share the same Bluetooth device(s) across Wind
     ```
     _From the above copy `31 c0 .... a9 a7`_
     
-12. Paste the key from the previous step into the `Key=` portion of the **Linux** Bluetooth `info` file. Make sure to **remove all spaces and change all characters to upper-case (all-caps)**.
+12. Paste the key from the previous step into the `Key=` portion of the **Linux** Bluetooth `info` file. Make sure to **remove all spaces, hyphens, and change all characters to upper-case (all-caps)**.
 13. Save the `info` file with the changes to complete device sharing. Repeat for any other Bluetooth devices to share.
