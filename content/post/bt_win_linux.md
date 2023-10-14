@@ -1,5 +1,5 @@
 ---
-title: "Sharing Same Bluetooth device on Windows/Linux dual-boot"
+title: "Sharing same Bluetooth device on Windows/Linux dual-boot"
 date: 2023-10-14
 lastmod: 2023-10-14
 categories: ["Tutorial"]
