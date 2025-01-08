@@ -6,8 +6,8 @@ tags: ["libopencm3", "stm32", "tutorial"]
 categories: ["Tutorial"]
 contentCopyright: true
 hideHeaderAndFooter: false
-images:
-  - "/static/img/stm32-examples/part0/stm32-basic-gpio-leds.jpeg"
+cover:
+  image: /static/img/stm32-examples/part0/stm32-basic-gpio-leds.jpeg
 ---
 One of the simplest projects to get started with the STM32 microcontroller
 series: turn on the lights!
@@ -17,20 +17,11 @@ series: turn on the lights!
 {{< thumb src="/static/img/stm32-examples/part0/stm32-basic-gpio-leds.jpeg"
     alt="Photo of STM32 discovery board with illuminated green and blue LEDs" >}}
 
-{{< admonition warning "Windows Users" >}}
-This series of write-ups assumes the reader is on a Linux operating
-system. Windows users _can_ utilize the [**Windows Subsystems for
-Linux**](https://docs.microsoft.com/en-us/windows/wsl/install-win10) though your
-mileage may vary!
-
-{{< /admonition >}}
 
 # Straight to the Chase
 
 For those that want to cut to the chase and save time, here is the full source
 code with friendly names to get you started:
-
-{{< admonition note "Source Code" true >}}
 
 ```C
 #include <libopencm3/stm32/gpio.h>
@@ -49,8 +40,6 @@ int main(void) {
     while (1);
 }
 ```
-
-{{< /admonition >}}
 
 # Getting Started with libopencm3
 
@@ -127,11 +116,9 @@ Makefile's variables of things you may want to change:
 
 # Explanation
 
-{{< admonition info "Naming Convention" >}}
 As a note to the reader: below I will not refer to the GPIO port or pins using
 the `#define` friendly names from above. This is purely for the sake
 of clarity in hopes of avoiding confusion.
-{{< /admonition >}}
 
 Although the source code is fairly simple, lets dive into it at least
 _somewhat_.

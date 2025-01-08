@@ -14,11 +14,9 @@ from WordPress)
 <!--more-->
 # Disclaimer
 
-{{< admonition warning "Out of Date" >}}
 The information in this article is **out-of-date**. I am, and have been, using my
 own fork of the [hugo-even-theme](https://gitlab.com/bdebyl/hugo-theme-even) on
 my [GitLab](https://gitlab.com/bdebyl) profile.
-{{< /admonition >}}
 
 ---
 

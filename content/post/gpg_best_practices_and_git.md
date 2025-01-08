@@ -92,43 +92,34 @@ this via:
 - **ArchLinux:** `sudo update-ca-trust`
 - **Debian/Ubuntu, RHEL:** `sudo update-ca-certificates`
 
-{{< admonition tip "CA Path" >}}
 On my system the full path to the CA certs is:
 
 - `/etc/ca-certificates/extracted/cadir/sks-keyservers.net_CA.pem`
-
-{{< /admonition >}}
 
 Two following parameters should be added to your `~/.gnupg` configuration files:
 
 ### GnuPG Versions >2.1
 
-{{< admonition note "gpg.conf" >}}
 
 ```text
 keyserver hkps://hkps.pool.sks-keyservers.net
 ```
 
-{{< /admonition >}}
 
-{{< admonition note "dirmngr.conf" >}}
 
 ```text
 hkp-cacert /etc/ca-certificates/path/to/CA.pem
 ```
 
-{{< /admonition >}}
 
 ### GnuPG Versions <2.1
 
-{{< admonition note "gpg.conf" >}}
 
 ```text
 keyserver hkps://hkps.pool.sks-keyservers.net
 keyserver-options ca-cert-file=/path/to/CA/sks-keyservers.netCA.pem
 ```
 
-{{< /admonition >}}
 
 ## *Optional* - Ensure keys refreshed through keyserver
 

@@ -4,8 +4,8 @@ date: 2019-02-28
 lastmod: 2019-02-28
 categories: ["Blog"]
 tags: ["electronics"]
-images:
-  - "/static/img/thinkpad-usb-fix/DSC04781.jpg"
+cover:
+  image: /static/img/thinkpad-usb-fix/DSC04781.jpg
 ---
 From the moment that I first had my (_used_) ThinkPad X220, the bottom-right USB
 port nearest to the SD card reader had been broken. The pad (_or bolster_) was

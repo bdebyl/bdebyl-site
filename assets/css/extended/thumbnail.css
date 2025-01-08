@@ -1,0 +1,39 @@
+.thumbnail-container {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.thumbnail-container a {
+  all: unset;
+}
+
+.thumbnail {
+  margin: auto;
+  padding: .75rem;
+  text-align: center;
+  max-width: 80%;
+  display: inline-block;
+}
+
+.thumbnail sub {
+  font-size: small;
+  font-style: italic;
+}
+
+.thumbnail-gallery {
+  margin: auto;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.thumbnail-gallery a {
+  all: unset;
+}
+
+.thumbnail-gallery .thumbnail {
+  display: inline-block;
+  margin: .125rem;
+  padding: .50rem;
+  width: 42%;
+}

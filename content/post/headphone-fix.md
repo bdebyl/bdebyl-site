@@ -4,8 +4,8 @@ date: 2018-01-11
 lastmod: 2019-01-16
 categories: ["Blog"]
 tags: ["electronics"]
-images:
-  - "/static/img/headphone-fix/IMG_7505.jpg"
+cover:
+  image: /static/img/headphone-fix/IMG_7505.jpg
 ---
 A colleague offered a pair of Bern Bluetooth drop-in headphones to me fore free,
 with the catch being: _I had to fix them_
@@ -60,7 +60,7 @@ search of `AIWI TI` (_as shown in the photograph_) resulted
 in [the following datasheet](http://www.ti.com/lit/ds/symlink/tpa6132a2.pdf)
 which verified that to be the case.
 
-<center>![Hello](/static/img/headphone-fix/TPA6132A2.png)</center>
+![Hello](/static/img/headphone-fix/TPA6132A2.png#center)
 
 **Bingo!** Now knowing the pinout, I could use my trusty multimeter (_a Fluke
 115_) to test continuity of the circuit from the known-good and the now

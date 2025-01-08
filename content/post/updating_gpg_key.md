@@ -13,10 +13,8 @@ is done!
 
 <!--more-->
 
-{{< admonition info Info >}}
 If the reader is unfamiliar with OpenPGP, it's suggested to check out the prior
 write-up on this blog: [**OpenPGP Best Practices (and Git)**](/post/gpg_best_practices_and_git/)
-{{< /admonition >}}
 
 # Importing Secret Keys
 

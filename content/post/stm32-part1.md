@@ -6,8 +6,8 @@ tags: ["libopencm3", "stm32", "tutorial"]
 categories: ["Tutorial"]
 contentCopyright: true
 hideHeaderAndFooter: false
-images:
-  - "/static/img/stm32-examples/part1/blinky.gif"
+cover:
+  image: /static/img/stm32-examples/part1/blinky.gif
 ---
 After having reviewed [**Part 0**](/post/stm32-part0) of this series, we can now
 explore controlling GPIO with the hardware timers! Other tutorials have used the
@@ -25,8 +25,6 @@ timers and their associated GPIO ports with Alternate Function modes.
 
 For those that want to cut to the chase and save time, here is the full source
 code with friendly names to get you started:
-
-{{< admonition note "Source Code" true >}}
 
 ```C
 #include <libopencm3/stm32/gpio.h>
@@ -79,8 +77,6 @@ int main(void) {
 }
 ```
 
-{{< /admonition >}}
-
 # Set up the GPIO
 
 Assuming the reader is either familiar with GPIO setup for the STM32F0, or has
@@ -107,10 +103,8 @@ For accomplishing this, a few things need to happen:
 1. The desired GPIO pins need to be set to `GPIO_MODE_AF` in `gpio_mode_setup()`
 1. The alternate function mode number `GPIO_AFx` has to be set for the pins using `gpio_set_af()`
 
-{{< admonition warning "Note for Different STM32Fx Microcontrollers" >}}
 Review the datasheet for the specific **STM32Fx** microcontroller being
 programmed, as the Alternate Function mappings may be _significantly_ different!
-{{< /admonition >}}
 
 ## GPIO Alternate Function Setup
 

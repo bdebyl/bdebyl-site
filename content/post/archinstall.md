@@ -27,16 +27,12 @@ better understanding of the tools and methods used.
 
 ## Partitioning with `fdisk`
 
-{{% admonition warning Warning %}}
 This operation will destroy any data on the device, please ensure to back up
 any data desired prior to this operation!
-{{% /admonition %}}
 
-{{% admonition info Info %}}
 Replace instances of `/dev/sdN` with your actual device name (e.g. `/dev/sda`).
 References specific to partitions will be stated as such (e.g. `/dev/sdN1`,
 `/dev/sdN2`)
-{{% /admonition %}}
 
 1. Remove any existing partitions on the drive:
 

@@ -1,12 +1,12 @@
 # core
-baseURL: "https://bdebyl.net/"
-title: "Collection of useful, and useless information"
-theme: "even"
+baseURL: https://debyl.io/
+title: debyl.io
+theme: papermod
+enableEmoji: true
 
 # settings
-paginate: 5
-defaultContentLanguage: "en"
-languageCode: "en"
+defaultContentLanguage: en
+languageCode: en
 buildDrafts: false
 canonifyURLs: true
 enableRobotsTXT: true
@@ -15,10 +15,17 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  highlight:
+    noClasses: false
+    # anchorLineNos: true
+    # codeFences: true
+    # guessSyntax: true
+    # lineNos: true
+    # style: monokai
 
 # google analytics
-googleAnalytics: "UA-163975086-1"
-googleVerification: ""
+googleAnalytics: UA-163975086-1
+googleVerification:
 
 # See https://gohugo.io/about/hugo-and-gdpr/
 privacy:
@@ -30,63 +37,135 @@ privacy:
 # https://gohugo.io/content-management/syntax-highlighting/
 pygmentsCodefences: true
 pygmentsCodefencesGuessSyntax: true
-pygmentsOptions: ""
+pygmentsOptions:
 pygmentsUseClasses: true
 
-author:
-  name: "Bastian de Byl"
-
 sitemap:
-  changefreq: "weekly"
-  filename: "sitemap.xml"
+  changefreq: weekly
+  filename: sitemap.xml
   priority: 0.5
 
-menu:
-  main:
-    - name: "Home"
-      weight: 10
-      identifier: "home"
-      url: "/"
-    - name: "About"
-      weight: 20
-      identifier: "about"
-      url: "/about"
-    - name: "Archives"
-      weight: 30
-      identifier: "archives"
-      url: "/post/"
-    - name: "Tags"
-      weight: 40
-      identifier: "tags"
-      url: "/tags/"
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+languages:
+  en:
+    languageName: English
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Archive
+          url: archives
+          weight: 5
+        - name: Search
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
 
 params:
-  favicon: "/static/img/favicon.ico"
-  since: "2017"
-  logoImage: "/static/img/logo.png"
-  images:
-    - "/static/img/logo-prev.png"
-  logoTitle: "bdebyl"
-  keywords: ["bastian", "de byl", "bdebyl", "bastian de byl"]
-  description: "A random assortment of my personal projects."
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  description: Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod
+  author: Bastian de Byl
+  # author: [Me, You] # multiple authors
 
-  # paginate of archives, tags and categories
-  archivePaginate: 20
-  # show 'xx Posts In Total' in archive page
-  showArchiveCount: true
-  # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
-  dateFormatToUse: "2006-01-02"
-  # show word count and read time
-  moreMeta: true
-  # show "read more" link on post summary
-  readMoreEnabled: false
-  postMetaInFooter: true   # contain author, lastMod, markdown link, license
-  linkToMarkDown: true    # Only effective when hugo will output .md files.
-  contentCopyright: '<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>'
+  ShowAllPagesInArchive: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowPageNums: true
+  ShowPostNavLinks: true
+  ShowReadingTime: true
+  ShowRssButtonInSectionTermList: true
+  ShowShareButtons: true
+  ShowToc: false
+  comments: false
+  defaultTheme: dark
+  disableSpecial1stPost: false
+  disableThemeToggle: true
+  displayFullLangName: true
+  images: [images/papermod-cover.png]
 
-  social:
-    a-email: "mailto:bastian@bdebyl.net"
-    g-github: "https://github.com/bdebyl"
-    m-instagram: "https://instagram.com/bastian.remi"
-    n-gitlab: "https://gitlab.com/bdebyl"
-    e-linkedin: "https://www.linkedin.com/in/bastian-de-byl-90171b187"
+  profileMode:
+    enabled: false
+
+  homeInfoParams:
+    Title: >
+      :wave: Welcome
+    Content: >
+      I created this site as a way of showcasing my projects, or other general
+      ideas. It’s a sort of engineering portfolio, if you will.
+      <br/>
+      <br/>
+      This is just my personal blog site, feel free to get in touch with me
+      using the icon links below.
+
+  socialIcons:
+    - name: github
+      title: Github
+      url: https://github.com/bdebyl
+    - name: X
+      title: Twitter
+      url: https://x.com/bastiandebyl
+    - name: email
+      title: Email
+      url: mailto:bastian@debyl.io
+
+  # label:
+  # iconSVG: '<svg xmlns=http://www.w3.org/2000/svg height=25 viewBox=0 -960 960 960 fill=currentColor><path d=M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z/></svg>'
+  # text: Home
+  # icon: icon.png
+  # iconHeight: 35
+
+  assets:
+    disableHLJS: true
+  #     favicon: <link / abs url>
+  #     favicon16x16: <link / abs url>
+  #     favicon32x32: <link / abs url>
+  #     apple_touch_icon: <link / abs url>
+  #     safari_pinned_tab: <link / abs url>
+
+  # cover:
+  #     hidden: true # hide everywhere but not in structured data
+  #     hiddenInList: true # hide on list pages and home
+  #     hiddenInSingle: true # hide on single page
+
+  # fuseOpts:
+  #     isCaseSensitive: false
+  #     shouldSort: true
+  #     location: 0
+  #     distance: 1000
+  #     threshold: 0.4
+  #     minMatchCharLength: 0
+  #     keys: [title, permalink, summary, content]
+
+# privacy:
+#   vimeo:
+#     disabled: false
+#     simple: true
+
+#   twitter:
+#     disabled: false
+#     enableDNT: true
+#     simple: true
+
+#   instagram:
+#     disabled: false
+#     simple: true
+
+#   youtube:
+#     disabled: false
+#     privacyEnhanced: true
+
+services:
+  instagram:
+    disableInlineCSS: true
+  twitter:
+    disableInlineCSS: true

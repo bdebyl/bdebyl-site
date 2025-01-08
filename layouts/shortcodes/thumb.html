@@ -1,0 +1,15 @@
+{{- $src := .Get "src" }}
+{{- $sub := .Get "sub" -}}
+{{- $alt := .Get "alt" -}}
+{{ if not .Parent }}
+<div class="thumbnail-container">
+  {{ end }}
+  <a href="{{ $src }}"><div class="thumbnail">
+    <center><img src="{{ $src | replaceRE "^(.*static/img)/(.*)$" "$1/w_500/$2" }}" alt="{{ $alt }}" title="{{ $alt }}"></center>
+    {{- if $sub -}}
+    <center><sub>{{ $sub }}</sub></center>
+    {{- end -}}
+  </div></a>
+  {{ if not .Parent }}
+</div>
+{{ end }}
